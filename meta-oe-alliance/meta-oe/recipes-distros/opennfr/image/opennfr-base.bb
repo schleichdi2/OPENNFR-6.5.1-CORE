@@ -37,6 +37,7 @@ RDEPENDS_${PN} = "\
 	${PYTHON_PN}-future \
 	${PYTHON_PN}-six \
 	${PYTHON_PN}-gdata \
+	${PYTHON_PN}-beautifulsoup4
 	udpxy \
 	uchardet \
 	nodejs \
