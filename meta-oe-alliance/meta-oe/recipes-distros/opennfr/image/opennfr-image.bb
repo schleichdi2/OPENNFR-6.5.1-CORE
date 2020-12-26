@@ -33,6 +33,9 @@ image_preprocess() {
 			mkdir -p ${IMAGE_ROOTFS}/media/card
 			mkdir -p ${IMAGE_ROOTFS}/media/cf
 			mkdir -p ${IMAGE_ROOTFS}/media/hdd
+			mkdir -p ${IMAGE_ROOTFS}/media/hdd1
+			mkdir -p ${IMAGE_ROOTFS}/media/hdd2
+			mkdir -p ${IMAGE_ROOTFS}/media/hdd3
 			mkdir -p ${IMAGE_ROOTFS}/media/net
 			mkdir -p ${IMAGE_ROOTFS}/media/upnp
 			mkdir -p ${IMAGE_ROOTFS}/media/usb
@@ -40,6 +43,9 @@ image_preprocess() {
 			mkdir -p ${IMAGE_ROOTFS}/media/usb2
 			mkdir -p ${IMAGE_ROOTFS}/media/usb3
 			touch ${IMAGE_ROOTFS}/media/hdd/.fstab
+			touch ${IMAGE_ROOTFS}/media/hdd1/.fstab
+			touch ${IMAGE_ROOTFS}/media/hdd2/.fstab
+			touch ${IMAGE_ROOTFS}/media/hdd3/.fstab
 			touch ${IMAGE_ROOTFS}/media/usb/.fstab
 			touch ${IMAGE_ROOTFS}/media/usb1/.fstab
 			touch ${IMAGE_ROOTFS}/media/usb2/.fstab
