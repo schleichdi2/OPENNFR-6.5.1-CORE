@@ -18,6 +18,7 @@ RRECOMMENDS_${PN} = "\
 	libudfread \
 	dvblast \
 	librtmp \
+	tvheadend \
 	enigma2-plugin-skins-opennfrfhd \
 	enigma2-plugin-opennfrskins-utopia-hd \
 "

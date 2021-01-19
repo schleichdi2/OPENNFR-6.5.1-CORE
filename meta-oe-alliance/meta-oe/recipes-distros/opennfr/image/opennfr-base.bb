@@ -48,6 +48,7 @@ RDEPENDS_${PN} = "\
 	rtmpdump \
 	iperf3 \
 	zip \
+	tvheadend \
 	packagegroup-base-smbfs-client \
 	packagegroup-base-smbfs-utils \
 	packagegroup-base-smbfs-server \
