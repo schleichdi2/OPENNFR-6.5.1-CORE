@@ -27,7 +27,7 @@ SRC_URI = "file://bootlogo.mvi  file://radio.mvi file://bootlogo.sh \
 
 SRC_URI_append_inihdp = "file://inihdp/cfe.bmp file://inihdp/finished.bmp file://inihdp/imageversion.bmp file://inihdp/kernel.bmp file://inihdp/rootfs.bmp file://inihdp/splash.bmp"
 
-SRC_URI_append_8100s = "file://8100s/lcdwarning220.bin  file://8100s/lcdflashing.bmp"
+SRC_URI_append_8100s = "file://8100s/lcdwarning220.bin"
 
 
 FILES_${PN} = "/boot /usr/share /etc/init.d"
