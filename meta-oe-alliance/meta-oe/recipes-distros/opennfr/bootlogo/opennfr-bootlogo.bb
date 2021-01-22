@@ -63,10 +63,7 @@ do_install_append_inihdp() {
 do_install_append_8100s() {
      install -d ${D}/usr/share
      install -m 0644 ${WORKDIR}/8100s/lcdwarning220.bin ${D}/usr/share/lcdflashing.bmp
-     install -m 0644 ${S}/8100s/lcdflashing.bmp ${DEPLOY_DIR_IMAGE}/lcdflashing.bmp
-     install -m 0644 ${S}/8100s/lcdwarning220.bin ${DEPLOY_DIR_IMAGE}/lcdwarning220.bin
 }
-
 
 inherit deploy
 do_deploy() {
