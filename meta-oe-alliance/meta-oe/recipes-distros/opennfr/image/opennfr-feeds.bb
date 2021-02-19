@@ -20,6 +20,8 @@ RRECOMMENDS_${PN} = "\
 	librtmp \
 	enigma2-plugin-skins-opennfrfhd \
 	enigma2-plugin-opennfrskins-utopia-hd \
+	opennfr-cam \
+	opennfr-settings \
 "
 
 RRECOMMENDS_${PN}_append_gb800solo = "enigma2-plugin-extensions-gbipboxclient"
