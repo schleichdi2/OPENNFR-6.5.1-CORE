@@ -39,6 +39,19 @@ overview of their function and contents.
       when specified allows for the Git binary from the host to be used
       rather than building ``git-native``.
 
+   :term:`AZ_SAS`
+      Azure Storage Shared Access Signature, when using the
+      :ref:`Azure Storage fetcher <bitbake-user-manual/bitbake-user-manual-fetching:fetchers>`
+      This variable can be defined to be used by the fetcher to authenticate
+      and gain access to non-public artifacts.
+      ::
+
+         AZ_SAS = ""se=2021-01-01&sp=r&sv=2018-11-09&sr=c&skoid=<skoid>&sig=<signature>""
+
+      For more information see Microsoft's Azure Storage documentation at
+      https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview
+
+
    :term:`B`
       The directory in which BitBake executes functions during a recipe's
       build process.
@@ -107,6 +120,10 @@ overview of their function and contents.
       The default task to use when none is specified (e.g. with the ``-c``
       command line option). The task name specified should not include the
       ``do_`` prefix.
+
+   :term:`BB_DEFAULT_UMASK`
+      The default umask to apply to tasks if specified and no task specific
+      umask flag is set.
 
    :term:`BB_DISKMON_DIRS`
       Monitors disk space and available inodes during the build and allows
@@ -1298,6 +1315,8 @@ overview of their function and contents.
 
       -  ``svn://`` : Fetches files from a Subversion (``svn``) revision
          control repository.
+
+      -  ``az://`` : Fetches files from an Azure Storage account using HTTPS.
 
       Here are some additional options worth mentioning:
 
