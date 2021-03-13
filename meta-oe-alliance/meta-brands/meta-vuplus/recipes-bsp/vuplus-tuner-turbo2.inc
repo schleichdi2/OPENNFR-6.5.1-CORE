@@ -9,8 +9,8 @@ PV = "${KV}"
 PR = "${SRCDATE}"
 
 SRC_URI = " \
-	http://archive.vuplus.com/download/usb/tuner/turbo/vuplus_tuner_turbo2_driver_${PV}_${TARGET_ARCH}_${SRCDATE}.tar.gz;name=driver \
-	http://archive.vuplus.com/download/usb/tuner/turbo/vuplus_tuner_turbo2_bin_fw_${TARGET_ARCH}_${FW_SRCDATE}.tar.gz;name=binfw \
+	http://code.vuplus.com/download/release/turbo/vuplus_tuner_turbo2_driver_${PV}_${TARGET_ARCH}_${SRCDATE}.tar.gz;name=driver \
+	http://code.vuplus.com/download/release/turbo/vuplus_tuner_turbo2_bin_fw_${TARGET_ARCH}_${FW_SRCDATE}.tar.gz;name=binfw \
 "
 
 DEPENDS += "virtual/kernel module-init-tools"
@@ -42,3 +42,4 @@ FILES_${PN} = "/"
 SRC_URI[binfw.md5sum] = "aa1be089011f3bdc15d88d7f70dd4c7e"
 SRC_URI[binfw.sha256sum] = "9a130ee3a67994029eec37366a4cce67031d6d5e8bfda0ed8b6ce59983bbb376"
 
+INSANE_SKIP_${PN} = "ldflags"
