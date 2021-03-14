@@ -1710,7 +1710,7 @@ if [ x"$D" = "x" ]; then
 fi
 }
 
-RPMDEPS = "${STAGING_LIBDIR_NATIVE}/rpm/rpmdeps --alldeps"
+RPMDEPS = "${STAGING_LIBDIR_NATIVE}/rpm/rpmdeps --alldeps --define '__font_provides %{nil}'"
 
 # Collect perfile run-time dependency metadata
 # Output:
@@ -2452,6 +2452,7 @@ python do_packagedata () {
 
     bb.build.exec_func("packagedata_translate_pr_autoinc", d)
 }
+do_packagedata[cleandirs] += "${WORKDIR}/pkgdata-pdata-input"
 
 # Translate the EXTENDPRAUTO and AUTOINC to the final values
 packagedata_translate_pr_autoinc() {

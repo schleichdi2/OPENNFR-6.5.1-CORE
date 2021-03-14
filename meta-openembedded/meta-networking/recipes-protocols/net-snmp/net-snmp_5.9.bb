@@ -58,7 +58,6 @@ EXTRA_OECONF = "--enable-shared \
                 --with-install-prefix=${D} \
                 --with-persistent-directory=${localstatedir}/lib/net-snmp \
                 ${@oe.utils.conditional('SITEINFO_ENDIANNESS', 'le', '--with-endianness=little', '--with-endianness=big', d)} \
-                --with-openssl=${STAGING_EXECPREFIXDIR} \
                 --with-mib-modules='${MIB_MODULES}' \
 "
 
@@ -103,11 +102,10 @@ do_configure_prepend() {
 }
 
 do_configure_append() {
-    if [ "${HAS_PERL}" = "1" ]; then
-        sed -e "s@^NSC_INCLUDEDIR=.*@NSC_INCLUDEDIR=${STAGING_DIR_TARGET}\$\{includedir\}@g" \
-            -e "s@^NSC_LIBDIR=-L.*@NSC_LIBDIR=-L${STAGING_DIR_TARGET}\$\{libdir\}@g" \
-            -i ${B}/net-snmp-config
-    fi
+    sed -e "s@^NSC_INCLUDEDIR=.*@NSC_INCLUDEDIR=${STAGING_DIR_TARGET}\$\{includedir\}@g" \
+        -e "s@^NSC_LIBDIR=-L.*@NSC_LIBDIR=-L${STAGING_DIR_TARGET}\$\{libdir\}@g" \
+        -e "s@^NSC_LDFLAGS=\"-L.* @NSC_LDFLAGS=\"-L${STAGING_DIR_TARGET}\$\{libdir\} @g" \
+        -i ${B}/net-snmp-config
 }
 
 do_install_append() {
@@ -133,13 +131,12 @@ do_install_append() {
         -i ${D}${bindir}/net-snmp-config
 
     sed -e 's@${STAGING_DIR_HOST}@@g' \
-        -i ${D}${libdir}/pkgconfig/{netsnmp-agent.pc,netsnmp.pc}
+        -i ${D}${libdir}/pkgconfig/netsnmp*.pc
 
-    if [ "${HAS_PERL}" = "1" ]; then
-        sed -e "s@^NSC_INCLUDEDIR=.*@NSC_INCLUDEDIR=\$\{includedir\}@g" \
-            -e "s@^NSC_LIBDIR=-L.*@NSC_LIBDIR=-L\$\{libdir\}@g" \
-            -i ${D}${bindir}/net-snmp-config
-    fi
+    sed -e "s@^NSC_INCLUDEDIR=.*@NSC_INCLUDEDIR=\$\{includedir\}@g" \
+        -e "s@^NSC_LIBDIR=-L.*@NSC_LIBDIR=-L\$\{libdir\}@g" \
+        -e "s@^NSC_LDFLAGS=\"-L.* @NSC_LDFLAGS=\"-L\$\{libdir\} @g" \
+        -i ${D}${bindir}/net-snmp-config
 
     oe_multilib_header net-snmp/net-snmp-config.h
 }

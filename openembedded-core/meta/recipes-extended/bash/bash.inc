@@ -1,5 +1,6 @@
 SUMMARY = "An sh-compatible command language interpreter"
 HOMEPAGE = "http://tiswww.case.edu/php/chet/bash/bashtop.html"
+DESCRIPTION = "Bash is the GNU Project's Bourne Again SHell, a complete implementation of the IEEE POSIX and Open Group shell specification with interactive command line editing, job control on architectures that support it, csh-like features such as history substitution and brace expansion, and a slew of other features."
 SECTION = "base/shell"
 
 DEPENDS = "ncurses bison-native virtual/libiconv"
@@ -16,6 +17,10 @@ CFLAGS += "-DNON_INTERACTIVE_LOGIN_SHELLS"
 
 # This can vary depending upon the host
 CFLAGS += "-DHEREDOC_PIPESIZE=65536"
+
+# Disable bracketed paste mode by default (enabled by default in bash 5.1). It
+# causes a lot of garbage in non-interactive shells
+CFLAGS += "-DBRACKETED_PASTE_DEFAULT=0"
 
 ALTERNATIVE_${PN} = "bash sh"
 ALTERNATIVE_LINK_NAME[bash] = "${base_bindir}/bash"

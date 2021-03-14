@@ -40,7 +40,6 @@ def write_license_files(d, license_manifest, pkg_dic, rootfs=True):
     import stat
 
     bad_licenses = (d.getVar("INCOMPATIBLE_LICENSE") or "").split()
-    bad_licenses = [canonical_license(d, l) for l in bad_licenses]
     bad_licenses = expand_wildcard_licenses(d, bad_licenses)
 
     whitelist = []
@@ -210,7 +209,8 @@ def license_deployed_manifest(d):
             os.unlink(lic_manifest_symlink_dir)
 
         # create the image dir symlink
-        os.symlink(lic_manifest_dir, lic_manifest_symlink_dir)
+        if lic_manifest_dir != lic_manifest_symlink_dir:
+            os.symlink(lic_manifest_dir, lic_manifest_symlink_dir)
 
 def get_deployed_dependencies(d):
     """

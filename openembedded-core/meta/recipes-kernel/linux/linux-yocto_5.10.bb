@@ -8,20 +8,22 @@ KBRANCH_qemuarm64 ?= "v5.10/standard/qemuarm64"
 KBRANCH_qemumips ?= "v5.10/standard/mti-malta32"
 KBRANCH_qemuppc  ?= "v5.10/standard/qemuppc"
 KBRANCH_qemuriscv64  ?= "v5.10/standard/base"
+KBRANCH_qemuriscv32  ?= "v5.10/standard/base"
 KBRANCH_qemux86  ?= "v5.10/standard/base"
 KBRANCH_qemux86-64 ?= "v5.10/standard/base"
 KBRANCH_qemumips64 ?= "v5.10/standard/mti-malta64"
 
-SRCREV_machine_qemuarm ?= "f31d1514bbe9d450b69e3101e260524b82e8626d"
-SRCREV_machine_qemuarm64 ?= "f08df324ccdbc73b9f0c2de2826a2843bcdf651b"
-SRCREV_machine_qemumips ?= "1e1e4a362640c2f385c2b093c5971ec7d9a0b238"
-SRCREV_machine_qemuppc ?= "f08df324ccdbc73b9f0c2de2826a2843bcdf651b"
-SRCREV_machine_qemuriscv64 ?= "f08df324ccdbc73b9f0c2de2826a2843bcdf651b"
-SRCREV_machine_qemux86 ?= "f08df324ccdbc73b9f0c2de2826a2843bcdf651b"
-SRCREV_machine_qemux86-64 ?= "f08df324ccdbc73b9f0c2de2826a2843bcdf651b"
-SRCREV_machine_qemumips64 ?= "a019b338648b95aa4d679ffdc01878dc660bcbac"
-SRCREV_machine ?= "f08df324ccdbc73b9f0c2de2826a2843bcdf651b"
-SRCREV_meta ?= "47c7a3148a4d7653cec536ba202b25148d1952ad"
+SRCREV_machine_qemuarm ?= "b633861686a11bf7ff02b3d40cd71a0113b4739c"
+SRCREV_machine_qemuarm64 ?= "8c516ced69f41563404ada0bea315a55bcf1df6f"
+SRCREV_machine_qemumips ?= "d36658c0f303a89dff5ed7f3bb9923c525dfd95c"
+SRCREV_machine_qemuppc ?= "8c516ced69f41563404ada0bea315a55bcf1df6f"
+SRCREV_machine_qemuriscv64 ?= "8c516ced69f41563404ada0bea315a55bcf1df6f"
+SRCREV_machine_qemuriscv32 ?= "8c516ced69f41563404ada0bea315a55bcf1df6f"
+SRCREV_machine_qemux86 ?= "8c516ced69f41563404ada0bea315a55bcf1df6f"
+SRCREV_machine_qemux86-64 ?= "8c516ced69f41563404ada0bea315a55bcf1df6f"
+SRCREV_machine_qemumips64 ?= "f1c01716513524065f0f231c6e6502cd9a3ecb53"
+SRCREV_machine ?= "8c516ced69f41563404ada0bea315a55bcf1df6f"
+SRCREV_meta ?= "8c8f6a791bed6e8f675236946e805a7fc489e382"
 
 # remap qemuarm to qemuarma15 for the 5.8 kernel
 # KMACHINE_qemuarm ?= "qemuarma15"
@@ -30,7 +32,7 @@ SRC_URI = "git://git.yoctoproject.org/linux-yocto.git;name=machine;branch=${KBRA
            git://git.yoctoproject.org/yocto-kernel-cache;type=kmeta;name=meta;branch=yocto-5.10;destsuffix=${KMETA}"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
-LINUX_VERSION ?= "5.10.5"
+LINUX_VERSION ?= "5.10.21"
 
 DEPENDS += "${@bb.utils.contains('ARCH', 'x86', 'elfutils-native', '', d)}"
 DEPENDS += "openssl-native util-linux-native"
@@ -43,7 +45,7 @@ KCONF_BSP_AUDIT_LEVEL = "1"
 
 KERNEL_DEVICETREE_qemuarmv5 = "versatile-pb.dtb"
 
-COMPATIBLE_MACHINE = "qemuarm|qemuarmv5|qemuarm64|qemux86|qemuppc|qemumips|qemumips64|qemux86-64|qemuriscv64"
+COMPATIBLE_MACHINE = "qemuarm|qemuarmv5|qemuarm64|qemux86|qemuppc|qemuppc64|qemumips|qemumips64|qemux86-64|qemuriscv64|qemuriscv32"
 
 # Functionality flags
 KERNEL_EXTRA_FEATURES ?= "features/netfilter/netfilter.scc"

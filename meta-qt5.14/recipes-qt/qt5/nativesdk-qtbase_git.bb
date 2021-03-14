@@ -1,5 +1,5 @@
 DESCRIPTION = "SDK version of Qt/[X11|Mac|Embedded]"
-DEPENDS = "nativesdk-zlib qtbase-native"
+DEPENDS = "qtbase-native nativesdk-zlib"
 SECTION = "libs"
 HOMEPAGE = "http://qt-project.org"
 
@@ -15,8 +15,8 @@ LIC_FILES_CHKSUM = " \
 
 QT_MODULE = "qtbase"
 
-require nativesdk-qt5.inc
 require qt5-git.inc
+require nativesdk-qt5.inc
 
 # it's already included with newer oe-core, but include it here for dylan
 FILESEXTRAPATHS =. "${FILE_DIRNAME}/qtbase:"

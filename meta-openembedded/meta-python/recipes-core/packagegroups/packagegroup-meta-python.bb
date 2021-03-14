@@ -21,6 +21,7 @@ RDEPENDS_packagegroup-meta-python3 = "\
     python3-aiofiles \
     python3-aiohttp \
     python3-aiohttp-jinja2 \
+    python3-aiohue \
     python3-alembic \
     python3-ansi2html \
     python3-ansicolors \
@@ -143,6 +144,7 @@ RDEPENDS_packagegroup-meta-python3 = "\
     python3-gmqtt \
     python3-gnupg \
     python3-google-api-python-client \
+    python3-gpsd-py3 \
     python3-graphviz \
     python3-greenlet \
     python3-greenstalk \
@@ -167,9 +169,11 @@ RDEPENDS_packagegroup-meta-python3 = "\
     python3-idna \
     python3-idna \
     python3-idna-ssl \
+    python3-ifaddr \
     python3-imageio \
     python3-incremental \
     python3-inflection \
+    python3-intelhex \
     python3-intervals \
     python3-ipaddress \
     python3-ipy \
@@ -288,6 +292,7 @@ RDEPENDS_packagegroup-meta-python3 = "\
     python3-pycrypto \
     python3-pycurl \
     python3-pydbus \
+    python3-pydbus-manager \
     python3-pydicti \
     python3-pyephem \
     python3-pyexpect \
@@ -318,6 +323,7 @@ RDEPENDS_packagegroup-meta-python3 = "\
     python3-pyscaffold \
     python3-pyserial \
     python3-pysocks \
+    python3-pysonos \
     python3-pystache \
     python3-pystemd \
     python3-pytest-asyncio \
@@ -359,6 +365,7 @@ RDEPENDS_packagegroup-meta-python3 = "\
     python3-scrypt \
     python3-sdnotify \
     python3-semver \
+    python3-semantic-version \
     python3-send2trash \
     python3-sentry-sdk \
     python3-serpent \
