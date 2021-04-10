@@ -251,6 +251,7 @@ RDEPENDS_packagegroup-meta-python3 = "\
     python3-parse-type \
     python3-parso \
     python3-passlib \
+    python3-pastedeploy \
     python3-pathtools3 \
     python3-pep8 \
     python3-periphery \
@@ -333,6 +334,7 @@ RDEPENDS_packagegroup-meta-python3 = "\
     python3-pytest-runner \
     python3-pytest-tempdir \
     python3-pytest-timeout \
+    python3-pythonping \
     python3-python-vlc \
     python3-pytoml \
     python3-pytun \
@@ -410,6 +412,7 @@ RDEPENDS_packagegroup-meta-python3 = "\
     python3-twitter \
     python3-twofish \
     python3-txaio \
+    python3-txdbus \
     python3-txws \
     python3-typed-ast \
     python3-typeguard \
@@ -449,6 +452,7 @@ RDEPENDS_packagegroup-meta-python3 = "\
     python3-zopeinterface \
     telepathy-python3 \
 "
+RDEPENDS_packagegroup-meta-python3_remove_libc-musl_powerpc64le = "python3-grpcio python3-grpcio-tools"
 
 RDEPENDS_packagegroup-meta-python3-ptest = "\
     python3-cryptography-ptest \
@@ -512,6 +516,7 @@ RDEPENDS_packagegroup-meta-python3-ptest = "\
     python3-uritemplate-ptest \
     python3-webcolors-ptest \
     python3-whoosh-ptest \
+    python3-wpa-supplicant \
     python3-xlrd-ptest \
     python3-xmltodict-ptest \
     python3-xxhash-ptest \

@@ -43,3 +43,7 @@ CLEANBROKEN = "1"
 BBCLASSEXTEND = "native nativesdk"
 
 CCACHE_DISABLE = "1"
+
+# needs vdso support
+COMPATIBLE_HOST_libc-musl_powerpc64le = "null"
+

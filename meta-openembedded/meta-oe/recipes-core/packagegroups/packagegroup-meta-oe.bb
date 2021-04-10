@@ -300,8 +300,8 @@ RDEPENDS_packagegroup-meta-oe-devtools_remove_mipsarch = "concurrencykit lshw pl
 RDEPENDS_packagegroup-meta-oe-devtools_remove_mips64 = "luajit nodejs"
 RDEPENDS_packagegroup-meta-oe-devtools_remove_mips64el = "luajit nodejs"
 RDEPENDS_packagegroup-meta-oe-devtools_remove_powerpc = "android-tools breakpad lshw luajit uftrace"
-RDEPENDS_packagegroup-meta-oe-devtools_remove_powerpc64 = "android-tools lshw luajit uftrace"
-RDEPENDS_packagegroup-meta-oe-devtools_remove_powerpc64le = "android-tools lshw luajit uftrace"
+RDEPENDS_packagegroup-meta-oe-devtools_remove_powerpc64 = "android-tools breakpad lshw luajit ply uftrace"
+RDEPENDS_packagegroup-meta-oe-devtools_remove_powerpc64le = "android-tools breakpad lshw luajit ply uftrace"
 RDEPENDS_packagegroup-meta-oe-devtools_remove_riscv64 = "breakpad concurrencykit heaptrack lshw ltrace luajit nodejs ply uftrace"
 RDEPENDS_packagegroup-meta-oe-devtools_remove_riscv32 = "breakpad concurrencykit heaptrack lshw ltrace luajit nodejs ply uftrace"
 RDEPENDS_packagegroup-meta-oe-devtools_remove_aarch64 = "${@bb.utils.contains("TUNE_FEATURES", "crypto", "", "abseil-cpp", d)} concurrencykit"
@@ -880,7 +880,6 @@ RDEPENDS_packagegroup-meta-oe-support ="\
     unixodbc \
     daemonize \
     upower \
-    xxhash \
     unicode-ucd \
     xdelta3 \
     uriparser \
@@ -905,6 +904,7 @@ RDEPENDS_packagegroup-meta-oe-support_remove_mipsarch = "gperftools"
 RDEPENDS_packagegroup-meta-oe-support_remove_riscv64 = "gperftools uim"
 RDEPENDS_packagegroup-meta-oe-support_remove_riscv32 = "gperftools uim"
 RDEPENDS_packagegroup-meta-oe-support_remove_powerpc = "ssiapi"
+RDEPENDS_packagegroup-meta-oe-support_remove_powerpc64le = "ssiapi"
 
 RDEPENDS_packagegroup-meta-oe-test ="\
     bats \
