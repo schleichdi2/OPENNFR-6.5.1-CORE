@@ -53,6 +53,7 @@ RDEPENDS_${PN} = "\
 	packagegroup-base-smbfs-server \
 	packagegroup-base-nfs \
 	enigma2-plugin-drivers-usbserial \
+	enigma2-plugin-extensions-epgsearch \
 	${@bb.utils.contains("TUNE_FEATURES", "armv", "glibc-compat", "", d)} \
 	${@bb.utils.contains("MACHINE_FEATURES", "smallflash", "", " \
 	iproute2 \
