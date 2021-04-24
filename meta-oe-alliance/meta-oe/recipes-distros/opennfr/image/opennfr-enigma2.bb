@@ -14,6 +14,7 @@ DEPENDS = "opennfr-feeds"
 
 RRECOMMENDS_${PN} = " \
 	enigma2-plugin-extensions-autotimer \
+	enigma2-plugin-extensions-epgsearch \
 	enigma2-plugin-extensions-mediaplayer \
 	enigma2-plugin-extensions-cutlisteditor \
 	enigma2-plugin-extensions-customsubservices \
