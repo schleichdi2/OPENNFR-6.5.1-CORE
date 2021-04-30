@@ -104,6 +104,7 @@ RDEPENDS_packagegroup-meta-python3 = "\
     python3-djangorestframework \
     python3-dnspython \
     python3-docopt \
+    python3-docutils \
     python3-dominate \
     python3-dt-schema \
     python3-dynamic-dispatch \
@@ -152,6 +153,7 @@ RDEPENDS_packagegroup-meta-python3 = "\
     python3-grpcio-tools \
     python3-gsocketpool \
     python3-gunicorn \
+    python3-h11 \
     python3-h2 \
     python3-h5py \
     python3-haversine \
@@ -188,6 +190,7 @@ RDEPENDS_packagegroup-meta-python3 = "\
     python3-jdatetime \
     python3-jdcal \
     python3-jedi \
+    python3-jmespath \
     python3-jsmin \
     python3-jsonpatch \
     python3-jsonpath-rw \

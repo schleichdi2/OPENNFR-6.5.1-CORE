@@ -26,6 +26,7 @@ SRC_URI += "\
     file://0003-remove-sh4-cflags-cxxflags.patch \
     file://0004-fix-build-with-bison-3.7.patch \
     file://0005-fix-build-with-icu-68.1.patch \
+    file://0006-fix-build-with-glib-2.68.patch \
 "
 
 PACKAGECONFIG ??= "gstreamer qtlocation qtmultimedia qtsensors qtwebchannel \

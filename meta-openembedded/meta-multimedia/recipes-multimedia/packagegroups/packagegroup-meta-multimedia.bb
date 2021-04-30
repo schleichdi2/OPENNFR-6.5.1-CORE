@@ -53,7 +53,8 @@ RDEPENDS_packagegroup-meta-multimedia = "\
     bigbuckbunny-720p \
     tearsofsteel-1080p \
     schroedinger \
-    projucer \
+    pipewire \
+    ${@bb.utils.contains("DISTRO_FEATURES", "x11", "projucer", "", d)} \
     libcamera \
     ${@bb.utils.contains("LICENSE_FLAGS_WHITELIST", "commercial", "libde265 openh264", "", d)} \
     vorbis-tools \
@@ -66,7 +67,7 @@ RDEPENDS_packagegroup-meta-multimedia = "\
     openal-soft \
     opusfile \
     libdvdcss \
-    ${@bb.utils.contains("LICENSE_FLAGS_WHITELIST", "commercial", "vlc", "", d)} \
+    ${@bb.utils.contains("LICENSE_FLAGS_WHITELIST", "commercial", bb.utils.contains("DISTRO_FEATURES", "x11", "vlc", "", d), "", d)} \
     ${@bb.utils.contains("LICENSE_FLAGS_WHITELIST", "commercial", "sox streamripper", "", d)} \
     tinyalsa \
     tremor \
