@@ -19,4 +19,6 @@ RDEPENDS_${PN} = "\
 	${@bb.utils.contains("DISTRO_NAME", "opennfr", "enigma2-plugin-drivers-network-usb-rtl8192eu", "", d)} \
 	${@bb.utils.contains("MACHINE", "sf8008m", "enigma2-plugin-drivers-network-usb-mt7601u kernel-module-mt7601u firmware-mt7601u", "", d)} \
 	${@bb.utils.contains("MACHINE", "8100s", "enigma2-plugin-drivers-network-usb-mt7601u kernel-module-mt7601u firmware-mt7601u", "", d)} \
+	${@bb.utils.contains("BRAND_OEM", "dinobot", "enigma2-plugin-drivers-network-usb-rtl8822bu enigma2-plugin-drivers-network-usb-rtl8188fu", "", d)} \   
+
     "
