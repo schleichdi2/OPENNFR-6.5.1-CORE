@@ -15,7 +15,7 @@ PR = "r0"
 DEPENDS = "enigma2 enigma2-plugins enigma2-oe-alliance-plugins network-usb-drivers-meta"
 
 RDEPENDS_${PN} = "\
-	${@bb.utils.contains("DISTRO_NAME", "opennfr", "enigma2-plugin-systemplugins-wirelesslan", "", d)} 
+	${@bb.utils.contains("DISTRO_NAME", "opennfr", "enigma2-plugin-systemplugins-wirelesslan", "", d)} \
 	${@bb.utils.contains("DISTRO_NAME", "opennfr", "enigma2-plugin-drivers-network-usb-rtl8192eu", "", d)} \
 	${@bb.utils.contains("MACHINE", "sf8008m", "enigma2-plugin-drivers-network-usb-mt7601u kernel-module-mt7601u firmware-mt7601u", "", d)} \
     "
