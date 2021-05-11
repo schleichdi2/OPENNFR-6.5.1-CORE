@@ -64,6 +64,13 @@ image_preprocess() {
 			mv ${IMAGE_ROOTFS}/etc/network/interfaces-neu ${IMAGE_ROOTFS}/etc/network/interfaces
 			cd $curdir
 
+			cd ${IMAGE_ROOTFS}/usr/share/enigma2/po/de/LC_MESSAGES		
+			rm -rf ${IMAGE_ROOTFS}/usr/share/enigma2/po/de/LC_MESSAGES/enigma2.mo
+			mv ${IMAGE_ROOTFS}/usr/share/enigma2/po/de/LC_MESSAGES/enigma2-neu.mo ${IMAGE_ROOTFS}/usr/share/enigma2/po/de/LC_MESSAGES/enigma2.mo
+			rm -rf ${IMAGE_ROOTFS}/usr/share/enigma2/po/de/LC_MESSAGES/enigma2-neu.mo
+			cd $curdir
+
+
 			cd ${IMAGE_ROOTFS}/usr/lib
 				if [ "${TARGET_ARCH}" = "mipsel" ]; then
 					mv ${IMAGE_ROOTFS}/usr/lib/libcrypto.so.1.0.2-mips ${IMAGE_ROOTFS}/usr/lib/libcrypto.so.1.0.2
