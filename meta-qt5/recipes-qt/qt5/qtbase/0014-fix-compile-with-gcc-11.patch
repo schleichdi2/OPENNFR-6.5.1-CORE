@@ -1,0 +1,11 @@
+--- a/src/corelib/global/qfloat16.cpp
++++ b/src/corelib/global/qfloat16.cpp
+@@ -59,6 +59,8 @@ QT_BEGIN_NAMESPACE
+     \since 5.9
+ */
+ 
++#include <limits>
++
+ Q_STATIC_ASSERT_X(sizeof(float) == sizeof(quint32),
+                   "qfloat16 assumes that floats are 32 bits wide");
+ 

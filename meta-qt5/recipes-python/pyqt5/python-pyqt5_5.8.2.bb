@@ -6,7 +6,7 @@ LICENSE = "GPLv3"
 LIC_FILES_CHKSUM = "\
     file://LICENSE;md5=d32239bcb673463ab874e80d47fae504 \
 "
-DEPENDS = "sip sip-native qtbase python"
+DEPENDS = "sip sip-native qtbase python3"
 
 SRC_URI = "\
     ${SOURCEFORGE_MIRROR}/pyqt/PyQt5_gpl-${PV}.tar.gz \
@@ -19,7 +19,7 @@ SRC_URI[sha256sum] = "ebd70515b30bbd6098fee29e6271a6696b1183c5530ee30e6ba9aaab19
 S = "${WORKDIR}/PyQt5_gpl-${PV}"
 
 
-inherit qmake5 pythonnative python-dir features_check
+inherit qmake5 python3native python3-dir features_check
 # depends on qt4-x11-free
 REQUIRED_DISTRO_FEATURES = "x11"
 

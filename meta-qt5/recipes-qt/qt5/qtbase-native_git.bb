@@ -42,6 +42,7 @@ SRC_URI += "\
 SRC_URI += " \
     file://0012-Always-build-uic.patch \
     file://0013-fix-configure-with-gcc-11.patch \
+    file://0014-fix-compile-with-gcc-11.patch \
 "
 
 CLEANBROKEN = "1"
