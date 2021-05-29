@@ -1,0 +1,44 @@
+diff -upr a/src/corelib/global/qendian.h b/src/corelib/global/qendian.h
+--- a/src/corelib/global/qendian.h	2021-05-20 07:19:16.000000000 +0200
++++ b/src/corelib/global/qendian.h	2021-05-25 17:26:28.039908900 +0200
+@@ -41,6 +41,7 @@
+ #ifndef QENDIAN_H
+ #define QENDIAN_H
+ 
++#include <limits>
+ #include <QtCore/qfloat16.h>
+ #include <QtCore/qglobal.h>
+ 
+diff -upr a/src/corelib/global/qfloat16.h b/src/corelib/global/qfloat16.h
+--- a/src/corelib/global/qfloat16.h	2021-05-20 07:19:16.000000000 +0200
++++ b/src/corelib/global/qfloat16.h	2021-05-25 17:24:53.850345400 +0200
+@@ -44,6 +44,7 @@
+ #include <QtCore/qglobal.h>
+ #include <QtCore/qmetatype.h>
+ #include <string.h>
++#include <limits>
+ 
+ #if defined(QT_COMPILER_SUPPORTS_F16C) && defined(__AVX2__) && !defined(__F16C__)
+ // All processors that support AVX2 do support F16C too. That doesn't mean
+diff -upr a/src/corelib/text/qbytearraymatcher.h b/src/corelib/text/qbytearraymatcher.h
+--- a/src/corelib/text/qbytearraymatcher.h	2021-05-20 07:19:16.000000000 +0200
++++ b/src/corelib/text/qbytearraymatcher.h	2021-05-26 07:19:34.867151500 +0200
+@@ -40,6 +40,7 @@
+ #ifndef QBYTEARRAYMATCHER_H
+ #define QBYTEARRAYMATCHER_H
+ 
++#include <limits>
+ #include <QtCore/qbytearray.h>
+ 
+ QT_BEGIN_NAMESPACE
+diff -upr a/src/corelib/tools/qoffsetstringarray_p.h b/src/corelib/tools/qoffsetstringarray_p.h
+--- a/src/corelib/tools/qoffsetstringarray_p.h	2021-05-20 07:19:16.000000000 +0200
++++ b/src/corelib/tools/qoffsetstringarray_p.h	2021-05-26 07:20:20.843896800 +0200
+@@ -55,6 +55,7 @@
+ 
+ #include <tuple>
+ #include <array>
++#include <limits>
+ 
+ QT_BEGIN_NAMESPACE
+ 

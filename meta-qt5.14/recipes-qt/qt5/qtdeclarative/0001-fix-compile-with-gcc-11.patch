@@ -1,0 +1,23 @@
+diff -upr a/src/3rdparty/masm/yarr/Yarr.h b/src/3rdparty/masm/yarr/Yarr.h
+--- a/src/3rdparty/masm/yarr/Yarr.h	2021-05-26 07:04:32.000000000 +0200
++++ b/src/3rdparty/masm/yarr/Yarr.h	2021-05-26 08:04:52.688171100 +0200
+@@ -27,7 +27,7 @@
+ 
+ #pragma once
+ 
+-#include <limits.h>
++#include <limits>
+ #include "YarrErrorCode.h"
+ 
+ namespace JSC { namespace Yarr {
+diff -upr a/src/qmldebug/qqmlprofilerevent_p.h b/src/qmldebug/qqmlprofilerevent_p.h
+--- a/src/qmldebug/qqmlprofilerevent_p.h	2021-05-26 07:04:32.000000000 +0200
++++ b/src/qmldebug/qqmlprofilerevent_p.h	2021-05-26 08:05:36.485933000 +0200
+@@ -47,6 +47,7 @@
+ #include <QtCore/qvarlengtharray.h>
+ #include <QtCore/qmetatype.h>
+ 
++#include <limits>
+ #include <initializer_list>
+ #include <type_traits>
+ 

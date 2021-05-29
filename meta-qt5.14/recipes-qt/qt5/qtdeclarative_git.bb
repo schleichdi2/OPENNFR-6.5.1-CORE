@@ -16,6 +16,7 @@ DEPENDS += "qtbase"
 
 SRC_URI += "\
     file://0001-Use-OE_QMAKE_PATH_EXTERNAL_HOST_BINS-to-locate-qmlca.patch \
+    file://0001-fix-compile-with-gcc-11.patch \
 "
 
 PACKAGECONFIG ??= "qml-debug qml-network ${@bb.utils.contains('DISTRO_FEATURES', 'qt5-static', 'static', '', d)}"
