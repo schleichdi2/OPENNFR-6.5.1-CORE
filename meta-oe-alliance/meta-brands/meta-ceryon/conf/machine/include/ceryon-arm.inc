@@ -3,6 +3,8 @@ PACKAGECONFIG_append_pn-qtbase += " gles2 linuxfb"
 
 IMAGE_CLASSES += "ceryonemmc_image_multiboot"
 
+MACHINE_FEATURES += "qthbbtv qtstalker"
+
 IMAGE_FSTYPES += "ceryonemmc"
 IMAGE_ROOTFS_SIZE ?= "589824"
 

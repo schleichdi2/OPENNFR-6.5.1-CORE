@@ -1,5 +1,5 @@
-# PACKAGECONFIG_GL_pn-qtbase = "gles2 eglfs linuxfb"
-# PACKAGECONFIG_FB_pn-qtbase = " "
+PACKAGECONFIG_GL_pn-qtbase = "gles2 eglfs linuxfb"
+PACKAGECONFIG_FB_pn-qtbase = " "
 
 # We know about rtc
 include conf/machine/include/build-extras.inc
@@ -37,7 +37,7 @@ MACHINE_ESSENTIAL_EXTRA_RDEPENDS += "\
     gptfdisk \
 "
 
-MACHINE_FEATURES += "hisil switchoff 7segment hdmicec skins1080 emmc mmc blindscan-dvbs alsa"
+MACHINE_FEATURES += "hisil switchoff 7segment hdmicec skins1080 emmc mmc blindscan-dvbs kodi19 alsa hbbtv-browser-webkit qtstalker qtnetflix"
 
 IMAGE_CLASSES  += "octagon-emmc_image"
 IMAGE_FSTYPES += "octagonemmc"
