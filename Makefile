@@ -45,7 +45,6 @@ endif
 BBLAYERS ?= \
 	$(CURDIR)/$(METAQT) \
 	$(CURDIR)/meta-local \
-	$(CURDIR)/meta-python2 \
 	$(CURDIR)/meta-oe-alliance/meta-oe \
 	$(CURDIR)/meta-oe-alliance/meta-brands/meta-ceryon \
 	$(CURDIR)/meta-oe-alliance/meta-brands/meta-dinobot \
@@ -115,7 +114,7 @@ all: init
 	@echo "Openembedded for the oe-alliance environment has been initialized"
 	@echo "properly. Now you can start building your image, by doing either:"
 	@echo
-	@echo "MACHINE=mutant2400 DISTRO=opennfr DISTRO_TYPE=release make image"
+	@echo "MACHINE=gbue4k DISTRO=opennfr DISTRO_TYPE=release make image"
 	@echo "	or"
 	@echo "cd $(BUILD_DIR) ; source env.source ; bitbake $(DISTRO)-image"
 	@echo

@@ -74,6 +74,7 @@ RDEPENDS_packagegroup-meta-oe-benchmarks = "\
     memtester \
     nbench-byte \
     phoronix-test-suite \
+    qperf \
     s-suite \
     stressapptest \
     sysbench \
@@ -482,6 +483,7 @@ RDEPENDS_packagegroup-meta-oe-graphics ="\
     libforms \
     lxdm \
     numlockx \
+    nyancat \
     obconf \
     openbox \
     packagegroup-fonts-truetype \
@@ -729,6 +731,7 @@ RDEPENDS_packagegroup-meta-oe-support ="\
     digitemp \
     dstat \
     espeak \
+    evemu-tools \
     exiv2 \
     libnice \
     c-periphery \

@@ -11,8 +11,8 @@ DEPENDS = "openssl libpcap zlib boost curl python3 \
 
 inherit scons dos2unix siteinfo python3native systemd useradd
 
-PV = "4.4.5+4.4.6-rc0"
-#v4.4.6-rc0
+PV = "4.4.6"
+#v4.4.6
 SRCREV = "72e66213c2c3eab37d9358d5e78ad7f5c1d0d0d7"
 SRC_URI = "git://github.com/mongodb/mongo.git;branch=v4.4 \
            file://0001-Tell-scons-to-use-build-settings-from-environment-va.patch \
@@ -30,6 +30,7 @@ SRC_URI = "git://github.com/mongodb/mongo.git;branch=v4.4 \
            file://disable_runtime_check.patch \
            file://ppc64_ARCH_BITS.patch \
            file://0001-Do-not-use-MINSIGSTKSZ.patch \
+           file://0001-Use-explicit-typecast-to-size_t.patch \
            "
 SRC_URI_append_libc-musl ="\
            file://0001-Mark-one-of-strerror_r-implementation-glibc-specific.patch \
