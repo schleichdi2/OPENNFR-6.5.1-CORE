@@ -38,7 +38,6 @@ RDEPENDS_${PN} = "\
 	${PYTHON_PN}-six \
 	${PYTHON_PN}-gdata \
 	${PYTHON_PN}-beautifulsoup4 \
-	libparse-yapp-perl-native \
 	udpxy \
 	uchardet \
 	nodejs \
