@@ -51,7 +51,7 @@ COMPATIBLE_MACHINE_aarch64 = "(.*)"
 
 inherit qmake5
 inherit gettext
-inherit pythonnative
+inherit python3native
 inherit perlnative
 
 # we don't want gettext.bbclass to append --enable-nls
