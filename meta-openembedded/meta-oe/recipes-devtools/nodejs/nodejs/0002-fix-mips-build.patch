@@ -1,6 +1,6 @@
---- a/configure.py
-+++ b/configure.py
-@@ -235,7 +235,7 @@
+--- a/configure
++++ b/configure
+@@ -357,7 +357,7 @@ parser.add_option('--with-arm-fpu',
  parser.add_option('--with-mips-arch-variant',
      action='store',
      dest='mips_arch_variant',
