@@ -21,26 +21,11 @@ DEPDIR = $(TOPDIR)/.deps
 MACHINEBUILD = $(MACHINE)
 export MACHINEBUILD
 
-METAQT=meta-qt5
-# Use old QT 5.8.0
-ifeq ($(MACHINEBUILD),gbquad4k)
-METAQT=meta-qt5.8
-endif
-ifeq ($(MACHINEBUILD),gbue4k)
-METAQT=meta-qt5.8
-endif
-ifeq ($(MACHINEBUILD),gbx34k)
-METAQT=meta-qt5.8
-endif
-ifeq ($(MACHINEBUILD),osmini4k)
-METAQT=meta-qt5.14
-endif
-ifeq ($(MACHINEBUILD),osmio4k)
-METAQT=meta-qt5.14
-endif
-ifeq ($(MACHINEBUILD),osmio4kplus)
-METAQT=meta-qt5.14
-endif
+METAQT=meta-qt5.15
+#ifeq ($(MACHINEBUILD),gbquad4k)
+#METAQT=meta-qt5.15
+#endif
+
 
 BBLAYERS ?= \
 	$(CURDIR)/$(METAQT) \
