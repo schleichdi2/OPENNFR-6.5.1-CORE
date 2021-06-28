@@ -13,6 +13,7 @@ inherit packagegroup
 DEPENDS = "opennfr-feeds"
 
 RRECOMMENDS_${PN} = " \
+	enigma-kernel-module \
 	enigma2-plugin-extensions-autotimer \
 	enigma2-plugin-extensions-mediaplayer \
 	enigma2-plugin-extensions-cutlisteditor \
