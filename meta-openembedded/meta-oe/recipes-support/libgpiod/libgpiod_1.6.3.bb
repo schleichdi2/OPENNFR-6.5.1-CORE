@@ -1,5 +1,5 @@
 SUMMARY = "C library and tools for interacting with the linux GPIO character device"
-AUTHOR = "Bartosz Golaszewski <bgolaszewski@baylibre.com>"
+AUTHOR = "Bartosz Golaszewski <brgl@bgdev.pl>"
 
 LICENSE = "LGPLv2.1+"
 LIC_FILES_CHKSUM = "file://COPYING;md5=2caced0b25dfefd4c601d92bd15116de"
@@ -41,6 +41,7 @@ FILES_${PN}-ptest += " \
     ${bindir}/gpio-tools-test \
     ${bindir}/gpio-tools-test.bats \
     ${bindir}/gpiod-cxx-test \
+    ${bindir}/gpiod_py_test.py \
     ${libdir}/libgpiomockup.so.* \
 "
 FILES_libgpiodcxx = "${libdir}/libgpiodcxx.so.*"
@@ -53,13 +54,6 @@ RRECOMMENDS_${PN}-ptest += "kernel-module-gpio-mockup"
 PACKAGECONFIG_append = " ${@bb.utils.contains('DISTRO_FEATURES', 'ptest', 'tests', '', d)}"
 
 do_install_ptest() {
-    if [ "${PREFERRED_PROVIDER_virtual/kernel}" = "linux-yocto" ] && \
-       ${@bb.utils.contains('KERNEL_FEATURES', 'features/gpio/mockup.scc', 'false', 'true',d)}; then
-        bbwarn "libgpiod test-suites need the gpio-mockup
-module and will not work without it. Consider adding
-'features/gpio/mockup.scc' to KERNEL_FEATURES"
-    fi
-
     install -d ${D}${PTEST_PATH}/tests
 
     # These are the core C library tests
