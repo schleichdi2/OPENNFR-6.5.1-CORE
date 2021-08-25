@@ -38,7 +38,7 @@ ARCHFLAGS_arm = "${@bb.utils.contains('TUNE_FEATURES', 'callconvention-hard', '-
                     bb.utils.contains('TUNE_FEATURES', 'vfpv3d16', '--with-arm-fpu=vfpv3-d16', \
                     bb.utils.contains('TUNE_FEATURES', 'vfpv3', '--with-arm-fpu=vfpv3', \
                     '--with-arm-fpu=vfp', d), d), d)}"
-GYP_DEFINES_append_mipsel = " mips_arch_variant='r1' "
+GYP_DEFINES:append:mipsel = " mips_arch_variant='r1' "
 ARCHFLAGS ?= ""
 
 # Node is way too cool to use proper autotools, so we install two wrappers to forcefully inject proper arch cflags to workaround gypi
