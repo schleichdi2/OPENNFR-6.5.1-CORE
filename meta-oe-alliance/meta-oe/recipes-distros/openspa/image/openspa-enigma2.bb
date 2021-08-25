@@ -12,7 +12,7 @@ inherit packagegroup
 
 DEPENDS = "openspa-feeds"
 
-RRECOMMENDS_${PN} = " \
+RRECOMMENDS:${PN} = " \
     enigma2-skindefault \
     openspa-version-info \
     ${@bb.utils.contains_any("FLASHSIZE", "64 96", " \
@@ -48,12 +48,12 @@ GST_BASE_DVD = "\
     gstreamer1.0-plugins-bad-mpegtsmux \
 "
 
-RRECOMMENDS_${PN}_append_wetekplay = " enigma2-plugin-systemplugins-wirelesslan"
-RRECOMMENDS_${PN}_append_wetekplay2 = " enigma2-plugin-systemplugins-wirelesslan"
-RRECOMMENDS_${PN}_append_bre2zet2c = " enigma2-plugin-systemplugins-satipclient"
-RRECOMMENDS_${PN}_append_bre2ze4k = " enigma2-plugin-systemplugins-satipclient"
-RRECOMMENDS_${PN}_append_bre2ze = " enigma2-plugin-systemplugins-satipclient"
-RRECOMMENDS_${PN}_append_dm900 = " enigma2-plugin-systemplugins-fsblupdater"
-RRECOMMENDS_${PN}_append_dm920 = " enigma2-plugin-systemplugins-fsblupdater"
-RRECOMMENDS_${PN}_append_osmio4k = " enigma2-plugin-extensions-hbbtv-webkit enigma2-plugin-systemplugins-satipclient enigma2-plugin-extensions-simpleumount"
-RRECOMMENDS_${PN}_append_osmio4kplus = " enigma2-plugin-extensions-hbbtv-webkit enigma2-plugin-systemplugins-satipclient enigma2-plugin-extensions-simpleumount"
+RRECOMMENDS:${PN}:append:wetekplay = " enigma2-plugin-systemplugins-wirelesslan"
+RRECOMMENDS:${PN}:append:wetekplay2 = " enigma2-plugin-systemplugins-wirelesslan"
+RRECOMMENDS:${PN}:append:bre2zet2c = " enigma2-plugin-systemplugins-satipclient"
+RRECOMMENDS:${PN}:append:bre2ze4k = " enigma2-plugin-systemplugins-satipclient"
+RRECOMMENDS:${PN}:append:bre2ze = " enigma2-plugin-systemplugins-satipclient"
+RRECOMMENDS:${PN}:append:dm900 = " enigma2-plugin-systemplugins-fsblupdater"
+RRECOMMENDS:${PN}:append:dm920 = " enigma2-plugin-systemplugins-fsblupdater"
+RRECOMMENDS:${PN}:append:osmio4k = " enigma2-plugin-extensions-hbbtv-webkit enigma2-plugin-systemplugins-satipclient enigma2-plugin-extensions-simpleumount"
+RRECOMMENDS:${PN}:append:osmio4kplus = " enigma2-plugin-extensions-hbbtv-webkit enigma2-plugin-systemplugins-satipclient enigma2-plugin-extensions-simpleumount"

@@ -47,12 +47,12 @@ IMAGE_FSTYPES ?= "ubi"
 
 IMAGEDIR ?= "${MACHINE}"
 
-IMAGE_CMD_ubifs_prepend = " \
+IMAGE_CMD:ubifs:prepend = " \
     rm -rf ${IMAGE_ROOTFS}/boot/*; \
     rm -rf ${IMAGE_ROOTFS}/tmp/*; \
     "
 
-IMAGE_CMD_ubi_append = "\
+IMAGE_CMD:ubi:append = "\
     mkdir -p ${DEPLOY_DIR_IMAGE}/${IMAGEDIR}; \
     mv ${IMGDEPLOYDIR}/${IMAGE_NAME}.rootfs.ubi ${DEPLOY_DIR_IMAGE}/${IMAGEDIR}/${ROOTFS_FILE}; \
     gzip -9c ${DEPLOY_DIR_IMAGE}/vmlinux-${MACHINE}.bin > ${DEPLOY_DIR_IMAGE}/${IMAGEDIR}/${KERNEL_FILE}; \
@@ -72,7 +72,7 @@ MACHINE_FEATURES += "3dtv alsa hdmicec switchoff omb boxmodel feature1 HDMI"
 
 BOOTLOGO_FILENAME = "splash.bin"
 
-require conf/machine/include/tune-mips32.inc
+require conf/machine/include/mips/tune-mips32.inc
 require conf/machine/include/soc-family.inc
 require conf/machine/box-hardware.inc
 

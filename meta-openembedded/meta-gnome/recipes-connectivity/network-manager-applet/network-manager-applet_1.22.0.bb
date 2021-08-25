@@ -16,13 +16,13 @@ EXTRA_OEMESON = "-Dappindicator=no"
 # We currently don't build NetworkManager with libteamdctl support
 EXTRA_OEMESON += "-Dteam=false"
 
-PACKAGECONFIG ??= ""
+PACKAGECONFIG ??= "${@bb.utils.filter('DISTRO_FEATURES', 'selinux', d)}"
 PACKAGECONFIG[modemmanager] = "-Dwwan=true, -Dwwan=false, modemmanager"
 PACKAGECONFIG[selinux] = "-Dselinux=true, -Dselinux=false, libselinux"
 
-RDEPENDS_${PN} =+ "networkmanager"
+RDEPENDS:${PN} =+ "networkmanager"
 
-FILES_${PN} += " \
+FILES:${PN} += " \
     ${datadir}/nm-applet/ \
     ${datadir}/libnma/wifi.ui \
     ${datadir}/metainfo \

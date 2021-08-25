@@ -3,7 +3,7 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 require conf/license/license-gplv2.inc
 
-RRECOMMENDS_${PN} = "\
+RRECOMMENDS:${PN} = "\
     ${@bb.utils.contains("ONLY_SMALL", "True", "enigma2-locale-de enigma2-locale-en", " \
     enigma2-locale-ar \
     enigma2-locale-bg \
@@ -13,6 +13,7 @@ RRECOMMENDS_${PN} = "\
     enigma2-locale-de \
     enigma2-locale-el \
     enigma2-locale-en \
+    enigma2-locale-en-au \
     enigma2-locale-en-gb \
     enigma2-locale-es \
     enigma2-locale-et \
@@ -32,7 +33,7 @@ RRECOMMENDS_${PN} = "\
     enigma2-locale-lv \
     enigma2-locale-nb \
     enigma2-locale-nl \
-    enigma2-locale-no \
+    enigma2-locale-nn \
     enigma2-locale-pl \
     enigma2-locale-pt \
     enigma2-locale-pt-br \
@@ -57,6 +58,9 @@ ONLY_SMALL = "\
     ${@bb.utils.contains_any("FLASHSIZE", "64 96", "True" , "", d)} \
 "
 
-PR = "r0"
+RCONFLICTS_enigma2-locale-nn = "enigma2-locale-no"
+RREPLACES_enigma2-locale-nn = "enigma2-locale-no"
 
-ALLOW_EMPTY_${PN} = "1"
+PR = "r1"
+
+ALLOW_EMPTY:${PN} = "1"

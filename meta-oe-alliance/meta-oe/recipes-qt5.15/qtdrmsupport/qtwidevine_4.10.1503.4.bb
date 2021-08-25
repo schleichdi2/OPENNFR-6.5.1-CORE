@@ -18,8 +18,8 @@ do_install() {
 do_package_qa() {
 }
 
-FILES_${PN} = "/usr/lib/chromium"
+FILES:${PN} = "/usr/lib/chromium"
 
-RDEPENDS_${PN} += "qtwebengine"
+RDEPENDS:${PN} += "qtwebengine"
 
-INSANE_SKIP_${PN} += "ldflags already-stripped"
+INSANE_SKIP:${PN} += "ldflags already-stripped"

@@ -6,7 +6,7 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 require conf/license/license-gplv2.inc
 
-RDEPENDS_${PN} += "showiframe"
+RDEPENDS:${PN} += "showiframe"
 
 PV = "${IMAGE_VERSION}"
 PR = "r0"
@@ -15,7 +15,7 @@ S = "${WORKDIR}"
 
 INITSCRIPT_NAME = "bootlogo"
 INITSCRIPT_PARAMS = "start 06 S ."
-INITSCRIPT_PARAMS_inihdp = "start 45 S ."
+INITSCRIPT_PARAMS:inihdp = "start 45 S ."
 
 inherit update-rc.d
 
@@ -25,12 +25,12 @@ SRC_URI = "file://bootlogo.mvi  file://radio.mvi file://bootlogo.sh \
     ${@bb.utils.contains("MACHINE_FEATURES", "gigabluelcd400", "file://lcdsplash400.bin file://lcdwaitkey400.bin file://lcdwarning400.bin file://lcdcomplete400.bin" , "", d)} \
 "
 
-SRC_URI_append_inihdp = "file://inihdp/cfe.bmp file://inihdp/finished.bmp file://inihdp/imageversion.bmp file://inihdp/kernel.bmp file://inihdp/rootfs.bmp file://inihdp/splash.bmp"
+SRC_URI:append:inihdp = "file://inihdp/cfe.bmp file://inihdp/finished.bmp file://inihdp/imageversion.bmp file://inihdp/kernel.bmp file://inihdp/rootfs.bmp file://inihdp/splash.bmp"
 
-SRC_URI_append_8100s = "file://8100s/lcdwarning220.bin"
+SRC_URI:append:8100s = "file://8100s/lcdwarning220.bin"
 
 
-FILES_${PN} = "/boot /usr/share /etc/init.d"
+FILES:${PN} = "/boot /usr/share /etc/init.d"
 
 INSANE_SKIP_${PN} = "already-stripped"
 
@@ -51,7 +51,7 @@ do_install() {
 }
 
 
-do_install_append_inihdp() {
+do_install:append:inihdp() {
     install -m 0644 ${S}/inihdp/cfe.bmp ${DEPLOY_DIR_IMAGE}/cfe.bmp
     install -m 0644 ${S}/inihdp/finished.bmp ${DEPLOY_DIR_IMAGE}/finished.bmp
     install -m 0644 ${S}/inihdp/imageversion.bmp ${DEPLOY_DIR_IMAGE}/imageversion.bmp
@@ -60,7 +60,7 @@ do_install_append_inihdp() {
     install -m 0644 ${S}/inihdp/splash.bmp ${DEPLOY_DIR_IMAGE}/splash.bmp  
 }
 
-do_install_append_8100s() {
+do_install:append:8100s() {
      install -d ${D}/usr/share
      install -m 0644 ${WORKDIR}/8100s/lcdwarning220.bin ${D}/usr/share/lcdflashing.bmp
 }

@@ -1,5 +1,5 @@
-PACKAGECONFIG_GL_pn-qtbase = "no-opengl linuxfb"
-PACKAGECONFIG_FB_pn-qtbase = " "
+PACKAGECONFIG_GL:pn-qtbase = "no-opengl linuxfb"
+PACKAGECONFIG_FB:pn-qtbase = " "
 
 MACHINE_FEATURES += "qthbbtv qtstalker"
 
@@ -17,7 +17,7 @@ CMDLINE ?= "console=ttyAMA0,115200n8"
 
 PREFERRED_VERSION_linux-airdigital = "4.4.35"
 
-IMAGE_CMD_ubi_append = " \
+IMAGE_CMD:ubi:append = " \
     mkdir -p ${DEPLOY_DIR_IMAGE}/${MACHINE}/${IMAGEDIR}; \
     cp ${IMGDEPLOYDIR}/${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.ubi ${DEPLOY_DIR_IMAGE}/${MACHINE}/${IMAGEDIR}/${ROOTFS_FILE}; \
     cp ${DEPLOY_DIR_IMAGE}/uImage ${DEPLOY_DIR_IMAGE}/${MACHINE}/${IMAGEDIR}/${KERNEL_FILE}; \
@@ -44,5 +44,5 @@ IMAGE_CMD_ubi_append = " \
     rm -Rf ${DEPLOY_DIR_IMAGE}/${MACHINE}; \
     "
 
-require conf/machine/include/tune-cortexa7.inc
+require conf/machine/include/arm/armv7a/tune-cortexa7.inc
 require conf/machine/include/airdigital-oem.inc

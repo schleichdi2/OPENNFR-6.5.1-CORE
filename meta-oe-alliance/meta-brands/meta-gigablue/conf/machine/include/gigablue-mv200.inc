@@ -1,6 +1,6 @@
 require conf/machine/include/gigablue-oem.inc
 
-DISTRO_FEATURES_remove = "x11 wayland"
+DISTRO_FEATURES:remove = "x11 wayland"
 
 MTD_BLACK  = "mmcblk0"
 
@@ -39,13 +39,13 @@ PREFERRED_PROVIDER_virtual/blindscan-dvbs = "gigablue-blindscan-${MACHINE}"
 PREFERRED_RPROVIDER_showiframe = "gigablue-showiframe-${MACHINE}"
 PREFERRED_RPROVIDER_aio-grab = "gigablue-grab-${MACHINE}"
 
-require conf/machine/include/tune-cortexa15.inc
+require conf/machine/include/arm/armv7a/tune-cortexa15.inc
 
 DVBSKYPROVIDER = "kernel"
 
 DVBMEDIASINK_CONFIG = "--with-h265 --with-vb8 --with-vb9 --with-spark --with-wma --with-wmv --with-pcm --with-dts --with-eac3"
 
-IMAGE_CMD_gigablueemmc_append = "\
+IMAGE_CMD:gigablueemmc:append = "\
     mkdir -p ${DEPLOY_DIR_IMAGE}/${IMAGEDIR}; \
     mv ${IMGDEPLOYDIR}/${IMAGE_NAME}.rootfs.ext4 ${DEPLOY_DIR_IMAGE}/${MACHINEBUILD}-partitions/rootfs.ext4; \
     cd ${IMAGE_ROOTFS}; \

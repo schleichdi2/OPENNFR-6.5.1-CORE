@@ -66,7 +66,7 @@ IMAGE_FSTYPES ?= "ubi"
 
 IMAGEDIR ?= "${MACHINE}"
 
-IMAGE_CMD_ubi_append = "\
+IMAGE_CMD:ubi:append = "\
     mkdir -p ${DEPLOY_DIR_IMAGE}/${IMAGEDIR}; \
     cp ${DEPLOY_DIR_IMAGE}/splash.bin ${DEPLOY_DIR_IMAGE}/${IMAGEDIR}/splash.bin; \
     mv ${IMGDEPLOYDIR}/${IMAGE_NAME}.rootfs.ubi ${DEPLOY_DIR_IMAGE}/${IMAGEDIR}/${ROOTFS_FILE}; \
@@ -88,7 +88,7 @@ MACHINE_FEATURES += "3dtv alsa hdmicec switchoff bootsplash omb boxmodel feature
 
 BOOTLOGO_FILENAME = "splash.bin"
 
-require conf/machine/include/tune-mips32.inc
+require conf/machine/include/mips/tune-mips32.inc
 require conf/machine/include/soc-family.inc
 
 EXTRA_IMAGEDEPENDS += " \

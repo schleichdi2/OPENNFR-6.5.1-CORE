@@ -1,14 +1,14 @@
 include conf/machine/include/autoload-filesystems.inc
 require conf/machine/include/soc-family.inc
 require conf/machine/box-hardware.inc
-require conf/machine/include/tune-cortexa15.inc
+require conf/machine/include/arm/armv7a/tune-cortexa15.inc
 # We know about rtc
 include conf/machine/include/build-extras.inc
 
-PACKAGECONFIG_GL_pn-qtbase = " "
-PACKAGECONFIG_append_pn-qtbase += " gles2 linuxfb"
+PACKAGECONFIG_GL:pn-qtbase = " "
+PACKAGECONFIG:append:pn-qtbase += " gles2 linuxfb"
 
-MACHINE_FEATURES += "3dtv alsa hdmicec switchoff blindscan-tbs HDMI qthbbtv qtstalker openhbbtv hbbtv-browser-webkit"
+MACHINE_FEATURES += "3dtv alsa hdmicec switchoff blindscan-tbs HDMI qthbbtv qtstalker openhbbtv hbbtv-browser-webkit qtevent1"
 
 DVBMEDIASINK_CONFIG = "--with-wma --with-wmv --with-pcm --with-dts --with-eac3 --with-h265 --with-vb6 --with-vb8 --with-vb9 --with-spark"
 
@@ -72,7 +72,7 @@ PREFERRED_VERSION_linux-abcom = "4.4.35"
 
 IMAGEDIRRECOVERY ?= "${MACHINE}-recovery"
 
-IMAGE_CMD_abfastboot8gb_append = " \
+IMAGE_CMD:abfastboot8gb:append = " \
     mkdir -p ${DEPLOY_DIR_IMAGE}/${IMAGEDIRRECOVERY}/${IMAGEDIR}; \
     cp ${IMGDEPLOYDIR}/bootoptions.img ${DEPLOY_DIR_IMAGE}/${IMAGEDIRRECOVERY}/${IMAGEDIR}/bootoptions.img; \
     cp ${IMGDEPLOYDIR}/misc-boot.img ${DEPLOY_DIR_IMAGE}/${IMAGEDIRRECOVERY}/${IMAGEDIR}/misc-boot.img; \

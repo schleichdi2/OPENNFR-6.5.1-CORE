@@ -1,10 +1,10 @@
-PACKAGECONFIG_GL_pn-qtbase = "gles2 eglfs linuxfb"
-PACKAGECONFIG_FB_pn-qtbase = " "
+PACKAGECONFIG_GL:pn-qtbase = "gles2 eglfs linuxfb"
+PACKAGECONFIG_FB:pn-qtbase = " "
 
 # We know about rtc
 include conf/machine/include/build-extras.inc
 
-DISTRO_FEATURES_remove = "x11 wayland"
+DISTRO_FEATURES:remove = "x11 wayland"
 
 BRAND_OEM = "beyonwiz"
 RCNAME = "beyonwiz2"
@@ -61,7 +61,7 @@ PREFERRED_PROVIDER_virtual/blindscan-dvbs = "beyonwiz-blindscan-${MACHINE}"
 PREFERRED_RPROVIDER_showiframe = "beyonwiz-showiframe-${MACHINE}"
 PREFERRED_RPROVIDER_aio-grab = "beyonwiz-grab-${MACHINE}"
 
-require conf/machine/include/tune-cortexa15.inc
+require conf/machine/include/arm/armv7a/tune-cortexa15.inc
 
 MACHINE_EXTRA_RRECOMMENDS += " \
     gstreamer1.0-plugin-dvbmediasink \
@@ -81,7 +81,7 @@ require conf/machine/box-hardware.inc
 
 DVBMEDIASINK_CONFIG = "--with-h265 --with-vb8 --with-vb9 --with-spark --with-wma --with-wmv --with-pcm --with-dts --with-eac3"
 
-IMAGE_CMD_beyonwizemmc_append = "\
+IMAGE_CMD:beyonwizemmc:append = "\
     mkdir -p ${DEPLOY_DIR_IMAGE}/${IMAGEDIR}; \
     mv ${IMGDEPLOYDIR}/${IMAGE_NAME}.rootfs.ext4 ${DEPLOY_DIR_IMAGE}/${MACHINE}-partitions/rootfs.ext4; \
     cd ${IMAGE_ROOTFS}; \

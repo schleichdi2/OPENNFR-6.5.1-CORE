@@ -1,5 +1,5 @@
-PACKAGECONFIG_GL_pn-qtbase = "gles2 eglfs linuxfb"
-PACKAGECONFIG_FB_pn-qtbase = " "
+PACKAGECONFIG_GL:pn-qtbase = "gles2 eglfs linuxfb"
+PACKAGECONFIG_FB:pn-qtbase = " "
 # We know about rtc
 include conf/machine/include/build-extras.inc
 
@@ -93,7 +93,7 @@ MACHINE_FEATURES += "alsa 3dtv switchoff hdmicec omb  \
 
 BOOTLOGO_FILENAME = "splash.bin"
 
-require conf/machine/include/tune-cortexa15.inc
+require conf/machine/include/arm/armv7a/tune-cortexa15.inc
 require conf/machine/include/soc-family.inc
 require conf/machine/box-hardware.inc
 

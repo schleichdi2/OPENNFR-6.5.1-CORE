@@ -1,7 +1,7 @@
-PACKAGECONFIG_GL_pn-qtbase = " "
-PACKAGECONFIG_append_pn-qtbase += " gles2 linuxfb"
+PACKAGECONFIG_GL:pn-qtbase = " "
+PACKAGECONFIG:append:pn-qtbase += " gles2 linuxfb"
 
-MACHINE_FEATURES += "qthbbtv qtstalker openhbbtv"
+MACHINE_FEATURES += "qthbbtv qtstalker openhbbtv qtevent1"
 
 PREFERRED_PROVIDER_virtual/egl ?= "maxytec-mali-${HICHIPSET}"
 PREFERRED_PROVIDER_virtual/libgles1 ?= "maxytec-mali-${HICHIPSET}"
@@ -50,7 +50,7 @@ IMAGE_FSTYPES += " maxytecfastboot8gb"
 
 IMAGEDIRRECOVERY ?= "${MACHINE}-recovery"
 
-IMAGE_CMD_maxytecfastboot8gb_append = " \
+IMAGE_CMD:maxytecfastboot8gb:append = " \
     mkdir -p ${DEPLOY_DIR_IMAGE}/${IMAGEDIRRECOVERY}/${IMAGEDIR}; \
     cp ${IMGDEPLOYDIR}/bootoptions.img ${DEPLOY_DIR_IMAGE}/${IMAGEDIRRECOVERY}/${IMAGEDIR}/bootoptions.img; \
     cp ${IMGDEPLOYDIR}/misc-boot.img ${DEPLOY_DIR_IMAGE}/${IMAGEDIRRECOVERY}/${IMAGEDIR}/misc-boot.img; \
@@ -98,5 +98,5 @@ IMAGE_CMD_maxytecfastboot8gb_append = " \
     rm -Rf ${DEPLOY_DIR_IMAGE}/${MACHINE}; \
     "
 
-require conf/machine/include/tune-cortexa15.inc
+require conf/machine/include/arm/armv7a/tune-cortexa15.inc
 require conf/machine/include/maxytec-oem.inc

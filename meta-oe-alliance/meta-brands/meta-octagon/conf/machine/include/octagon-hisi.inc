@@ -1,10 +1,10 @@
-PACKAGECONFIG_GL_pn-qtbase = "gles2 eglfs linuxfb"
-PACKAGECONFIG_FB_pn-qtbase = " "
+PACKAGECONFIG_GL:pn-qtbase = "gles2 eglfs linuxfb"
+PACKAGECONFIG_FB:pn-qtbase = " "
 
 # We know about rtc
 include conf/machine/include/build-extras.inc
 
-DISTRO_FEATURES_remove = "x11 wayland"
+DISTRO_FEATURES:remove = "x11 wayland"
 
 BRAND_OEM = "octagon"
 RCNAME = "sf8008"
@@ -47,7 +47,7 @@ IMAGE_ROOTFS_SIZE ?= "524288"
 TARGET_ARCH = "arm"
 DEFAULTTUNE = "cortexa15hf-neon-vfpv4"
 
-PREFERRED_VERSION_linux-octagon = "4.4.35"
+PREFERRED_VERSION_linux-octagon = "${LINUX_VERSION}"
 
 PREFERRED_PROVIDER_virtual/kernel = "linux-octagon"
 PREFERRED_PROVIDER_virtual/egl = "octagon-opengl-${SOC_FAMILY}" 
@@ -59,7 +59,7 @@ PREFERRED_PROVIDER_virtual/blindscan-dvbs = "octagon-blindscan-${SOC_FAMILY}"
 PREFERRED_RPROVIDER_showiframe = "octagon-showiframe-${SOC_FAMILY}"
 PREFERRED_RPROVIDER_aio-grab = "octagon-grab-${SOC_FAMILY}"
 
-require conf/machine/include/tune-cortexa15.inc
+require conf/machine/include/arm/armv7a/tune-cortexa15.inc
 
 MACHINE_EXTRA_RRECOMMENDS += " \
     gstreamer1.0-plugin-dvbmediasink \
@@ -75,7 +75,7 @@ require conf/machine/box-hardware.inc
 
 DVBMEDIASINK_CONFIG = "--with-h265 --with-vb8 --with-vb9 --with-spark --with-wma --with-wmv --with-pcm --with-dts --with-eac3"
 
-IMAGE_CMD_octagonemmc_append = "\
+IMAGE_CMD:octagonemmc:append = "\
     mkdir -p ${DEPLOY_DIR_IMAGE}/${IMAGEDIR}; \
     mv ${IMGDEPLOYDIR}/${IMAGE_NAME}.rootfs.ext4 ${DEPLOY_DIR_IMAGE}/${MACHINE}-partitions/rootfs.ext4; \
     cd ${IMAGE_ROOTFS}; \

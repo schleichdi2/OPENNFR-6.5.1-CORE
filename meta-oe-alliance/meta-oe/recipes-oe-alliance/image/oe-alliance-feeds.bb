@@ -5,20 +5,19 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 inherit packagegroup
 
-ALLOW_EMPTY_${PN} = "1"
+ALLOW_EMPTY:${PN} = "1"
 PACKAGES = "${PN}"
 
 PV = "${IMAGE_VERSION}"
-PR = "r12"
+PR = "r13"
 
 DEPENDS = "enigma2-plugin-drivers-usbserial enigma2-plugin-systemplugins-radiotimesemulator enigma2-plugin-systemplugins-hrtunerproxy"
 
-RDEPENDS_${PN} = " \
+RDEPENDS:${PN} = " \
     packagegroup-openplugins \
     bootlogos-enigma2-meta \
     dvb-usb-drivers-meta \
     network-usb-drivers-meta \
-    channelsettings-enigma2-meta \
     picons-enigma2-meta \
     meta-enigma2-dvdburn \
     enigma2-plugins \
@@ -38,7 +37,6 @@ RDEPENDS_${PN} = " \
     enigma2-plugin-extensions-e2m3u2bouquet \
     enigma2-plugin-extensions-jedimakerxtream \
     enigma2-plugin-extensions-serienrecorder \
-    enigma2-plugin-systemplugins-joynescan \
     enigma2-plugin-systemplugins-misplslcnscan \
     enigma2-plugin-systemplugins-radiotimesemulator \
     enigma2-plugin-extensions-subssupport \
@@ -178,11 +176,11 @@ GST_BASE_DVD = "\
     gstreamer1.0-plugins-bad-mpegtsmux \
 "
 
-RRECOMMENDS_${PN}_append_vuuno = "enigma2-plugin-extensions-hbbtv"
-RRECOMMENDS_${PN}_append_vuultimo = "enigma2-plugin-extensions-hbbtv"
-RRECOMMENDS_${PN}_append_vusolo = "enigma2-plugin-extensions-hbbtv"
-RRECOMMENDS_${PN}_append_vusolo2 = "enigma2-plugin-extensions-hbbtv"
-RRECOMMENDS_${PN}_append_vuduo = "enigma2-plugin-extensions-hbbtv"
-RRECOMMENDS_${PN}_append_vuduo2 = "enigma2-plugin-extensions-hbbtv"
-RRECOMMENDS_${PN}_append_vuzero = "enigma2-plugin-extensions-hbbtv"
+RRECOMMENDS:${PN}:append:vuuno = "enigma2-plugin-extensions-hbbtv"
+RRECOMMENDS:${PN}:append:vuultimo = "enigma2-plugin-extensions-hbbtv"
+RRECOMMENDS:${PN}:append:vusolo = "enigma2-plugin-extensions-hbbtv"
+RRECOMMENDS:${PN}:append:vusolo2 = "enigma2-plugin-extensions-hbbtv"
+RRECOMMENDS:${PN}:append:vuduo = "enigma2-plugin-extensions-hbbtv"
+RRECOMMENDS:${PN}:append:vuduo2 = "enigma2-plugin-extensions-hbbtv"
+RRECOMMENDS:${PN}:append:vuzero = "enigma2-plugin-extensions-hbbtv"
 

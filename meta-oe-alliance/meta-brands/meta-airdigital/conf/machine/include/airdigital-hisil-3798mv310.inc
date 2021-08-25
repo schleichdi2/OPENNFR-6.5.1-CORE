@@ -1,7 +1,7 @@
-PACKAGECONFIG_GL_pn-qtbase = " "
-PACKAGECONFIG_append_pn-qtbase += " gles2 linuxfb"
+PACKAGECONFIG_GL:pn-qtbase = " "
+PACKAGECONFIG:append:pn-qtbase += " gles2 linuxfb"
 
-MACHINE_FEATURES += "qthbbtv qtstalker openhbbtv"
+MACHINE_FEATURES += "qthbbtv qtstalker openhbbtv qtevent1"
 
 PREFERRED_PROVIDER_virtual/egl ?= "airdigital-mali-${HICHIPSET}"
 PREFERRED_PROVIDER_virtual/libgles1 ?= "airdigital-mali-${HICHIPSET}"
@@ -41,7 +41,7 @@ KERNEL_MODULE_AUTOLOAD += "mali"
 
 PREFERRED_VERSION_linux-airdigital = "4.4.176"
 
-IMAGE_CMD_ubi_append = " \
+IMAGE_CMD:ubi:append = " \
     mkdir -p ${DEPLOY_DIR_IMAGE}/${MACHINE}/${IMAGEDIR}; \
     mv ${IMGDEPLOYDIR}/${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.ubi ${DEPLOY_DIR_IMAGE}/${MACHINE}/${IMAGEDIR}/${ROOTFS_FILE}; \
     cp ${DEPLOY_DIR_IMAGE}/uImage ${DEPLOY_DIR_IMAGE}/${MACHINE}/${IMAGEDIR}/${KERNEL_FILE}; \
@@ -75,7 +75,7 @@ IMAGE_CMD_ubi_append = " \
 
 IMAGEDIRRECOVERY ?= "${MACHINE}-recovery"
 
-IMAGE_CMD_zgemmafastboot8gb_append = " \
+IMAGE_CMD:zgemmafastboot8gb:append = " \
     mkdir -p ${DEPLOY_DIR_IMAGE}/${IMAGEDIRRECOVERY}/${IMAGEDIR}; \
     cp ${IMGDEPLOYDIR}/bootoptions.img ${DEPLOY_DIR_IMAGE}/${IMAGEDIRRECOVERY}/${IMAGEDIR}/bootoptions.img; \
     cp ${IMGDEPLOYDIR}/misc-boot.img ${DEPLOY_DIR_IMAGE}/${IMAGEDIRRECOVERY}/${IMAGEDIR}/misc-boot.img; \
@@ -124,5 +124,5 @@ IMAGE_CMD_zgemmafastboot8gb_append = " \
     rm -Rf ${DEPLOY_DIR_IMAGE}/${MACHINE}; \
     "
 
-require conf/machine/include/tune-cortexa15.inc
+require conf/machine/include/arm/armv7a/tune-cortexa15.inc
 require conf/machine/include/airdigital-oem.inc

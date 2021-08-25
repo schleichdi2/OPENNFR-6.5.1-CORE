@@ -20,7 +20,7 @@ SRC_URI="git://github.com/schleichdi2/OPEN_NFR_SKIN.git"
 
 S = "${WORKDIR}/git"
 
-FILES_${PN} = "/usr/*"
+FILES:${PN} = "/usr/*"
 
 do_install() {
 	cp -rp ${S}/usr ${D}/

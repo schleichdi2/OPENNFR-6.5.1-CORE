@@ -11,9 +11,9 @@ PROVIDES += "enigma2-plugin-extensions-ushare"
 
 DEPENDS = "nfs-utils ushare"
 
-DESCRIPTION_enigma2-plugin-extensions-ushare = "UPnP media server"
-RDEPENDS_enigma2-plugin-extensions-ushare = "ushare enigma2"
-RDEPENDS_enigma2-plugin-pli-softcamsetup = "enigma2"
+DESCRIPTION:enigma2-plugin-extensions-ushare = "UPnP media server"
+RDEPENDS:enigma2-plugin-extensions-ushare = "ushare enigma2"
+RDEPENDS:enigma2-plugin-pli-softcamsetup = "enigma2"
 
 inherit gitpkgv gettext
 
@@ -30,7 +30,7 @@ inherit autotools-brokensep
 EXTRA_OECONF = "--with-boxtype=${MACHINE} \
     LIBDIR=${libdir}"
 
-python populate_packages_prepend () {
+python populate_packages:prepend () {
 
     enigma2_plugindir = bb.data.expand('${libdir}/enigma2/python/Plugins', d)
 
@@ -39,10 +39,10 @@ python populate_packages_prepend () {
     # we have to perform some tricks to get non-standard files in the plugin packages,
     # unfortunately FILES_append doesn't work
     def files_append(pn, newfiles):
-        files = d.getVar('FILES_' + pn, d, True)
+        files = d.getVar('FILES:' + pn, d, True)
         if files:
             files += " " + newfiles + " "
-            d.setVar('FILES_' + pn, files)
+            d.setVar('FILES:' + pn, files)
 }
 
 do_package_qa() {

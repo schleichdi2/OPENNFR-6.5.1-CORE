@@ -19,7 +19,7 @@ SRC_URI = "${BASE_SRC_URI} \
            file://0001-i18n-Drop-include-xlocale.h.patch \
           "
 
-SRC_URI_append_class-target = "\
+SRC_URI:append:class-target = "\
            file://0001-Disable-LDFLAGSICUDT-for-Linux.patch \
           "
 SRC_URI[md5sum] = "fac212b32b7ec7ab007a12dff1f3aea1"

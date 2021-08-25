@@ -96,7 +96,7 @@ def glob(args):
                 pn = os.path.basename(pkgdata_file)
                 with open(pkgdata_file, 'r') as f:
                     for line in f:
-                        if line.startswith("PKG_%s:" % pn):
+                        if line.startswith("PKG:%s:" % pn):
                             renamed = line.split(': ')[1].rstrip()
                 return renamed
 
@@ -213,7 +213,7 @@ def lookup_pkglist(pkgs, pkgdata_dir, reverse):
                 with open(pkgfile, 'r') as f:
                     for line in f:
                         fields = line.rstrip().split(': ')
-                        if fields[0] == 'PKG_%s' % pkg:
+                        if fields[0] == 'PKG:%s' % pkg:
                             mappings[pkg].append(fields[1])
                             break
     return mappings
@@ -431,7 +431,7 @@ def list_pkg_files(args):
             for line in f:
                 if line.startswith('FILES_INFO:'):
                     found = True
-                    val = line.split(':', 1)[1].strip()
+                    val = line.split(': ', 1)[1].strip()
                     dictval = json.loads(val)
                     if long:
                         width = max(map(len, dictval), default=0)
@@ -500,7 +500,7 @@ def find_path(args):
             with open(os.path.join(root,fn)) as f:
                 for line in f:
                     if line.startswith('FILES_INFO:'):
-                        val = line.split(':', 1)[1].strip()
+                        val = line.split(': ', 1)[1].strip()
                         dictval = json.loads(val)
                         for fullpth in dictval.keys():
                             if fnmatch.fnmatchcase(fullpth, args.targetpath):
