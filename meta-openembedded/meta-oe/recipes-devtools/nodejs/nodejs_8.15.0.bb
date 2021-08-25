@@ -62,7 +62,7 @@ do_install () {
     oe_runmake install DESTDIR=${D}
 }
 
-do_install_append_class-native() {
+do_install:append:class-native() {
     # use node from PATH instead of absolute path to sysroot
     # node-v0.10.25/tools/install.py is using:
     # shebang = os.path.join(node_prefix, 'bin/node')
@@ -77,17 +77,17 @@ do_install_append_class-native() {
     sed "1s^.*^#\!/usr/bin/env node^g" -i ${D}${exec_prefix}/lib/node_modules/npm/bin/npm-cli.js
 }
 
-do_install_append_class-target() {
+do_install:append:class-target() {
     sed "1s^.*^#\!${bindir}/env node^g" -i ${D}${exec_prefix}/lib/node_modules/npm/bin/npm-cli.js
 }
 
 PACKAGES =+ "${PN}-npm"
-FILES_${PN}-npm = "${exec_prefix}/lib/node_modules ${bindir}/npm ${bindir}/npx"
-RDEPENDS_${PN}-npm = "bash ${PYTHON_PN}-core ${PYTHON_PN}-shell ${PYTHON_PN}-datetime ${@bb.utils.contains("PYTHON_PN", "python", "${PYTHON_PN}-subprocess ${PYTHON_PN}-compiler ${PYTHON_PN}-textutils", "", d)} \
+FILES:${PN}-npm = "${exec_prefix}/lib/node_modules ${bindir}/npm ${bindir}/npx"
+RDEPENDS:${PN}-npm = "bash ${PYTHON_PN}-core ${PYTHON_PN}-shell ${PYTHON_PN}-datetime ${@bb.utils.contains("PYTHON_PN", "python", "${PYTHON_PN}-subprocess ${PYTHON_PN}-compiler ${PYTHON_PN}-textutils", "", d)} \
     ${PYTHON_PN}-misc ${PYTHON_PN}-multiprocessing"
 
 PACKAGES =+ "${PN}-systemtap"
-FILES_${PN}-systemtap = "${datadir}/systemtap"
+FILES:${PN}-systemtap = "${datadir}/systemtap"
 
 
 BBCLASSEXTEND = "native"

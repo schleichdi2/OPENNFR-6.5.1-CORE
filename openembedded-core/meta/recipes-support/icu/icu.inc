@@ -48,10 +48,10 @@ PACKAGES =+ "libicudata libicuuc libicui18n libicutu libicuio"
 
 FILES:${PN}-dev += "${libdir}/${BPN}/"
 
-FILES_libicudata = "${libdir}/libicudata.so.*"
-FILES_libicuuc = "${libdir}/libicuuc.so.*"
-FILES_libicui18n = "${libdir}/libicui18n.so.*"
-FILES_libicutu = "${libdir}/libicutu.so.*"
-FILES_libicuio = "${libdir}/libicuio.so.*"
+FILES:libicudata = "${libdir}/libicudata.so.*"
+FILES:libicuuc = "${libdir}/libicuuc.so.*"
+FILES:libicui18n = "${libdir}/libicui18n.so.*"
+FILES:libicutu = "${libdir}/libicutu.so.*"
+FILES:libicuio = "${libdir}/libicuio.so.*"
 
 BBCLASSEXTEND = "native nativesdk"
