@@ -1,1 +1,4 @@
-# OPENNFR-6.5.1-CORE
+build-enviroment
+================
+
+This sets-up the oe-alliance build environment.
