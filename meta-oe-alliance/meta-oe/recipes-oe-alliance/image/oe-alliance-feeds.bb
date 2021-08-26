@@ -9,7 +9,7 @@ ALLOW_EMPTY:${PN} = "1"
 PACKAGES = "${PN}"
 
 PV = "${IMAGE_VERSION}"
-PR = "r13"
+PR = "r14"
 
 DEPENDS = "enigma2-plugin-drivers-usbserial enigma2-plugin-systemplugins-radiotimesemulator enigma2-plugin-systemplugins-hrtunerproxy"
 
@@ -108,7 +108,6 @@ RDEPENDS:${PN} = " \
     nss \
     ntfs-3g \
     ntp \
-    ${@bb.utils.contains("DEFAULTTUNE", "sh4", "" , "nodejs dvb-apps ", d)} \
     odhcp6c \
     ofgwrite \
     openresolv \
@@ -124,6 +123,7 @@ RDEPENDS:${PN} = " \
     pcsc-tools \
     procps \
     pyload \
+    ${PYTHON_PN}-aiohttp \
     ${PYTHON_PN}-attr \
     ${PYTHON_PN}-attrs \
     ${PYTHON_PN}-autobahn \
