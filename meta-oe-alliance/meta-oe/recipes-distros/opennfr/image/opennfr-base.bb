@@ -40,7 +40,6 @@ RDEPENDS:${PN} = "\
 	${PYTHON_PN}-beautifulsoup4 \
 	udpxy \
 	uchardet \
-	nodejs \
 	ofgwrite \
 	libshowiframe \
 	dvbsnoop \
