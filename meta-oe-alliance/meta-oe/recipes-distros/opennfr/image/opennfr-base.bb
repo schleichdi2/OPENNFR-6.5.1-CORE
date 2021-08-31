@@ -13,6 +13,7 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 inherit packagegroup
 
 RDEPENDS:${PN} = "\
+    	autofs \
 	ca-certificates \
 	hddtemp \
 	oe-alliance-base \
@@ -38,6 +39,7 @@ RDEPENDS:${PN} = "\
 	${PYTHON_PN}-six \
 	${PYTHON_PN}-gdata \
 	${PYTHON_PN}-beautifulsoup4 \
+	${PYTHON_PN}-pexpect \
 	udpxy \
 	uchardet \
 	ofgwrite \
@@ -53,6 +55,7 @@ RDEPENDS:${PN} = "\
 	packagegroup-base-nfs \
 	enigma2-plugin-drivers-usbserial \
 	enigma2-plugin-extensions-epgsearch \
+	wireless-tools \
 	${@bb.utils.contains("TUNE_FEATURES", "armv", "glibc-compat", "", d)} \
 	${@bb.utils.contains("MACHINE_FEATURES", "smallflash", "", " \
 	iproute2 \

@@ -11,10 +11,9 @@ PR = "r12"
 
 inherit packagegroup
 
-DEPENDS = "opendroid-feeds"
-
 RRECOMMENDS:${PN} = " \
     opendroid-version-info \
+    enigma-kernel-module \
     enigma2-skindefault \
     enigma2-plugin-skins-opd-steampunk \
     enigma2-plugin-extensions-opdboot \

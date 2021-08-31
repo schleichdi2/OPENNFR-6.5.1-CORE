@@ -13,6 +13,7 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 inherit packagegroup
 
 RDEPENDS:${PN} = "\
+    autofs \
     ca-certificates \
     oe-alliance-base \
     opendroid-enigma2 \
@@ -27,6 +28,7 @@ RDEPENDS:${PN} = "\
     ${PYTHON_PN}-service-identity \
     ${PYTHON_PN}-requests \
     ${PYTHON_PN}-future \
+    ${PYTHON_PN}-pexpect \
     ${PYTHON_PN}-six \
     ${PYTHON_PN}-beautifulsoup4 \
     rtmpdump \
@@ -37,4 +39,5 @@ RDEPENDS:${PN} = "\
     packagegroup-base-smbfs-client \
     ${@bb.utils.contains("MACHINE_FEATURES", "dreamboxv1", "", "ofgwrite", d)} \
     ${@bb.utils.contains("TUNE_FEATURES", "armv", "glibc-compat", "", d)} \
+    wireless-tools \
     "

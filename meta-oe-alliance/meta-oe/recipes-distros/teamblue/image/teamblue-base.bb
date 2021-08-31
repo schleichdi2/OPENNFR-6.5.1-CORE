@@ -13,6 +13,7 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 inherit packagegroup
 
 RDEPENDS:${PN} = "\
+    autofs \
     ca-certificates \
     ${@bb.utils.contains_any("FLASHSIZE", "64 96 128", "", \
     " \
@@ -31,6 +32,7 @@ RDEPENDS:${PN} = "\
     ${PYTHON_PN}-service-identity \
     ${PYTHON_PN}-requests \
     ${PYTHON_PN}-future \
+    ${PYTHON_PN}-pexpect \
     ${PYTHON_PN}-six \
     rtmpdump \
     zip \
@@ -48,4 +50,5 @@ RDEPENDS:${PN} = "\
     ", d)} \
     packagegroup-base-smbfs-client \
     ofgwrite \
+    wireless-tools \
     "

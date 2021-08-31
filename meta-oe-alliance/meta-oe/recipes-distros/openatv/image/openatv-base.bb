@@ -13,6 +13,7 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 inherit packagegroup
 
 RDEPENDS:${PN} = "\
+    autofs \
     ca-certificates \
     flip \
     hddtemp \
@@ -25,6 +26,7 @@ RDEPENDS:${PN} = "\
     ${PYTHON_PN}-service-identity \
     ${PYTHON_PN}-requests \
     ${PYTHON_PN}-future \
+    ${PYTHON_PN}-pexpect \
     ${PYTHON_PN}-six \
     rtmpdump \
     zip \
@@ -38,4 +40,5 @@ RDEPENDS:${PN} = "\
         ntfs-3g \
         unrar \
     ", d)} \
+    wireless-tools \
     "

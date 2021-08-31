@@ -13,6 +13,7 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 inherit packagegroup
 
 RDEPENDS:${PN} = "\
+    autofs \
     oe-alliance-base \
     ca-certificates \
     openhdf-enigma2 \
@@ -21,6 +22,7 @@ RDEPENDS:${PN} = "\
     curl \
     hddtemp \
     ${PYTHON_PN}-gdata \
+    ${PYTHON_PN}-pexpect \
     ${PYTHON_PN}-requests \
     ${PYTHON_PN}-mutagen \
     ${PYTHON_PN}-plistlib \
@@ -52,4 +54,5 @@ RDEPENDS:${PN} = "\
     packagegroup-base-nfs \
     ", d)} \
     packagegroup-base-smbfs-client \
+    wireless-tools \
     "
