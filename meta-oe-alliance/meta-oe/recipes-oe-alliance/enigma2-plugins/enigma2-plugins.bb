@@ -12,8 +12,8 @@ PROVIDES = "${PN} \
 inherit autotools-brokensep gitpkgv ${PYTHON_PN}native pkgconfig gettext ${PYTHON_PN}-dir
 
 SRCREV = "${AUTOREV}"
-PV = "${IMAGE_VERSION}+git${SRCPV}"
-PKGV = "${IMAGE_VERSION}+git${GITPKGV}"
+PV = "${IMAGE_VERSION}+gitr${SRCPV}"
+PKGV = "${IMAGE_VERSION}+gitr${GITPKGV}"
 PR = "r3"
 
 SRC_URI = "${ENIGMA2_PLUGINS_URI} file://pluginnotwanted.patch"

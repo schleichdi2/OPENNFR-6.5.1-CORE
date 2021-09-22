@@ -226,8 +226,8 @@ RDEPENDS:packagegroup-meta-oe-dbs-python2 ="\
 
 RDEPENDS:packagegroup-meta-oe-devtools ="\
     abseil-cpp \
+    apitrace \
     breakpad \
-    bootchart \
     android-tools-conf \
     android-tools \
     concurrencykit \
@@ -278,6 +278,7 @@ RDEPENDS:packagegroup-meta-oe-devtools ="\
     capnproto-compiler \
     mpich \
     msgpack-c \
+    msgpack-cpp \
     mercurial \
     nodejs \
     openocd \
@@ -396,7 +397,6 @@ RDEPENDS:packagegroup-meta-oe-extended ="\
     libusbmuxd \
     liblockfile \
     liblogging \
-    libnss-nisplus \
     libpwquality \
     ${@bb.utils.contains("DISTRO_FEATURES", "systemd", "libreport", "", d)} \
     libserialport \
@@ -435,7 +435,7 @@ RDEPENDS:packagegroup-meta-oe-extended:append:libc-musl = " libexecinfo"
 RDEPENDS:packagegroup-meta-oe-extended:append:x86-64 = " pmdk libx86-1"
 RDEPENDS:packagegroup-meta-oe-extended:append:x86 = " libx86-1"
 
-RDEPENDS:packagegroup-meta-oe-extended:remove:libc-musl = "libnss-nisplus sysdig"
+RDEPENDS:packagegroup-meta-oe-extended:remove:libc-musl = "sysdig"
 RDEPENDS:packagegroup-meta-oe-extended:remove:mipsarch = "upm mraa minifi-cpp tiptop"
 RDEPENDS:packagegroup-meta-oe-extended:remove:mips = "sysdig"
 RDEPENDS:packagegroup-meta-oe-extended:remove:powerpc = "upm mraa minifi-cpp"
