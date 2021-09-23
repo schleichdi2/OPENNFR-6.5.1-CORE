@@ -321,7 +321,6 @@ MACHINE_ESSENTIAL_EXTRA_RDEPENDS += "\
     kernel-module-xhci-plat-hcd \
     kernel-module-ehci-platform \
     kernel-module-ohci-platform \
-    ${@bb.utils.contains('MACHINE_FEATURES', 'kodi20', 'dinobot-opengl-${SOC_FAMILY}', '',d)} \
     ${@bb.utils.contains('MACHINE_FEATURES', 'emmc', 'resizerootfs' , '', d)} \
     dinobot-partitions-${SOC_FAMILY} \
     dinobot-libs-${MACHINE} \
@@ -330,18 +329,12 @@ MACHINE_ESSENTIAL_EXTRA_RDEPENDS += "\
     dinobot-lib-helper \
 "
 
-MACHINE_FEATURES += "switchoff  hdmicec blindscan-tbs alsa HDMI \
-    ${@bb.utils.contains('MACHINEBUILD', 'anadol4k', '' , ' dvb-c', d)} \
-    ${@bb.utils.contains('MACHINEBUILD', 'anadol4kcombo', '' , ' dvb-c', d)} \
-    ${@bb.utils.contains('MACHINEBUILD', 'hitube4kplus', '' , ' dvb-c', d)} \
-    ${@bb.utils.contains_any('SOC_FAMILY', 'hisi3798mv200', 'openhbbtv' , '', d)} \
-    "
+MACHINE_FEATURES += "switchoff  hdmicec blindscan-tbs alsa HDMI  "
 
 PREFERRED_VERSION_linux-dinobot = "4.4.35"
 PREFERRED_PROVIDER_virtual/egl = "dinobot-opengl-${SOC_FAMILY}" 
 PREFERRED_PROVIDER_virtual/libgles1 = "dinobot-opengl-${SOC_FAMILY}"
 PREFERRED_PROVIDER_virtual/libgles2 = "dinobot-opengl-${SOC_FAMILY}"
-PREFERRED_PROVIDER_virtual/kodi = "stb-kodi-${MACHINE}"
 PREFERRED_PROVIDER_virtual/blindscan-dvbs = "dinobot-blindscan-${MACHINE}"
 
 MACHINE_EXTRA_RRECOMMENDS += " \
