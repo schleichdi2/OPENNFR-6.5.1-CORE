@@ -1,5 +1,5 @@
-PACKAGECONFIG_GL:pn-qtbase = "gles2 eglfs linuxfb"
-PACKAGECONFIG_FB:pn-qtbase = " "
+# PACKAGECONFIG_GL:pn-qtbase = "gles2 eglfs linuxfb"
+# PACKAGECONFIG_FB:pn-qtbase = " "
 
 # We know about rtc
 include conf/machine/include/build-extras.inc
@@ -38,7 +38,7 @@ MACHINE_ESSENTIAL_EXTRA_RDEPENDS += "\
     gptfdisk \
 "
 
-MACHINE_FEATURES += "hisil switchoff 7segment hdmicec skins1080 emmc mmc blindscan-dvbs kodi20 alsa hbbtv-browser-webkit qtstalker qtnetflix openhbbtv"
+MACHINE_FEATURES += "hisil switchoff 7segment hdmicec skins1080 emmc mmc blindscan-dvbs alsa"
 
 IMAGE_CLASSES  += "octagon-emmc_image"
 IMAGE_FSTYPES += "octagonemmc"
@@ -53,7 +53,6 @@ PREFERRED_PROVIDER_virtual/kernel = "linux-octagon"
 PREFERRED_PROVIDER_virtual/egl = "octagon-opengl-${SOC_FAMILY}" 
 PREFERRED_PROVIDER_virtual/libgles1 = "octagon-opengl-${SOC_FAMILY}"
 PREFERRED_PROVIDER_virtual/libgles2 = "octagon-opengl-${SOC_FAMILY}"
-PREFERRED_PROVIDER_virtual/kodi = "stb-kodi-${MACHINE}"
 PREFERRED_PROVIDER_virtual/blindscan-dvbs = "octagon-blindscan-${SOC_FAMILY}"
 
 PREFERRED_RPROVIDER_showiframe = "octagon-showiframe-${SOC_FAMILY}"
