@@ -16,8 +16,6 @@ import itertools
 import os
 import subprocess
 import sys
-import warnings
-warnings.simplefilter("default")
 
 version = 1.0
 

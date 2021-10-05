@@ -94,13 +94,14 @@ class TinfoilTests(OESelftestTestCase):
                 pass
 
             pattern = 'conf'
-            res = tinfoil.run_command('testCookerCommandEvent', pattern)
+            res = tinfoil.run_command('findFilesMatchingInDir', pattern, 'conf/machine')
             self.assertTrue(res)
 
             eventreceived = False
             commandcomplete = False
             start = time.time()
             # Wait for maximum 60s in total so we'd detect spurious heartbeat events for example
+            # The test is IO load sensitive too
             while (not (eventreceived == True and commandcomplete == True) 
                     and (time.time() - start < 60)):
                 # if we received both events (on let's say a good day), we are done  
@@ -110,8 +111,7 @@ class TinfoilTests(OESelftestTestCase):
                         commandcomplete = True
                     elif isinstance(event, bb.event.FilesMatchingFound):
                         self.assertEqual(pattern, event._pattern)
-                        self.assertIn('A', event._matches)
-                        self.assertIn('B', event._matches)
+                        self.assertIn('qemuarm.conf', event._matches)
                         eventreceived = True
                     elif isinstance(event, logging.LogRecord):
                         continue

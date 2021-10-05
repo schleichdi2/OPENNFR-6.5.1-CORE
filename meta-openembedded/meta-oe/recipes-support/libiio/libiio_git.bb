@@ -38,10 +38,7 @@ PACKAGECONFIG[libiio-python3] = "-DPYTHON_BINDINGS=ON,-DPYTHON_BINDINGS=OFF"
 
 PACKAGES =+ "${PN}-iiod ${PN}-tests ${PN}-${PYTHON_PN}"
 
-# Inheriting setuptools3 incorrectly adds the dependency on ${PYTHON_PN}-core
-# to ${PN} instead of to ${PN}-${PYTHON_PN} where it belongs.
-RDEPENDS:${PN}:remove = "${PYTHON_PN}-core"
-RDEPENDS:${PN}-${PYTHON_PN} = "${PN} ${PYTHON_PN}-core ${PYTHON_PN}-ctypes ${PYTHON_PN}-stringold"
+RDEPENDS:${PN}-${PYTHON_PN} = "${PN} ${PYTHON_PN}-ctypes ${PYTHON_PN}-stringold"
 
 FILES:${PN}-iiod = " \
     ${sbindir}/iiod \

@@ -73,7 +73,7 @@ EXTRA_OECONF = "\
     \
     --disable-bfs --disable-login \
     --disable-makeinstall-chown --disable-minix --disable-newgrp \
-    --disable-use-tty-group --disable-vipw --disable-raw \
+    --disable-use-tty-group --disable-vipw \
     \
     --without-udev \
     \

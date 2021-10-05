@@ -69,7 +69,7 @@ class Wget(FetchMethod):
         """
         Check to see if a given url can be fetched with wget.
         """
-        return ud.type in ['http', 'https', 'ftp', 'ftps']
+        return ud.type in ['http', 'https', 'ftp']
 
     def recommends_checksum(self, urldata):
         return True

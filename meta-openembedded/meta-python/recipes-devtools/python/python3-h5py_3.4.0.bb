@@ -11,7 +11,7 @@ SRC_URI:append = " \
            file://0001-setup.py-Fix-numpy-version.patch \
           "
 
-inherit pkgconfig pypi setuptools3
+inherit pypi setuptools3
 
 BBCLASSEXTEND = "native"
 

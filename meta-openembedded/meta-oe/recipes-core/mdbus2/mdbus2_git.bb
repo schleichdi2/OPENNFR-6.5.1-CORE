@@ -13,6 +13,6 @@ SRCREV = "28202692d0b441000f4ddb8f347f72d1355021aa"
 
 S = "${WORKDIR}/git"
 
-inherit autotools pkgconfig vala
+inherit autotools vala
 
 EXTRA_OECONF += "--enable-vala"

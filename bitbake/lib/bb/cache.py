@@ -19,8 +19,7 @@
 import os
 import logging
 import pickle
-from collections import defaultdict
-from collections.abc import Mapping
+from collections import defaultdict, Mapping
 import bb.utils
 from bb import PrefixLoggerAdapter
 import re

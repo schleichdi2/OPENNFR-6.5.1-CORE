@@ -661,7 +661,7 @@ class BBUIEventQueue:
         self.reader = ConnectionReader(readfd)
 
         self.t = threading.Thread()
-        self.t.daemon = True
+        self.t.setDaemon(True)
         self.t.run = self.startCallbackHandler
         self.t.start()
 

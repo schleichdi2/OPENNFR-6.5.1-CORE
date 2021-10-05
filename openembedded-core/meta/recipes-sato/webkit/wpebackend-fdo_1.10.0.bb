@@ -8,7 +8,7 @@ DEPENDS = "glib-2.0 libxkbcommon wayland virtual/egl libwpe libepoxy"
 
 DEPENDS:append:class-target = " wayland-native"
 
-inherit meson features_check pkgconfig
+inherit meson features_check
 
 REQUIRED_DISTRO_FEATURES = "opengl"
 

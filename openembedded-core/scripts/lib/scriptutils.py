@@ -215,8 +215,7 @@ def fetch_url(tinfoil, srcuri, srcrev, destdir, logger, preserve_tmp=False, mirr
                 pathvars = ['T', 'RECIPE_SYSROOT', 'RECIPE_SYSROOT_NATIVE']
                 for pathvar in pathvars:
                     path = rd.getVar(pathvar)
-                    if os.path.exists(path):
-                        shutil.rmtree(path)
+                    shutil.rmtree(path)
         finally:
             if fetchrecipe:
                 try:

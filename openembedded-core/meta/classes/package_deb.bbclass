@@ -315,8 +315,10 @@ python do_package_write_deb () {
 do_package_write_deb[dirs] = "${PKGWRITEDIRDEB}"
 do_package_write_deb[cleandirs] = "${PKGWRITEDIRDEB}"
 do_package_write_deb[depends] += "${@oe.utils.build_depends_string(d.getVar('PACKAGE_WRITE_DEPS'), 'do_populate_sysroot')}"
-EPOCHTASK ??= ""
-addtask package_write_deb after do_packagedata do_package ${EPOCHTASK} before do_build
+addtask package_write_deb after do_packagedata do_package
+
 
 PACKAGEINDEXDEPS += "dpkg-native:do_populate_sysroot"
 PACKAGEINDEXDEPS += "apt-native:do_populate_sysroot"
+
+do_build[recrdeptask] += "do_package_write_deb"

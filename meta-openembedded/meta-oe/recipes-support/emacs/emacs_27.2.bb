@@ -24,7 +24,8 @@ EXTRA_OECONF = " --with-x=no --with-dumping=none"
 DEPENDS = "ncurses"
 DEPENDS:append:class-target = " emacs-native"
 
-inherit autotools mime-xdg pkgconfig
+inherit autotools mime-xdg
+
 
 do_compile:class-native (){
     cd ${B}/lib-src
