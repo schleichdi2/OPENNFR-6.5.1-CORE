@@ -103,6 +103,11 @@ all: init
 	@echo "	or"
 	@echo "cd $(BUILD_DIR) ; source env.source ; bitbake $(DISTRO)-image"
 	@echo
+	@echo "To download all sources for image build:"
+	@echo "MACHINE=gbue4k DISTRO=opennfr DISTRO_TYPE=release make download"
+	@echo " or"
+	@echo "cd $(BUILD_DIR) ; source env.source ; bitbake $(DISTRO)-image --runall=fetch"
+	@echo
 	@echo "To build image without feed:"
 	@echo "MACHINE=gbue4k DISTRO=opennfr DISTRO_TYPE=release make enigma2-image"
 	@echo " or"
