@@ -1,5 +1,5 @@
-SUMMARY = "OpenBH Bootlogo"
-MAINTAINER = "BlackHole Team"
+SUMMARY = "OpenBh Bootlogo"
+MAINTAINER = "OpenBh Team"
 SECTION = "base"
 PRIORITY = "required"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
@@ -9,7 +9,7 @@ require conf/license/license-gplv2.inc
 RDEPENDS:${PN} += "showiframe"
 
 PV = "${IMAGE_VERSION}"
-PR = "r19"
+PR = "r20"
 
 S = "${WORKDIR}"
 

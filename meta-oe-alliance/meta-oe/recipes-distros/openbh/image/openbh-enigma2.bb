@@ -1,5 +1,5 @@
-SUMMARY = "OpenBH Enigma2"
-MAINTAINER = "OpenBH"
+SUMMARY = "OpenBh Enigma2"
+MAINTAINER = "OpenBh"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302 \
                     file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
@@ -8,14 +8,12 @@ ALLOW_EMPTY:${PN} = "1"
 PACKAGES = "${PN}"
 
 PV = "${IMAGE_VERSION}"
-PR = "r14"
+PR = "r16"
 
 inherit packagegroup
 
 RCONFLICTS:${PN} = "enigma2-plugin-extensions-permanenttimeshift enigma2-plugin-systemplugins-skinselector"
 RREPLACES:${PN} = "enigma2-plugin-extensions-permanenttimeshift enigma2-plugin-systemplugins-skinselector"
-
-DEPENDS = "enigma2-pliplugins"
 
 RDEPENDS:${PN} = "\
     enigma2-skindefault \
@@ -36,9 +34,11 @@ RRECOMMENDS:${PN} = " \
     enigma2-plugin-systemplugins-hotplug \
     ${@bb.utils.contains("MACHINE_FEATURES", "videoenhancement", "", "enigma2-plugin-systemplugins-videoenhancement", d)} \
     ${@bb.utils.contains("MACHINE_FEATURES", "uianimation", "enigma2-plugin-systemplugins-animationsetup" , "", d)} \
+    ${@bb.utils.contains("MACHINE_FEATURES", "osdanimation", "enigma2-plugin-systemplugins-animationsetup" , "", d)} \
     ${@bb.utils.contains("MACHINE_FEATURES", "omb", "enigma2-plugin-extensions-openmultiboot", "", d)} \
     ${@bb.utils.contains("MACHINE_FEATURES", "omb", "openmultiboot", "", d)} \
     ${@bb.utils.contains("MACHINE_FEATURES", "quadpip", "enigma2-plugin-systemplugins-quadpip", "", d)} \
     ${@bb.utils.contains("TARGET_ARCH", "arm", "glibc-compat", "", d)} \
+    openbh-picon-feed-opkg-conf \
     "
 
