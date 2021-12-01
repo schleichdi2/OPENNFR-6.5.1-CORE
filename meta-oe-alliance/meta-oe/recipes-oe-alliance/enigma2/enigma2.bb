@@ -189,17 +189,6 @@ PKGV = "${IMAGE_VERSION}+git${GITPKGV}"
 
 SRC_URI = "${ENIGMA2_URI}"
 
-#SRC_URI_append_spycatminiv2 = " \
-#    file://enigma2-dinobotplayer.patch \
-#    "
-
-SRC_URI:append:sh4 = " \
-    ${@bb.utils.contains("DISTRO_NAME", "openspa", "file://sh4-define-DTV_ENUM_DELSYS.patch" , "", d)} \
-    "
-
-SRC_URI:append:vuduo = " \
-    file://duo_VFD.patch \
-    "
 
 S = "${WORKDIR}/git"
 
@@ -260,7 +249,7 @@ FILES:${PN}-dbg += "\
     "
 
 FILES:${PN} += " \
-    ${bindir} ${sysconfdir}/e2-git.log /usr/lib"
+    ${bindir}  /usr/lib"
 
 # Save po files
 PACKAGES =+ "${PN}-po"
@@ -270,9 +259,6 @@ do_install:append() {
     install -d ${D}/usr/share/keymaps
     ln -s ${libdir}/enigma2/python/Tools/StbHardware.py ${D}${libdir}/enigma2/python/Tools/DreamboxHardware.py
     ln -s ${libdir}/enigma2/python/Components/PackageInfo.py ${D}${libdir}/enigma2/python/Components/DreamboxInfoHandler.py
-    install -d ${D}${sysconfdir}
-    git --git-dir=${S}/.git log --no-merges --since=10.weeks --pretty=format:"%s" > ${D}${sysconfdir}/e2-git.log
-    git --git-dir=${OE-ALLIANCE_BASE}/.git log --no-merges --since=10.weeks --pretty=format:"%s" > ${D}${sysconfdir}/oe-git.log
     if [ "${base_libdir}" = "/lib64" ] ; then
         install -d ${D}/usr/lib
         ln -s ${libdir}/enigma2 ${D}/usr/lib/enigma2
