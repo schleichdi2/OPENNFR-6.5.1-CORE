@@ -49,6 +49,7 @@ RDEPENDS:${PN} = "\
 	rtmpdump \
 	iperf3 \
 	zip \
+        curl \
 	packagegroup-base-smbfs-client \
 	packagegroup-base-smbfs-utils \
 	packagegroup-base-smbfs-server \
