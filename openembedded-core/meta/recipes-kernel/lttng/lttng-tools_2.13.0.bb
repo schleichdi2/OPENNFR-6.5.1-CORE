@@ -12,7 +12,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=40ef17463fbd6f377db3c47b1cbaded8 \
 
 include lttng-platforms.inc
 
-DEPENDS = "liburcu popt libxml2 util-linux"
+DEPENDS = "liburcu popt libxml2 util-linux bison-native"
 RDEPENDS:${PN} = "libgcc"
 RRECOMMENDS:${PN} += "${LTTNGMODULES}"
 RDEPENDS:${PN}-ptest += "make perl bash gawk babeltrace procps perl-module-overloading coreutils util-linux kmod ${LTTNGMODULES} sed python3-core grep"
@@ -37,7 +37,8 @@ SRC_URI = "https://lttng.org/files/lttng-tools/lttng-tools-${PV}.tar.bz2 \
            file://lttng-sessiond.service \
            file://determinism.patch \
            file://0001-src-common-correct-header-location.patch \
-           file://0001-tests-wait-some-more-before-analysing-traces-or-star.patch \
+           file://0001-Fix-Tests-race-condition-in-test_event_tracker.patch \
+           file://0002-Fix-Tests-race-condition-in-test_ns_contexts_change.patch \
            "
 
 SRC_URI[sha256sum] = "8dc894f9a7a840e943c1c344345c75f001a9529daa9157f1a0e6175c081c29e6"

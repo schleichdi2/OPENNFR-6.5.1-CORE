@@ -93,7 +93,6 @@ RDEPENDS:${PN} = " \
     livestreamersrv \
     streamlinksrv \
     streamlink \
-    satpi \
     llmnr-query \
     mc \
     mergerfs \

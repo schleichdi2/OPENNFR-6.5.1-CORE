@@ -7,13 +7,13 @@ DESCRIPTION = "jemalloc is a general purpose malloc(3) implementation that empha
 fragmentation avoidance and scalable concurrency support."
 
 HOMEPAGE = "https://github.com/jemalloc/jemalloc"
-LICENSE = "BSD"
+LICENSE = "BSD-2-Clause"
 
 SECTION = "libs"
 
 LIC_FILES_CHKSUM = "file://README;md5=6900e4a158982e4c4715bf16aa54fa10"
 
-SRC_URI = "git://github.com/jemalloc/jemalloc.git \
+SRC_URI = "git://github.com/jemalloc/jemalloc.git;branch=master;protocol=https \
            file://0001-Makefile.in-make-sure-doc-generated-before-install.patch \
            file://run-ptest \
 "

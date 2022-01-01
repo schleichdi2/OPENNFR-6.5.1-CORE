@@ -306,10 +306,10 @@ RDEPENDS:packagegroup-meta-oe-devtools ="\
     json-schema-validator \
     poke \
 "
-RDEPENDS:packagegroup-meta-oe-devtools:append:x86 = " cpuid msr-tools pmtools"
-RDEPENDS:packagegroup-meta-oe-devtools:append:x86-64 = " cpuid msr-tools pcimem pmtools"
+RDEPENDS:packagegroup-meta-oe-devtools:append:x86 = " cpuid msr-tools pahole pmtools"
+RDEPENDS:packagegroup-meta-oe-devtools:append:x86-64 = " cpuid msr-tools pahole pcimem pmtools"
 RDEPENDS:packagegroup-meta-oe-devtools:append:arm = " pcimem"
-RDEPENDS:packagegroup-meta-oe-devtools:append:aarch64 = " pcimem"
+RDEPENDS:packagegroup-meta-oe-devtools:append:aarch64 = " pahole pcimem"
 RDEPENDS:packagegroup-meta-oe-devtools:append:libc-musl = " musl-nscd"
 
 RDEPENDS:packagegroup-meta-oe-devtools:remove:arm = "concurrencykit"
@@ -506,6 +506,7 @@ RDEPENDS:packagegroup-meta-oe-graphics ="\
     libsdl2-net \
     ${@bb.utils.contains("DISTRO_FEATURES", "opengl", "libsdl2-ttf", "", d)} \
     libsdl \
+    ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "lv-drivers lvgl", "", d)} \
     ttf-arphic-uming \
     ttf-droid-sans ttf-droid-sans-mono ttf-droid-sans-fallback ttf-droid-sans-japanese ttf-droid-serif \
     ttf-abyssinica \
@@ -823,6 +824,7 @@ RDEPENDS:packagegroup-meta-oe-support ="\
     remmina \
     neon \
     nmon \
+    libjs-jquery-icheck \
     libtinyxml \
     libusbg \
     libutempter \
@@ -874,6 +876,7 @@ RDEPENDS:packagegroup-meta-oe-support ="\
     spitools \
     libsass \
     sassc \
+    smarty \
     ${@bb.utils.contains("DISTRO_FEATURES", "x11", "synergy", "", d)} \
     syslog-ng \
     system-config-keyboard \

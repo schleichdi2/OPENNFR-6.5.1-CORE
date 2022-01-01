@@ -85,15 +85,19 @@ class RunQueueStats:
     """
     Holds statistics on the tasks handled by the associated runQueue
     """
-    def __init__(self, total):
+    def __init__(self, total, setscene_total):
         self.completed = 0
         self.skipped = 0
         self.failed = 0
         self.active = 0
+        self.setscene_active = 0
+        self.setscene_covered = 0
+        self.setscene_notcovered = 0
+        self.setscene_total = setscene_total
         self.total = total
 
     def copy(self):
-        obj = self.__class__(self.total)
+        obj = self.__class__(self.total, self.setscene_total)
         obj.__dict__.update(self.__dict__)
         return obj
 
@@ -111,6 +115,13 @@ class RunQueueStats:
 
     def taskActive(self):
         self.active = self.active + 1
+
+    def updateCovered(self, covered, notcovered):
+        self.setscene_covered = covered
+        self.setscene_notcovered = notcovered
+
+    def updateActiveSetscene(self, active):
+        self.setscene_active = active
 
 # These values indicate the next step due to be run in the
 # runQueue state machine
@@ -915,38 +926,36 @@ class RunQueueData:
         #
         # Once all active tasks are marked, prune the ones we don't need.
 
-        delcount = {}
-        for tid in list(self.runtaskentries.keys()):
-            if tid not in runq_build:
-                delcount[tid] = self.runtaskentries[tid]
-                del self.runtaskentries[tid]
-
         # Handle --runall
         if self.cooker.configuration.runall:
             # re-run the mark_active and then drop unused tasks from new list
+            reduced_tasklist = set(self.runtaskentries.keys())
+            for tid in list(self.runtaskentries.keys()):
+                if tid not in runq_build:
+                   reduced_tasklist.remove(tid)
             runq_build = {}
 
             for task in self.cooker.configuration.runall:
                 if not task.startswith("do_"):
                     task = "do_{0}".format(task)
                 runall_tids = set()
-                for tid in list(self.runtaskentries):
+                for tid in reduced_tasklist:
                     wanttid = "{0}:{1}".format(fn_from_tid(tid), task)
-                    if wanttid in delcount:
-                        self.runtaskentries[wanttid] = delcount[wanttid]
                     if wanttid in self.runtaskentries:
                         runall_tids.add(wanttid)
 
                 for tid in list(runall_tids):
-                    mark_active(tid,1)
+                    mark_active(tid, 1)
                     if self.cooker.configuration.force:
                         invalidate_task(tid, False)
 
-            for tid in list(self.runtaskentries.keys()):
-                if tid not in runq_build:
-                    delcount[tid] = self.runtaskentries[tid]
-                    del self.runtaskentries[tid]
+        delcount = set()
+        for tid in list(self.runtaskentries.keys()):
+            if tid not in runq_build:
+                delcount.add(tid)
+                del self.runtaskentries[tid]
 
+        if self.cooker.configuration.runall:
             if len(self.runtaskentries) == 0:
                 bb.msg.fatal("RunQueue", "Could not find any tasks with the tasknames %s to run within the recipes of the taskgraphs of the targets %s" % (str(self.cooker.configuration.runall), str(self.targets)))
 
@@ -960,16 +969,16 @@ class RunQueueData:
             for task in self.cooker.configuration.runonly:
                 if not task.startswith("do_"):
                     task = "do_{0}".format(task)
-                runonly_tids = { k: v for k, v in self.runtaskentries.items() if taskname_from_tid(k) == task }
+                runonly_tids = [k for k in self.runtaskentries.keys() if taskname_from_tid(k) == task]
 
-                for tid in list(runonly_tids):
-                    mark_active(tid,1)
+                for tid in runonly_tids:
+                    mark_active(tid, 1)
                     if self.cooker.configuration.force:
                         invalidate_task(tid, False)
 
             for tid in list(self.runtaskentries.keys()):
                 if tid not in runq_build:
-                    delcount[tid] = self.runtaskentries[tid]
+                    delcount.add(tid)
                     del self.runtaskentries[tid]
 
             if len(self.runtaskentries) == 0:
@@ -1735,7 +1744,7 @@ class RunQueueExecute:
         self.holdoff_need_update = True
         self.sqdone = False
 
-        self.stats = RunQueueStats(len(self.rqdata.runtaskentries))
+        self.stats = RunQueueStats(len(self.rqdata.runtaskentries), len(self.rqdata.runq_setscene_tids))
 
         for mc in rq.worker:
             rq.worker[mc].pipe.setrunqueueexec(self)
@@ -1786,6 +1795,7 @@ class RunQueueExecute:
             else:
                 self.sq_task_complete(task)
             self.sq_live.remove(task)
+            self.stats.updateActiveSetscene(len(self.sq_live))
         else:
             if status != 0:
                 self.task_fail(task, status, fakerootlog=fakerootlog)
@@ -2087,6 +2097,7 @@ class RunQueueExecute:
             self.build_stamps2.append(self.build_stamps[task])
             self.sq_running.add(task)
             self.sq_live.add(task)
+            self.stats.updateActiveSetscene(len(self.sq_live))
             if self.can_start_task():
                 return True
 
@@ -2462,6 +2473,7 @@ class RunQueueExecute:
                 self.sq_task_failoutright(tid)
 
         if changed:
+            self.stats.updateCovered(len(self.scenequeue_covered), len(self.scenequeue_notcovered))
             self.holdoff_need_update = True
 
     def scenequeue_updatecounters(self, task, fail=False):
@@ -2495,6 +2507,7 @@ class RunQueueExecute:
                         new.add(dep)
             next = new
 
+        self.stats.updateCovered(len(self.scenequeue_covered), len(self.scenequeue_notcovered))
         self.holdoff_need_update = True
 
     def sq_task_completeoutright(self, task):
