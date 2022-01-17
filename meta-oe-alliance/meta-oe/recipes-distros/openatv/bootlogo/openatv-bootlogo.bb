@@ -9,7 +9,7 @@ require conf/license/license-gplv2.inc
 RDEPENDS:${PN} += "showiframe"
 
 PV = "${IMAGE_VERSION}"
-PR = "r2.4"
+PR = "r2.5"
 
 S = "${WORKDIR}"
 
@@ -68,7 +68,7 @@ SRC_URI:append:sf8008m = "file://logo.img"
 SRC_URI:append:sf8008opt = "file://logo.img"
 SRC_URI:append:sx988 = "file://logo.img"
 SRC_URI:append:ustym4kpro = "file://logo.img"
-SRC_URI:append:ustym4kott = "file://logo.img"
+SRC_URI:append:ustym4kottpremium = "file://logo.img"
 SRC_URI:append:multiboxse = "file://logo.img"
 SRC_URI:append:multibox = "file://logo.img"
 SRC_URI:append:gbmv200 = "file://logo.img"
@@ -100,7 +100,7 @@ do_install() {
     install -d ${D}/usr/share
     install -m 0644 bootlogo_fhd.mvi ${D}/usr/share/bootlogo.mvi
     install -m 0644 restore_fhd.mvi ${D}/usr/share/restore.mvi
-    ln -sf /usr/share/bootlogo_fhd.mvi ${D}/usr/share/backdrop.mvi
+    ln -sf /usr/share/bootlogo.mvi ${D}/usr/share/backdrop.mvi
     install -d ${D}/usr/share/enigma2
     install -m 0644 radio.mvi ${D}/usr/share/enigma2/radio.mvi
     install -d ${D}/${sysconfdir}/init.d
@@ -189,7 +189,7 @@ do_deploy() {
 
 addtask deploy before do_build after do_install
 
-pkg_preinst:${PN}_dreamboxv1() {
+pkg_preinst:${PN}:dreamboxv1() {
 	if [ -z "$D" ]
 	then
 		if mountpoint -q /boot
@@ -201,14 +201,14 @@ pkg_preinst:${PN}_dreamboxv1() {
 	fi
 }
 
-pkg_postinst:${PN}_dreamboxv1() {
+pkg_postinst:${PN}:dreamboxv1() {
 	if [ -z "$D" ]
 	then
 		umount /boot
 	fi
 }
 
-pkg_prerm:${PN}_dreamboxv1() {
+pkg_prerm:${PN}:dreamboxv1() {
 	if [ -z "$D" ]
 	then
 		if mountpoint -q /boot
@@ -220,7 +220,7 @@ pkg_prerm:${PN}_dreamboxv1() {
 	fi
 }
 
-pkg_postrm:${PN}_dreamboxv1() {
+pkg_postrm:${PN}:dreamboxv1() {
 	if [ -z "$D" ]
 	then
 		umount /boot
