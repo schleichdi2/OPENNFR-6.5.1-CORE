@@ -24,6 +24,7 @@ RDEPENDS:${PN} = " \
     dvb-usb-drivers-meta \
     network-usb-drivers-meta \
     picons-enigma2-meta \
+    ${@bb.utils.contains("MACHINE_FEATURES", "skins1080", "dreamplex-skins-meta", "", d)} \
     meta-enigma2-dvdburn \
     enigma2-plugins \
     enigma2-plugin-drivers-ntfs-3g \
@@ -154,6 +155,7 @@ RDEPENDS:${PN} = " \
     ${PYTHON_PN}-levenshtein \
     ${PYTHON_PN}-soco \
     ${PYTHON_PN}-pyexecjs \
+    ${PYTHON_PN}-scrapy \
     ${@bb.utils.contains("DEFAULTTUNE", "sh4", "" , "rclone zerotier", d)} \
     rapidxml \
     rsync \

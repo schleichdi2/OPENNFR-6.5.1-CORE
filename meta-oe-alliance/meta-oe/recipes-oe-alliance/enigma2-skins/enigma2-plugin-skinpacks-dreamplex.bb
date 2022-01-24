@@ -1,5 +1,5 @@
-SUMMARY = "Dreamplex FHD skins"
-MAINTAINER = "rossi2000"
+SUMMARY = "Dreamplex skinpacks"
+MAINTAINER = "rossi2000 and stein17"
 inherit allarch
 
 require conf/license/license-gplv2.inc
@@ -13,10 +13,15 @@ PV = "${IMAGE_VERSION}+git${SRCPV}"
 PKGV = "${IMAGE_VERSION}+git${GITPKGV}"
 PR = "r1"
 
-PACKAGES = "${EPSM}-youplex-blue ${EPSM}-youplex-red ${EPSM}-youplex-green ${EPSM}-youplex-purple ${EPSM}-plex-experience"
+PACKAGES = "\
+    ${EPSM}-youplex-blue \
+    ${EPSM}-youplex-red \
+    ${EPSM}-youplex-green \
+    ${EPSM}-youplex-purple \
+    ${EPSM}-plex-experience \
+    "
 
-SRC_URI = "git://github.com/OpenViX/DreamPlexSkins.git;protocol=https"
-SRC_URI:openatv = "git://github.com/oe-alliance/DreamPlexSkins.git;protocol=https"
+SRC_URI = "git://github.com/oe-alliance/DreamPlexSkins.git;protocol=https"
 
 FILES:${EPSM}-youplex-blue = "/usr/lib/enigma2/python/Plugins/Extensions/DreamPlex/skins/YouPlex-Blue"
 FILES:${EPSM}-youplex-red = "/usr/lib/enigma2/python/Plugins/Extensions/DreamPlex/skins/YouPlex-Red"
