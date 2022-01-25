@@ -39,6 +39,7 @@ RDEPENDS:${PN} = "\
 	${PYTHON_PN}-six \
 	${PYTHON_PN}-beautifulsoup4 \
 	${PYTHON_PN}-pexpect \
+	${PYTHON_PN}-gdata-python3 \
 	udpxy \
 	uchardet \
 	ofgwrite \
