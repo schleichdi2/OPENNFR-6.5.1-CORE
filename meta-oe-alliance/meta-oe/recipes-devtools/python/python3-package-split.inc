@@ -1,12 +1,10 @@
-require conf/python/python3-compileall.inc
-
 inherit ${PYTHON_PN}-dir
 
 RDEPENDS:{PN}-src = "${PN}"
 
 SSTATE_DUPWHITELIST += "${STAGING_LIBDIR}/${PYTHON_DIR}/site-packages/tests/__init__.py ${STAGING_LIBDIR}/${PYTHON_DIR}/site-packages/tests/__init__.pyc"
 
-FILES_${PN}-src += " \
+FILES:${PN}-src += " \
     ${PYTHON_SITEPACKAGES_DIR}/*.c \
     ${PYTHON_SITEPACKAGES_DIR}/*/*.c \
     ${PYTHON_SITEPACKAGES_DIR}/*/*/*.c \
@@ -22,6 +20,24 @@ FILES_${PN}-src += " \
     ${PYTHON_SITEPACKAGES_DIR}/*/*/*.exe \
     ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*.exe \
     ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*/*.exe \
+    ${PYTHON_SITEPACKAGES_DIR}/*.py \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*.py \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*.py \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*.py \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*/*.py \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*/*/*.py \
+    ${libdir}/${PYTHON_DIR}/*.py \
+    ${libdir}/${PYTHON_DIR}/*/*.py \
+    ${libdir}/${PYTHON_DIR}/*/*/*.py \
+    ${libdir}/${PYTHON_DIR}/*/*/*/*.py \
+    ${libdir}/${PYTHON_DIR}/*/*/*/*/*.py \
+    ${libdir}/${PYTHON_DIR}/*/*/*/*/*/*.py \
+    ${libdir}/enigma2/python/*.py \
+    ${libdir}/enigma2/python/*/*.py \
+    ${libdir}/enigma2/python/*/*/*.py \
+    ${libdir}/enigma2/python/*/*/*/*.py \
+    ${libdir}/enigma2/python/*/*/*/*/*.py \
+    ${libdir}/enigma2/python/*/*/*/*/*/*.py \
     "
 
 
