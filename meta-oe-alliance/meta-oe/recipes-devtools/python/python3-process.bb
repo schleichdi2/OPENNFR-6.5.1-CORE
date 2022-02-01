@@ -17,7 +17,7 @@ SRC_URI = "file://process.py"
 
 S = "${WORKDIR}"
 
-PACKAGES = "${PN}"
+PACKAGES = "${PN} ${PN}-src"
 
 FILES:${PN} = "${PYTHON_SITEPACKAGES_DIR}/process.pyc"
 FILES:${PN}-src = "${PYTHON_SITEPACKAGES_DIR}/process.py"
