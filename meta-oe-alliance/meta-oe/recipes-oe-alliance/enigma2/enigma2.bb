@@ -192,7 +192,7 @@ SRC_URI = "${ENIGMA2_URI}"
 
 S = "${WORKDIR}/git"
 
-FILES:${PN} += "${datadir}/keymaps"
+FILES:${PN} += "${datadir}/keymaps ${datadir}/icons"
 FILES:${PN}-meta = "${datadir}/meta"
 PACKAGES += "${PN}-meta"
 PACKAGE_ARCH = "${MACHINEBUILD}"
