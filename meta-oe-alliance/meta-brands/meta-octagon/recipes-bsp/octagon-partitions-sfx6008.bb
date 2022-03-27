@@ -1,4 +1,4 @@
-SUMMARY = "ustym4kpro partitions files"
+SUMMARY = "SFX6008 partitions files"
 SECTION = "base"
 PRIORITY = "required"
 LICENSE = "CLOSED"
@@ -7,33 +7,16 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 inherit deploy
 
-SRCDATE = "20220326"
+SRCDATE = "20220321"
 PR = "${SRCDATE}"
 
-S = "${WORKDIR}/patitions"
+S = "${WORKDIR}/partitions"
 
-SRC_URI = "http://source.mynonpublic.com/uclan/${MACHINE}-partitions-${SRCDATE}.zip \
-  file://flash-apploader \
+SRC_URI = "http://source.mynonpublic.com/octagon/${MACHINE}-partitions-${SRCDATE}.zip \
 "
-
-inherit update-rc.d
-
-INITSCRIPT_NAME = "flash-apploader"
-INITSCRIPT_PARAMS = "start 90 S ."
 
 ALLOW_EMPTY:${PN} = "1"
 do_configure[nostamp] = "1"
-
-do_install() {
-    install -d ${D}/usr/share
-    install -m 0644 ${S}/bootargs.bin ${D}/usr/share/bootargs.bin
-    install -m 0644 ${S}/fastboot.bin ${D}/usr/share/fastboot.bin
-    install -m 0644 ${S}/apploader.bin ${D}/usr/share/apploader.bin
-    install -m 0755 -d ${D}${sysconfdir}/init.d
-    install -m 0755 ${WORKDIR}/flash-apploader ${D}${sysconfdir}/init.d/flash-apploader
-}
-
-FILES:${PN} = "/usr/share ${sysconfdir}"
 
 do_deploy() {
     install -d ${DEPLOY_DIR_IMAGE}/${MACHINE}-partitions
@@ -42,7 +25,7 @@ do_deploy() {
     install -m 0755 ${S}/fastboot.bin ${DEPLOY_DIR_IMAGE}/${MACHINE}-partitions
     install -m 0755 ${S}/apploader.bin ${DEPLOY_DIR_IMAGE}/${MACHINE}-partitions
     install -m 0755 ${S}/pq_param.bin ${DEPLOY_DIR_IMAGE}/${MACHINE}-partitions
-    install -m 0755 ${S}/emmc_partitions.xml ${DEPLOY_DIR_IMAGE}/${MACHINE}-partitions
+    install -m 0755 ${S}/nand_partitions.xml ${DEPLOY_DIR_IMAGE}/${MACHINE}-partitions
     install -m 0755 ${S}/baseparam.img ${DEPLOY_DIR_IMAGE}/${MACHINE}-partitions
     install -m 0755 ${S}/logo.img ${DEPLOY_DIR_IMAGE}/${MACHINE}-partitions
     install -m 0755 ${S}/deviceinfo.bin ${DEPLOY_DIR_IMAGE}/${MACHINE}-partitions
@@ -50,7 +33,7 @@ do_deploy() {
 
 addtask deploy before do_package after do_install
 
-SRC_URI[md5sum] = "a43f9f0c79a4d898c019091eb72cb7f2"
-SRC_URI[sha256sum] = "450af10ee881976b50f78896a4989903104826729b4ca9bc75edfada359a656b"
+SRC_URI[md5sum] = "e70ac376b71afcf5cc76cb01d27c7db8"
+SRC_URI[sha256sum] = "7d1601a7473e320b16b1b9024c28800ad487d9dae73bb0e6e5df94d26217e435"
 
 INSANE_SKIP:${PN} += "already-stripped"
