@@ -11,6 +11,7 @@ PR = "r${DATE}"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 PR[vardepsexclude] += "DATE"
+REPRODUCIBLE_TIMESTAMP_ROOTFS = "${@time.strftime('%s')}"
 
 WORKDIR = "${TMPDIR}/work/${MULTIMACH_TARGET_SYS}/${PN}/${EXTENDPE}${PV}"
 
