@@ -5,6 +5,7 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=f0c851d60495c7e27225a819e179208a"
 
 inherit setuptools3 pkgconfig features_check
+PIP_INSTALL_PACKAGE = "Kivy"
 
 SRC_URI = "\
     git://github.com/kivy/kivy.git;protocol=https;branch=master \
@@ -56,7 +57,7 @@ DEPENDS += " \
     python3-cython-native \
 "
 
-RDEPENDS_${PN} = " \
+RDEPENDS:${PN} = " \
     gstreamer1.0 \
     gstreamer1.0-python \
     libsdl2 \

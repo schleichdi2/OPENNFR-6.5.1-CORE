@@ -1,5 +1,5 @@
 DESCRIPTION = "qcacld-2.0 module.bbclass mechanism."
-LICENSE = "BSD"
+LICENSE = "BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://Android.mk;md5=235cc8d87e0fb1c956be4af0d07074fb"
 CAF_MIRROR = "https://source.codeaurora.org/external/wlan"
 
@@ -11,7 +11,7 @@ SRC_URI = "${CAF_MIRROR}/qcacld-2.0/snapshot/qcacld-2.0-${PV}.tar.gz \
     file://qcacld-2.0-support.patch \
 "
 
-SRC_URI:append:xc7439 = "file://qcacld-2.0-support-xc7439.patch"
+SRC_URI:append:xc7439 = " file://qcacld-2.0-support-xc7439.patch"
 
 S = "${WORKDIR}/qcacld-2.0-${PV}"
 

@@ -1,7 +1,7 @@
 SUMMARY = "Music Player Daemon (mpd)"
 HOMEPAGE = "http://www.musicpd.org"
 SECTION = "console/multimedia"
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://COPYING;md5=751419260aa954499f7abaabaa882bbe"
 
 DEPENDS = "audiofile boost curl dbus expat faad2 flac icu libao libmikmod libogg libvorbis sqlite3 virtual/libiconv yajl zlib \
@@ -14,7 +14,7 @@ SRCREV = "9274bc15bc41bbe490fde847f8422468cc20375d"
 PV = "0.20.22"
 PKGV = "0.20.22"
 
-SRC_URI = "git://github.com/MusicPlayerDaemon/MPD \
+SRC_URI = "git://github.com/MusicPlayerDaemon/MPD;branch=master;protocol=https \
         file://mpd.conf \
         file://mpd.init \
         "

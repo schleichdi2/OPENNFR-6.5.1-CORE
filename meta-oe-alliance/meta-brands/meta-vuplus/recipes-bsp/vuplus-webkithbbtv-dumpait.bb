@@ -1,6 +1,6 @@
 SUMMARY = "dumpait"
 PRIORITY = "required"
-LICENSE = "GPLv3"
+LICENSE = "GPL-3.0-only"
 LIC_FILES_CHKSUM = "file://LICENSE.GPLv3;md5=5ed852a46d22220a8b07a68e564d84c7"
 
 inherit autotools-brokensep pkgconfig gitpkgv
@@ -12,7 +12,7 @@ PR = "r0"
 
 DEPENDS = "libdvbsi++"
 
-SRC_URI = "git://code.vuplus.com/git/dumpait.git;protocol=http"
+SRC_URI = "git://code.vuplus.com/git/dumpait.git;protocol=http;branch=master"
 
 S = "${WORKDIR}/git"
 DESTDIR = "enigma2/python/Plugins/Extensions/WebkitHbbTV"

@@ -1,7 +1,7 @@
 DESCRIPTION = "Library to access Blu-Ray disk"
 SECTION = "misc"
 HOMEPAGE = "http://videolan.org"
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM="file://COPYING;md5=435ed639f84d4585d93824e7da3d85da"
 
 DEPENDS = "freetype libaacs libdca libdvdcss libxml2"
@@ -12,7 +12,7 @@ SRCREV = "${AUTOREV}"
 PV = "v1.1.2+git${SRCPV}"
 PKGV = "v1.1.2+git${GITPKGV}"
 
-SRC_URI = "gitsm://code.videolan.org/videolan/libbluray.git;protocol=https"
+SRC_URI = "gitsm://code.videolan.org/videolan/libbluray.git;protocol=https;branch=master"
 
 S="${WORKDIR}/git"
 

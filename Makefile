@@ -522,6 +522,9 @@ MACHINEBUILD=mutant51
 else ifeq ($(MACHINEBUILD),mutant60)
 MACHINE=hd60
 MACHINEBUILD=mutant60
+else ifeq ($(MACHINEBUILD),mutant66se)
+MACHINE=hd66se
+MACHINEBUILD=mutant66se
 else ifeq ($(MACHINEBUILD),ax61)
 MACHINE=hd61
 MACHINEBUILD=ax61
@@ -1062,6 +1065,15 @@ MACHINEBUILD=novaler4k
 else ifeq ($(MACHINEBUILD),maxytecmultise)
 MACHINE=multiboxse
 MACHINEBUILD=maxytecmultise
+else ifeq ($(MACHINEBUILD),anadolmultiboxse)
+MACHINE=multiboxse
+MACHINEBUILD=anadolmultiboxse
+else ifeq ($(MACHINEBUILD),axmultiboxse)
+MACHINE=multiboxse
+MACHINEBUILD=axmultiboxse
+else ifeq ($(MACHINEBUILD),novaler4kse)
+MACHINE=multiboxse
+MACHINEBUILD=novaler4kse
 
 endif
 
@@ -1126,7 +1138,7 @@ BITBAKE_ENV_HASH := $(call hash, \
 
 $(TOPDIR)/env.source: $(DEPDIR)/.env.source.$(BITBAKE_ENV_HASH)
 	@echo 'Generating $@'
-	@echo 'export BB_ENV_EXTRAWHITE="MACHINE DISTRO MACHINEBUILD BB_SRCREV_POLICY BB_NO_NETWORK"' > $@
+	@echo 'export BB_ENV_PASSTHROUGH_ADDITIONS="MACHINE DISTRO MACHINEBUILD BB_SRCREV_POLICY BB_NO_NETWORK"' > $@
 	@echo 'export MACHINE=$(MACHINE)' >> $@
 	@echo 'export DISTRO=$(DISTRO)' >> $@
 	@echo 'export MACHINEBUILD=$(MACHINEBUILD)' >> $@

@@ -1,6 +1,6 @@
 SUMMARY = "Linux kernel for ${MACHINE}"
 SECTION = "kernel"
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 
 KERNEL_RELEASE = "4.10.6"
 
@@ -19,7 +19,7 @@ MACHINE_KERNEL_PR:append = "3"
 PKG:${KERNEL_PACKAGE_NAME}-base = "kernel-base"
 PKG:${KERNEL_PACKAGE_NAME}-image = "kernel-image"
 RPROVIDES:${KERNEL_PACKAGE_NAME}-base = "kernel-${KERNEL_VERSION}"
-RPROVIDES:kernel-image = "kernel-image-${KERNEL_VERSION}"
+RPROVIDES:kernel-image = "kernel-image-${KERNEL_VERSION} kernel-${KERNEL_IMAGETYPE}"
 
 SRC_URI += "http://source.mynonpublic.com/ax/linux-${PV}-${ARCH}.tar.gz \
     file://defconfig \

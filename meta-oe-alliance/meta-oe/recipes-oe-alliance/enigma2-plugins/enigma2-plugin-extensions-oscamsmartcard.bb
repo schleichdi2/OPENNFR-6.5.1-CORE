@@ -1,7 +1,7 @@
 SUMMARY = "OscamSmartcard"
 MAINTAINER = "undertaker"
 SECTION = "base"
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 inherit allarch
 
 require conf/license/license-gplv2.inc
@@ -15,7 +15,7 @@ PKGV = "2.4+git${GITPKGV}"
 VER ="2.4"
 PR = "r0"
 
-SRC_URI="git://github.com/gigablue-support-org/oscamsmartcard.git;protocol=https"
+SRC_URI="git://github.com/gigablue-support-org/oscamsmartcard.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 

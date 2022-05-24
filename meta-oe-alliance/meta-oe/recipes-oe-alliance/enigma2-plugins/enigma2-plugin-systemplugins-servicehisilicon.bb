@@ -1,6 +1,6 @@
 DESCRIPTION = "hisilicon service for enigma2"
 AUTHOR = "zgemma-star"
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://COPYING;md5=b234ee4d69f5fce4486a80fdaf4a4263"
 require conf/python/python3-compileall.inc
 
@@ -8,9 +8,12 @@ DEPENDS = "enigma2"
 RDEPENDS:${PN} = "enigma2"
 
 SRCREV = "${AUTOREV}"
-SRC_URI = "git://github.com/oe-mirrors/servicehisilicon.git;protocol=https;branch=master"
+SRC_URI = "git://github.com/oe-mirrors/servicehisilicon.git;protocol=https;branch=master \
+        file://ax-python-devel-dont-check-for-distutils.patch"
+SRC_URI:openatv = "git://github.com/oe-mirrors/servicehisilicon.git;protocol=https;branch=openatv \
+        file://ax-python-devel-dont-check-for-distutils.patch"
 SRC_URI:openvix = "git://github.com/OpenViX/servicehisilicon.git;protocol=https;branch=sigc3"
-SRC_URI:openbh = "git://github.com/BlackHole/servicehisilicon.git;protocol=https;branch=master"
+SRC_URI:openbh = "git://github.com/BlackHole/servicehisilicon.git;protocol=https;branch=sigc3"
 
 S = "${WORKDIR}/git"
 

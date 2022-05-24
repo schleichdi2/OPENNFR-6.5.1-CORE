@@ -1,19 +1,19 @@
 SUMMARY = "Wireless Display Software For Linux OS (WDS)"
 DESCRIPTION = "WDS is a set of libraries for developers who want to build Wi-Fi Display applications on linux"
 MAINTAINER = "https://github.com/01org/wds"
-LICENSE = "LGPLv2.1"
+LICENSE = "LGPL-2.1-only"
 LIC_FILES_CHKSUM = "file://COPYING;md5=cb8aedd3bced19bd8026d96a8b6876d7"
 
 DEPENDS = "gstreamer1.0 bison-native"
 RDEPENDS:${PN} = "wpa-supplicant connman"
 
-inherit gitpkgv
+inherit gitpkgv pkgconfig
 
 PV = "1.1.0+git${SRCPV}"
 PKGV = "1.1.0+git${GITPKGV}"
 PR = "r1"
 
-SRC_URI = "git://github.com/01org/wds.git;protocol=https"
+SRC_URI = "git://github.com/01org/wds.git;protocol=https;branch=master"
 SRCREV = "${AUTOREV}"
 
 S = "${WORKDIR}/git"

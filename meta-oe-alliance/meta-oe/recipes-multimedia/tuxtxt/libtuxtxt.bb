@@ -1,5 +1,5 @@
 SUMMARY = "tuxbox libtuxtxt"
-LICENSE = "LGPLv2.1"
+LICENSE = "LGPL-2.1-only"
 LIC_FILES_CHKSUM = "file://COPYING;md5=393a5ca445f6965873eca0259a17f833"
 
 DEPENDS = "libpng freetype"
@@ -12,7 +12,7 @@ SRCREV = "${AUTOREV}"
 PV = "2.0+git${SRCPV}"
 PKGV = "2.0+git${GITPKGV}"
 
-SRC_URI = "git://github.com/OpenPLi/tuxtxt.git;protocol=https \
+SRC_URI = "git://github.com/OpenPLi/tuxtxt.git;protocol=https;branch=master \
     file://tuxtxt_getPressedKey.patch \
     file://acinclude_fix_DVB_API_VERSION_check_for_gcc5.patch \
     file://0001-fix-secfault-w-use-wrong-line_length.patch \

@@ -1,6 +1,6 @@
 SUMMARY = "tuxbox tuxtxt for 32bit framebuffer"
 DESCRIPTION = "tuxbox tuxtxt for enigma2"
-LICENSE = "LGPLv2.1"
+LICENSE = "LGPL-2.1-only"
 LIC_FILES_CHKSUM = "file://COPYING;md5=393a5ca445f6965873eca0259a17f833"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
@@ -13,7 +13,7 @@ SRCREV = "${AUTOREV}"
 PV = "2.0+git${SRCPV}"
 PKGV = "2.0+git${GITPKGV}"
 
-SRC_URI = "git://github.com/OpenPLi/tuxtxt.git;protocol=https \
+SRC_URI = "git://github.com/OpenPLi/tuxtxt.git;protocol=https;branch=master \
            file://0001-Workaround-for-Gigablue-Quad-receivers.patch \
            file://0002-Use-separate-transparency-for-menu-and-teletext.patch \
            file://0003-Write-enigma2-settings-to-tuxtxt2-conf.patch \

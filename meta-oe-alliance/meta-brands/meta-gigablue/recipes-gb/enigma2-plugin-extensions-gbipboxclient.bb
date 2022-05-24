@@ -1,7 +1,7 @@
 SUMMARY = "GigaBlue IPBox Client"
 MAINTAINER = "GigaBlue"
 SECTION = "base"
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 
 require conf/license/license-gplv2.inc
 require conf/python/python3-compileall.inc
@@ -14,7 +14,8 @@ PKGV = "1.0+git${GITPKGV}"
 VER ="1.0"
 PR = "r1"
 
-SRC_URI="git://github.com/openmips/gbremote-client.git;protocol=https"
+SRC_URI="git://github.com/openmips/gbremote-client.git;protocol=https;branch=master \
+        file://ax-python-devel-dont-check-for-distutils.patch"
 
 S = "${WORKDIR}/git"
 

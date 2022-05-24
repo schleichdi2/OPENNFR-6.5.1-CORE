@@ -2,7 +2,7 @@ SUMMARY = "snes_init wake up framme buffer for enigma2"
 MAINTAINER = "DDamir@2015"
 SECTION = "multimedia"
 PRIORITY = "optional"
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 
 DEPENDS = "directfb"
 
@@ -15,7 +15,7 @@ VER ="1.53"
 
 inherit gitpkgv pkgconfig
 
-SRC_URI = "git://github.com/emulatorE2/snes_init.git;protocol=https"
+SRC_URI = "git://github.com/emulatorE2/snes_init.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 

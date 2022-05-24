@@ -1,7 +1,7 @@
 SUMMARY = "H.264/MPEG-4 AVC video encoder"
 DESCRIPTION = "A free software library and application for encoding video streams into the H.264/MPEG-4 AVC format."
 HOMEPAGE = "http://www.videolan.org/developers/x264.html"
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 LICENSE_FLAGS = "commercial"
 LIC_FILES_CHKSUM = "file://COPYING;md5=94d55d512a9ba36caa9b7df079bae19f"
 
@@ -11,7 +11,7 @@ SRCREV = "f53fbffde7ae9b0ccae0933451413bb14aa6d15d"
 
 PV = "r2970+git${SRCPV}"
 
-SRC_URI = "git://code.videolan.org/videolan/x264;protocol=https \
+SRC_URI = "git://code.videolan.org/videolan/x264;protocol=https;branch=master \
            file://don-t-default-to-cortex-a9-with-neon.patch \
            file://Fix-X32-build-by-disabling-asm.patch \
            "

@@ -1,10 +1,12 @@
 SUMMARY = "Linux kernel for ${MACHINE}"
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 SECTION = "kernel"
 
 MODULE = "linux-3.14.28"
 
 MACHINE_KERNEL_PR:append = "oea4.2-r4"
+
+RPROVIDES:kernel-image = "kernel-image-${KERNEL_VERSION} kernel-${KERNEL_IMAGETYPE}"
 
 inherit kernel machine_kernel_pr
 

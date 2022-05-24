@@ -5,7 +5,7 @@ naming organization for the message catalogs themselves, a runtime library suppo
 a few stand-alone programs to massage in various ways the sets of translatable and already translated strings."
 HOMEPAGE = "http://www.gnu.org/software/gettext/gettext.html"
 SECTION = "libs"
-LICENSE = "GPLv3+ & LGPL-2.1+"
+LICENSE = "GPL-3.0-or-later & LGPL-2.1-or-later"
 LIC_FILES_CHKSUM = "file://COPYING;md5=c678957b0c8e964aa6c70fd77641a71e"
 
 DEPENDS = "gettext-native virtual/libiconv"
@@ -22,6 +22,7 @@ SRC_URI = "${GNU_MIRROR}/gettext/gettext-${PV}.tar.gz \
            file://0001-init-env.in-do-not-add-C-CXX-parameters.patch \
            file://mingw.patch \
            file://0001-msgmerge-29-Add-executable-file-mode-bits.patch \
+           file://0001-libtextstyle-fix-builds-with-automake-1.16.4-and-new.patch \
            "
 SRC_URI[sha256sum] = "c77d0da3102aec9c07f43671e60611ebff89a996ef159497ce8e59d075786b12"
 

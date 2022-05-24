@@ -8,7 +8,7 @@ LICENSE = "PD"
 require conf/license/license-gplv2.inc
 require conf/python/python3-compileall.inc
 
-SRC_URI = "git://github.com/oe-mirrors/SDGRadio.git;protocol=http"
+SRC_URI = "git://github.com/oe-mirrors/SDGRadio.git;branch=master;protocol=https"
 
 S = "${WORKDIR}/git"
 
@@ -18,7 +18,7 @@ PV = "1+git${SRCPV}"
 PKGV = "1+git${GITPKGV}"
 PR = "r3"
 
-inherit ${@bb.utils.contains("PYTHON_PN", "python", "distutils-openplugins", "distutils3-openplugins", d)}
+inherit ${@bb.utils.contains("PYTHON_PN", "python", "distutils-openplugins", "setuptools3-openplugins", d)}
 
 RDEPENDS:${PN} = "${PYTHON_PN}-core rtl-sdr redsea dab-cmdline-sdgradio dab-cmdline-sdgradio-pcm dab-cmdline-sdgradio-wav"
 

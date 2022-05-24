@@ -4,7 +4,7 @@ DESCRIPTION = "Allows all networked devices, VMs, containers, and applications t
             as if they all reside in the same physical data center or cloud region."
 HOMEPAGE = "https://www.zerotier.com"
 SECTION = "net"
-LICENSE = "GPLv3+"
+LICENSE = "GPL-3.0-or-later"
 LIC_FILES_CHKSUM = "file://COPYING;md5=11bbae9cacaf61dd7fc10035f6f5c68e"
 
 DEPENDS = "miniupnpd"
@@ -16,7 +16,7 @@ SRCREV = "${AUTOREV}"
 PV = "1.8.5+git${SRCPV}"
 PKGV = "1.8.5+git${GITPKGV}"
 
-SRC_URI = "git://github.com/zerotier/ZeroTierOne.git;protocol=https \
+SRC_URI = "git://github.com/zerotier/ZeroTierOne.git;protocol=https;branch=master \
         file://zerotier \
         file://0001-accept-external-ldflags.patch \
         file://0002-fix-compile-with-gcc10.patch \

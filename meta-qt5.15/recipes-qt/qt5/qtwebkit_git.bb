@@ -1,7 +1,7 @@
 require qt5.inc
 require qt5-git.inc
 
-LICENSE = "BSD & LGPLv2+ | GPL-2.0"
+LICENSE = "BSD-3-Clause & LGPL-2.0-or-later | GPL-2.0-only"
 LIC_FILES_CHKSUM = " \
     file://LICENSE.LGPLv21;md5=58a180e1cf84c756c29f782b3a485c29 \
     file://Source/JavaScriptCore/parser/Parser.h;endline=21;md5=bd69f72183a7af673863f057576e21ee \
@@ -19,7 +19,7 @@ SRC_URI += "\
     file://0008-Fix-build-with-icu-68.patch \
 "
 
-inherit cmake_qt5 perlnative
+inherit cmake_qt5 perlnative pkgconfig
 
 inherit python3native
 

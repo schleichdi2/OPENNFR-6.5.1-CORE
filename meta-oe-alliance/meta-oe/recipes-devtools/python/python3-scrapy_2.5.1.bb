@@ -1,7 +1,7 @@
 SUMMARY  = "Scrapy is a fast high-level web crawling and web scraping framework"
 HOMEPAGE = "https://scrapy.org"
 SECTION = "devel/python"
-LICENSE = "BSD"
+LICENSE = "BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=786239b0f3b0d9c9403f6eecf35820dd"
 
 RDEPENDS:${PN} = "${PYTHON_PN}-twisted \
@@ -26,6 +26,6 @@ SRC_URI[sha256sum] = "13af6032476ab4256158220e530411290b3b934dd602bb6dacacbf6d16
 
 S = "${WORKDIR}/Scrapy-${PV}"
 
-inherit setuptools3
+inherit setuptools3_legacy
 
 include ${PYTHON_PN}-package-split.inc

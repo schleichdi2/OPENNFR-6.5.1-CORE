@@ -1,7 +1,7 @@
 SUMMARY = "Music Player Daemon (mpd)"
 HOMEPAGE = "http://www.musicpd.org"
 SECTION = "console/multimedia"
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://COPYING;md5=751419260aa954499f7abaabaa882bbe"
 
 DEPENDS += "audiofile boost curl dbus expat faad2 flac icu libao \
@@ -13,18 +13,18 @@ SRCREV = "938728820b11d4544a071994fe3c63c6ab710e8e"
 PV = "0.22.6+git${SRCPV}"
 PKGV = "0.22.6+git${GITPKGV}"
 
-SRC_URI = "git://github.com/MusicPlayerDaemon/MPD \
+SRC_URI = "git://github.com/MusicPlayerDaemon/MPD;branch=master;protocol=https \
         file://mpd.conf \
         file://mpd.init \
         "
 
 S = "${WORKDIR}/git"
 
-inherit meson update-rc.d
+inherit meson pkgconfig update-rc.d
 
 INITSCRIPT_NAME = "mpd"
 
-PACKAGECONFIG = "${@bb.utils.contains('LICENSE_FLAGS_WHITELIST', 'commercial', 'aac', '', d)} \
+PACKAGECONFIG = "${@bb.utils.contains('LICENSE_FLAGS_ACCEPTED', 'commercial', 'aac', '', d)} \
                  alsa ao bzip2 curl daemon \
                  fifo flac fluidsynth id3tag iso9660 lame mad \
                  libsamplerate httpd \

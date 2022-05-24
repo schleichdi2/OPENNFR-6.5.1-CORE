@@ -1,7 +1,7 @@
 SUMMARY = "Tools for managing memory technology devices"
 HOMEPAGE = "http://www.linux-mtd.infradead.org/"
 SECTION = "base"
-LICENSE = "GPLv2+"
+LICENSE = "GPL-2.0-or-later"
 LIC_FILES_CHKSUM = "file://COPYING;md5=0636e73ff0215e8d672dc4c32c317bb3 \
                     file://include/common.h;beginline=1;endline=17;md5=ba05b07912a44ea2bf81ce409380049c"
 
@@ -12,7 +12,7 @@ DEPENDS = "zlib lzo e2fsprogs util-linux"
 PV = "2.0.0"
 
 SRCREV = "1bfee8660131fca7a18f68e9548a18ca6b3378a0"
-SRC_URI = "git://git.infradead.org/mtd-utils.git \
+SRC_URI = "git://git.infradead.org/mtd-utils.git;branch=master \
            file://add-exclusion-to-mkfs-jffs2-git-2.patch \
            file://fix-armv7-neon-alignment.patch \
            file://mtd-utils-fix-corrupt-cleanmarker-with-flash_erase--j-command.patch \

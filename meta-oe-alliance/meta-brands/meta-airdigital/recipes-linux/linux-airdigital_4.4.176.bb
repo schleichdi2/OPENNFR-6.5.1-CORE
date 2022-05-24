@@ -1,6 +1,6 @@
 DESCRIPTION = "Linux kernel for ${MACHINE}"
 SECTION = "kernel"
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://COPYING;md5=d7810fab7487fb0aad327b76f1be7cd7"
 
 KERNEL_RELEASE = "4.4.176"
@@ -20,6 +20,8 @@ SRC_URI = "http://source.mynonpublic.com/zgemma/linux-${PV}-${SRCDATE}-${ARCH}.t
 	file://findkerneldevice.sh \
     file://fix-multiple-defs-yyloc.patch \
 "
+
+SRC_URI:append:h8 = " file://0101-hi3716mv430-dts-move-aon-gpio7-gpio5.patch"
 
 # By default, kernel.bbclass modifies package names to allow multiple kernels
 # to be installed in parallel. We revert this change and rprovide the versioned

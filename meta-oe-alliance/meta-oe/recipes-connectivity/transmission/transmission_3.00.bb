@@ -1,7 +1,7 @@
 DESCRIPTION = "Transmission is a BitTorrent client w/ a built-in Ajax-Powered Webif GUI."
 SECTION = "network"
 HOMEPAGE = "www.transmissionbt.com/"
-LICENSE = "GPL-2.0"
+LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://COPYING;md5=73f535ddffcf2a0d3af4f381f84f9b33"
 
 DEPENDS = "curl libevent gnutls openssl libtool intltool-native glib-2.0-native"
@@ -23,7 +23,7 @@ INITSCRIPT_PARAMS = "defaults 60 "
 
 S = "${WORKDIR}/git"
 
-inherit autotools-brokensep gettext update-rc.d systemd
+inherit autotools-brokensep gettext pkgconfig update-rc.d systemd
 
 PACKAGECONFIG = "${@bb.utils.contains('DISTRO_FEATURES','systemd','systemd','',d)}"
 

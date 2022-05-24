@@ -1,9 +1,11 @@
 SUMMARY = "Linux kernel for ${MACHINE}"
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 SECTION = "kernel"
 
 KV = "3.14.28"
 MACHINE_KERNEL_PR:append = "11"
+
+RPROVIDES:kernel-image = "kernel-image-${KERNEL_VERSION} kernel-${KERNEL_IMAGETYPE}"
 
 inherit kernel machine_kernel_pr
 

@@ -2,7 +2,7 @@ SUMMARY = "Python Levenshtein"
 HOMEPAGE = "http://github.com/joncasdam/python-Levenshtein"
 SECTION = "devel/python"
 DEPENDS = "${PYTHON_PN}"
-LICENSE = "LGPLv2+"
+LICENSE = "LGPL-2.0-or-later"
 LIC_FILES_CHKSUM = " file://COPYING;md5=24b9569831c46d4818450b55282476b4"
 
 SRC_URI = "https://files.pythonhosted.org/packages/source/p/python-Levenshtein/python-Levenshtein-${PV}.tar.gz"
@@ -12,6 +12,6 @@ SRC_URI[sha256sum] = "033a11de5e3d19ea25c9302d11224e1a1898fe5abd23c61c7c360c2519
 
 S = "${WORKDIR}/python-Levenshtein-${PV}"
 
-inherit setuptools3
+inherit setuptools3_legacy
 
 include ${PYTHON_PN}-package-split.inc

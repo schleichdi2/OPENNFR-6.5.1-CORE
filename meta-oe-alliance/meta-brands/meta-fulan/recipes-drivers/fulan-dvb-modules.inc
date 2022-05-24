@@ -4,7 +4,7 @@ HOMEPAGE = "http://github.com/Duckbox-Developers"
 SECTION = "base"
 PRIORITY = "required"
 
-LICENSE = " GPLv2"
+LICENSE = " GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://${WORKDIR}/COPYING;md5=751419260aa954499f7abaabaa882bbe"
 
 RDEPENDS:${PN} = "stinit"
@@ -24,7 +24,7 @@ PTI_NP_PATH ?= "/data/pti_np"
 FILESEXTRAPATHS:prepend := "${THISDIR}/fulan-dvb-modules:"
 
 SRC_URI = " \
-    git://github.com/Duckbox-Developers/driver.git;protocol=https \
+    git://github.com/Duckbox-Developers/driver.git;protocol=https;branch=master \
     file://aotom_spark_procfs.patch;patch=1 \
     file://multicom-embx-osinterface-elselock.patch;patch=1 \
     file://ddbootup \
@@ -133,9 +133,24 @@ do_install() {
 
 PACKAGESPLITFUNCS:append = " handle_driver_rename "
 
+INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
+
+split_kernel_module_packages() {
+}
+
 python handle_driver_rename () {
     d.setVar("RPROVIDES:fulan-dvb-modules-${MACHINE}", "fulan-dvb-modules")
     d.setVar("RREPLACES:fulan-dvb-modules-${MACHINE}", "fulan-dvb-modules")
     d.setVar("RCONFLICTS:fulan-dvb-modules-${MACHINE}", "fulan-dvb-modules")
 }
+
 FILES:${PN}-dev += "${includedir}"
+
+FILES:${PN} += "/lib/modules/2.6.32.71_stm24_0217 \
+                /lib/modules/2.6.32.71_stm24_0217/extra/.debug \
+                /lib/modules/2.6.32.71_stm24_0217/extra/*/.debug \
+                /lib/modules/2.6.32.71_stm24_0217/extra/*/*/.debug \
+                /lib/modules/2.6.32.71_stm24_0217/extra/*/*/*/.debug \
+                /lib/modules/2.6.32.71_stm24_0217/extra/*/*/*/*/.debug \
+                /lib/modules/2.6.32.71_stm24_0217/extra/*/*/*/*/*/.debug \
+"

@@ -10,8 +10,8 @@ SRCREV = "${AUTOREV}"
 PV = "2.0+git${SRCPV}"
 PKGV = "2.0+git${GITPKGV}"
 
-SRC_URI = "git://github.com/oe-mirrors/MovieManager.git;protocol=https"
+SRC_URI = "git://github.com/oe-mirrors/MovieManager.git;protocol=https;branch=master"
 
 S="${WORKDIR}/git"
 
-inherit ${@bb.utils.contains("PYTHON_PN", "python", "distutils-openplugins", "distutils3-openplugins", d)}
+inherit ${@bb.utils.contains("PYTHON_PN", "python", "distutils-openplugins", "setuptools3-openplugins", d)}

@@ -1,4 +1,4 @@
-LICENSE = "GPLv2+ & LGPLv2+ & LGPLv2.1+"
+LICENSE = "LGPL-2.1-or-later & GPL-2.0-or-later"
 LIC_FILES_CHKSUM = "file://COPYING;md5=4fbd65380cdd255951079008b364516c"
 
 require gstreamer1.0-plugins-common.inc
@@ -27,7 +27,7 @@ PACKAGECONFIG ??= " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'bluetooth', 'bluez', '', d)} \
     ${@bb.utils.filter('DISTRO_FEATURES', 'directfb vulkan', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'wayland', '', d)} \
-    bz2 closedcaption curl dash dtls hls rsvg sbc smoothstreaming sndfile \
+    bz2 closedcaption curl dash dtls hls sbc smoothstreaming sndfile \
     ttml uvch264 webp \
     assrender dts faac faad libde265 libmms neon opusparse rtmp \
 "

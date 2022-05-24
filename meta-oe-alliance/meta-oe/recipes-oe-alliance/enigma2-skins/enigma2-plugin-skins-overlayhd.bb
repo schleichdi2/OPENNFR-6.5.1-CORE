@@ -3,7 +3,7 @@ SUMMARY = "OverlayHD skin and management plugin for Enigma2 PVRs by IanSav"
 SECTION = "skins"
 PRIORITY = "optional"
 MAINTAINER = "IanSav"
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 HOMEPAGE = "https://github.com/IanSav"
 SOURCE = "https://github.com/IanSav/OverlayHD"
 
@@ -15,7 +15,7 @@ SRCREV = "${AUTOREV}"
 PV = "git${SRCPV}"
 PKGV = "${GITPKGVTAG}"
 
-SRC_URI = "git://github.com/IanSav/OverlayHD.git;protocol=https"
+SRC_URI = "git://github.com/IanSav/OverlayHD.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 

@@ -1,7 +1,7 @@
 SUMMARY = "Ralink 8812AU/8821AU v4.3.14"
 HOMEPAGE = "http://www.realtek.com.tw"
 SECTION = "kernel/modules"
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://ifcfg-wlan0;md5=6061d24ec65e191716f64bb3fe580790"
 
 inherit module
@@ -14,7 +14,7 @@ SRC_URI = "http://source.mynonpublic.com/rtl8812AU-driver-4.3.14.zip \
     file://0001-Add-support-for-kernels-4.8.patch \
 "
 
-SRC_URI:append:sh4 = "file://fix_sh4_build.patch"
+SRC_URI:append:sh4 = " file://fix_sh4_build.patch"
 
 EXTRA_OEMAKE = "LINUX_SRC=${STAGING_KERNEL_DIR} KDIR=${STAGING_KERNEL_DIR}"
 

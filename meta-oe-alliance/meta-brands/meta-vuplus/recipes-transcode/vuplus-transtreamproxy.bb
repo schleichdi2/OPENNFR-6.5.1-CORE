@@ -1,6 +1,6 @@
 SUMMARY = "streamproxy manages streaming data to a Mobile device using enigma2"
 PRIORITY = "required"
-LICENSE = "GPLv3"
+LICENSE = "GPL-3.0-only"
 LIC_FILES_CHKSUM = "file://COPYING;md5=d32239bcb673463ab874e80d47fae504"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
@@ -17,7 +17,7 @@ RPROVIDES:${PN} += "virtual/transtreamproxy"
 DEPENDS = "boost virtual/inetd"
 RDEPENDS:${PN} += "virtual/inetd"
 
-SRC_URI = "git://github.com/oe-mirrors/filestreamproxy.git;protocol=http;branch=transtreamproxy"
+SRC_URI = "git://github.com/oe-mirrors/filestreamproxy.git;protocol=http;branch=transtreamproxy;protocol=https"
 
 inherit autotools
 

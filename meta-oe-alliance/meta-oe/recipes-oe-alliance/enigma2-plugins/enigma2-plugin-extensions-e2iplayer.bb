@@ -2,11 +2,11 @@ SUMMARY = "E2iPlayer"
 DESCRIPTION = "Watch Videos Online"
 HOMEPAGE = "https://gitlab.com/iptvplayer-for-e2/"
 SECTION = "multimedia"
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 require conf/license/license-gplv2.inc
 require conf/python/python3-compileall.inc
 
-SRC_URI = "git://github.com/oe-mirrors/e2iplayer.git;protocol=http;branch=python3"
+SRC_URI = "git://github.com/oe-mirrors/e2iplayer.git;protocol=http;branch=python3;protocol=https"
 
 S = "${WORKDIR}/git"
 
@@ -16,7 +16,7 @@ PV = "git${SRCPV}"
 PKGV = "git${GITPKGV}"
 PR = "r0"
 
-inherit ${@bb.utils.contains("PYTHON_PN", "python", "distutils-openplugins", "distutils3-openplugins", d)} gettext
+inherit ${@bb.utils.contains("PYTHON_PN", "python", "distutils-openplugins", "setuptools3-openplugins", d)} gettext
 
 DEPENDS = "gettext-native ${PYTHON_PN}-future-native ${PYTHON_PN}"
 RRECOMMENDS:${PN} = " \

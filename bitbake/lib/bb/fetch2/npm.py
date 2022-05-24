@@ -52,9 +52,13 @@ def npm_filename(package, version):
     """Get the filename of a npm package"""
     return npm_package(package) + "-" + version + ".tgz"
 
-def npm_localfile(package, version):
+def npm_localfile(package, version=None):
     """Get the local filename of a npm package"""
-    return os.path.join("npm2", npm_filename(package, version))
+    if version is not None:
+        filename = npm_filename(package, version)
+    else:
+        filename = package
+    return os.path.join("npm2", filename)
 
 def npm_integrity(integrity):
     """
@@ -72,23 +76,19 @@ def npm_unpack(tarball, destdir, d):
     cmd += " --delay-directory-restore"
     cmd += " --strip-components=1"
     runfetchcmd(cmd, d, workdir=destdir)
-    runfetchcmd("chmod -R +X %s" % (destdir), d, quiet=True, workdir=destdir)
+    runfetchcmd("chmod -R +X '%s'" % (destdir), d, quiet=True, workdir=destdir)
 
 class NpmEnvironment(object):
     """
     Using a npm config file seems more reliable than using cli arguments.
     This class allows to create a controlled environment for npm commands.
     """
-    def __init__(self, d, configs=None, npmrc=None):
+    def __init__(self, d, configs=[], npmrc=None):
         self.d = d
 
-        if configs:
-            self.user_config = tempfile.NamedTemporaryFile(mode="w", buffering=1)
-            self.user_config_name = self.user_config.name
-            for key, value in configs:
-                self.user_config.write("%s=%s\n" % (key, value))
-        else:
-            self.user_config_name = "/dev/null"
+        self.user_config = tempfile.NamedTemporaryFile(mode="w", buffering=1)
+        for key, value in configs:
+            self.user_config.write("%s=%s\n" % (key, value))
 
         if npmrc:
             self.global_config_name = npmrc
@@ -109,7 +109,7 @@ class NpmEnvironment(object):
                 workdir = tmpdir
 
             def _run(cmd):
-                cmd = "NPM_CONFIG_USERCONFIG=%s " % (self.user_config_name) + cmd
+                cmd = "NPM_CONFIG_USERCONFIG=%s " % (self.user_config.name) + cmd
                 cmd = "NPM_CONFIG_GLOBALCONFIG=%s " % (self.global_config_name) + cmd
                 return runfetchcmd(cmd, d, workdir=workdir)
 
@@ -161,7 +161,7 @@ class Npm(FetchMethod):
         # Using the 'downloadfilename' parameter as local filename
         # or the npm package name.
         if "downloadfilename" in ud.parm:
-            ud.localfile = d.expand(ud.parm["downloadfilename"])
+            ud.localfile = npm_localfile(d.expand(ud.parm["downloadfilename"]))
         else:
             ud.localfile = npm_localfile(ud.package, ud.version)
 

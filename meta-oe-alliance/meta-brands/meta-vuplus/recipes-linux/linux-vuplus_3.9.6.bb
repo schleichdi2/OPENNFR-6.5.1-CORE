@@ -1,7 +1,9 @@
 SUMMARY = "Linux kernel for ${MACHINE}"
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 SECTION = "kernel"
 KV = "3.9.6"
+
+RPROVIDES:kernel-image = "kernel-image-${KERNEL_VERSION} kernel-${KERNEL_IMAGETYPE}"
 
 inherit kernel machine_kernel_pr
 
@@ -62,7 +64,7 @@ SRC_URI = "http://code.vuplus.com/download/release/kernel/stblinux-${KV}.tar.bz2
     file://move-default-dialect-to-SMB2.patch \
 "
 
-SRC_URI:append:vuultimo = "file://fixed_mtd.patch "
+SRC_URI:append:vuultimo = " file://fixed_mtd.patch "
 
 S = "${WORKDIR}/linux"
 B = "${WORKDIR}/build"

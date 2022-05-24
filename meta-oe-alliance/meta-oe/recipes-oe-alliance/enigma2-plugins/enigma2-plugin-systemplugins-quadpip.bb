@@ -3,7 +3,7 @@ DESCRIPTION = "QuadPiP plugin for supported receivers"
 require conf/license/license-gplv2.inc
 require conf/python/python3-compileall.inc
 
-inherit gitpkgv ${@bb.utils.contains("PYTHON_PN", "python", "distutils-openplugins", "distutils3-openplugins", d)}
+inherit gitpkgv ${@bb.utils.contains("PYTHON_PN", "python", "distutils-openplugins", "setuptools3-openplugins", d)}
 
 SRCREV = "${AUTOREV}"
 PV = "git${SRCPV}"
@@ -11,4 +11,4 @@ PKGV = "git${GITPKGV}"
 PR = "r6"
 
 S = "${WORKDIR}/git"
-SRC_URI = "git://github.com/oe-alliance/enigma2-plugin-systemplugins-quadpip.git;protocol=http"
+SRC_URI = "git://github.com/oe-alliance/enigma2-plugin-systemplugins-quadpip.git;protocol=http;branch=master"

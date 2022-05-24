@@ -1,6 +1,6 @@
 MODULE = "OpenWebif"
 DESCRIPTION = "Control your receiver with a browser"
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://README;firstline=10;lastline=12;md5=26abba37d1c2fcbf96a087ceb8e1db86"
 
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
@@ -24,7 +24,7 @@ RDEPENDS:${PN} = "\
 	oe-alliance-branding \
 	"
 
-inherit gittag ${@bb.utils.contains("PYTHON_PN", "python", "distutils-openplugins", "distutils3-openplugins", d)} gettext
+inherit gittag ${@bb.utils.contains("PYTHON_PN", "python", "distutils-openplugins", "setuptools3-openplugins", d)} gettext
 
 DISTUTILS_INSTALL_ARGS = "--root=${D} --install-lib=${libdir}/enigma2/python/Plugins"
 
@@ -33,8 +33,7 @@ PV = "git${SRCPV}"
 PKGV = "${GITPKGVTAG}"
 
 SRC_URI = "git://github.com/E2OpenPlugins/e2openplugin-${MODULE}.git;protocol=https;branch=${BRANCH} \
-           file://transcoding.py \
-	   file://0001-add-fileupload.patch"
+           file://transcoding.py"
 
 S="${WORKDIR}/git"
 

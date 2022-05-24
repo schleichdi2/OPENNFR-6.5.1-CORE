@@ -1,13 +1,13 @@
 SUMMARY = "Kodi Media Center"
 
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://LICENSE.md;md5=7b423f1c9388eae123332e372451a4f7"
 
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}-19:"
 
 PACKAGE_ARCH = "${MACHINE}"
 
-inherit cmake gettext ${PYTHON_PN}-dir ${PYTHON_PN}native
+inherit cmake gettext pkgconfig ${PYTHON_PN}-dir ${PYTHON_PN}native
 
 DEPENDS += " \
             fmt \
@@ -17,6 +17,8 @@ DEPENDS += " \
             crossguid \
             libdvdnav libdvdcss libdvdread \
             ffmpeg \
+            autoconf-native \
+            automake-native \
             git-native \
             curl-native \
             gperf-native \
@@ -37,7 +39,7 @@ DEPENDS += " \
             faad2 \
             fontconfig \
             fribidi \
-            glib-2.0 \ 
+            glib-2.0 \
             giflib \
             libass \
             libcdio \
@@ -81,7 +83,7 @@ DEPENDS += " \
 SRCREV = "e12e66e019af29ba9d5f5a2614315b15a138b81a"
 
 # 'patch' doesn't support binary diffs
-PATCHTOOL = "git"
+#PATCHTOOL = "git"
 
 PR = "r0"
 
@@ -163,6 +165,9 @@ KODI_DISABLE_INTERNAL_LIBRARIES = " \
   -DENABLE_INTERNAL_RapidJSON=OFF \
   -DENABLE_INTERNAL_FFMPEG=OFF \
 "
+
+# Allow downloads during internals build
+do_compile[network] = "1"
 
 EXTRA_OECMAKE = " \
     ${KODI_ARCH} \

@@ -1,8 +1,8 @@
-PV = "4.15.2"
+PV = "4.15.6"
 HOMEPAGE = "https://www.samba.org/"
 SECTION = "console/network"
 
-LICENSE = "GPL-3.0+ & LGPL-3.0+ & GPL-2.0+"
+LICENSE = "GPL-3.0-or-later & LGPL-3.0-or-later & GPL-2.0-or-later"
 LIC_FILES_CHKSUM = "file://COPYING;md5=d32239bcb673463ab874e80d47fae504 \
                     file://${COREBASE}/meta/files/common-licenses/LGPL-3.0-or-later;md5=c51d3eef3be114124d11349ca0d7e117 \
                     file://${COREBASE}/meta/files/common-licenses/GPL-2.0-or-later;md5=fed54355545ffd980b814dab4a3b312c"
@@ -57,6 +57,6 @@ SRC_URI:append:sh4 = " \
            file://209-strtoull.patch \
           "
 
-SRC_URI[md5sum] = "2245f5b1258b782702ad644c5e9d2857"
-SRC_URI[sha256sum] = "6281d7c6a8c49f7990a9f249a66784b35180fe249557ef1147cd8a6d166a2113"
+SRC_URI[md5sum] = "cd7023dc78bff281a57b219a48ddcca3"
+SRC_URI[sha256sum] = "0575b999a9048445820428dc540ba8a9527ce596fa66af02ea2ba1ea9578bcb4"
 UPSTREAM_CHECK_REGEX = "samba\-(?P<pver>4\.15(\.\d+)+).tar.gz"

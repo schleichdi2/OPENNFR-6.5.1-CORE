@@ -2,7 +2,7 @@ SUMMARY = "udpxy"
 MAINTAINER = "Pavel V. Cherenkov"
 SECTION = "multimedia"
 PRIORITY = "optional"
-LICENSE = "GPLv3"
+LICENSE = "GPL-3.0-only"
 LIC_FILES_CHKSUM = "file://README;md5=f210c6f38d8c7db12fdfd009dcd9438c"
 LIC_FILES_CHKSUM:sh4 = "file://README;md5=b0c7b851d6d40e5194e73ca66db0e257"
 inherit gitpkgv
@@ -14,7 +14,7 @@ PKGV = "1+git${GITPKGV}"
 
 inherit autotools-brokensep pkgconfig
 
-SRC_URI = "git://github.com/pcherenkov/udpxy.git;protocol=https file://udpxy.sh"
+SRC_URI = "git://github.com/pcherenkov/udpxy.git;protocol=https;branch=master file://udpxy.sh"
 CFLAGS:append = " -Wno-format-truncation "
 
 S = "${WORKDIR}/git/chipmunk"

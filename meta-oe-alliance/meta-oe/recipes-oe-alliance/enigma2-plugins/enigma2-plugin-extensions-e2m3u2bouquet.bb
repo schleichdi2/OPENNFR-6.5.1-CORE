@@ -4,7 +4,7 @@ MAINTAINER = "Suls"
 HOMEPAGE = "https://www.suls.co.uk/"
 SECTION = "extra"
 PRIORITY = "optional"
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 require conf/license/license-gplv2.inc
 require conf/python/python3-compileall.inc
 
@@ -20,7 +20,7 @@ PR = "r1"
 
 INSANE_SKIP:${PN} += "already-stripped ldflags"
 
-SRC_URI="git://github.com/oe-mirrors/e2m3u2bouquet-plugin.git;protocol=https"
+SRC_URI="git://github.com/oe-mirrors/e2m3u2bouquet-plugin.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 

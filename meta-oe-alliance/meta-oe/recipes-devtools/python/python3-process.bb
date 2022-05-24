@@ -8,7 +8,7 @@ require conf/python/python3-compileall.inc
 
 require conf/license/license-gplv2.inc
 
-inherit distutils3-base
+inherit setuptools3-base
 
 PV = "1.0"
 PKGV = "1.0"

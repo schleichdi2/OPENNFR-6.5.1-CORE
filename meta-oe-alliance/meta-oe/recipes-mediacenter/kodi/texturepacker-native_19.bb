@@ -21,10 +21,10 @@ SRCREV = "f44fdfbf675f30c01e7639177a34544e6a6b9dad"
 #PATCHTOOL = "git"
 
 PV = "19.0+gitr${SRCPV}"
-SRC_URI = "git://github.com/xbmc/xbmc.git;branch=master \
+SRC_URI = "git://github.com/xbmc/xbmc.git;branch=master;protocol=https \
           "
 
-inherit autotools-brokensep gettext native
+inherit autotools-brokensep gettext pkgconfig native
 
 S = "${WORKDIR}/git/tools/depends/native/TexturePacker/src"
 

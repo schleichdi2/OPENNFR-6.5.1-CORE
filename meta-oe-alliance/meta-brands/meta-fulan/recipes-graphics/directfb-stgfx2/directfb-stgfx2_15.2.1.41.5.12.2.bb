@@ -1,13 +1,13 @@
 HOMEPAGE = "https://github.com/PLi-metas/stgfx2"
 SECTION = "kernel/modules"
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 require conf/license/license-gplv2.inc
 
 DEPENDS = "directfb fulan-dvb-modules-${MACHINE}"
 
 inherit module autotools pkgconfig
 
-SRC_URI = "git://github.com/OpenVisionE2/stgfx2.git;protocol=https"
+SRC_URI = "git://github.com/OpenVisionE2/stgfx2.git;branch=master;protocol=https"
 SRCREV = "${AUTOREV}"
 
 S = "${WORKDIR}/git"

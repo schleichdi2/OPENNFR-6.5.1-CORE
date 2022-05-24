@@ -1,6 +1,6 @@
 SUMMARY = "Open implementation of the AACS specification"
 SECTION = "libs/multimedia"
-LICENSE = "LGPLv2.1+"
+LICENSE = "LGPL-2.1-or-later"
 LIC_FILES_CHKSUM = "file://COPYING;md5=4b54a1fd55a448865a0b32d41598759d"
 
 DEPENDS = "libgcrypt libgpg-error bison-native"
@@ -11,7 +11,7 @@ SRCREV = "${AUTOREV}"
 PV = "0.10.0+git${SRCPV}"
 PKGV = "0.10.0+git${GITPKGV}"
 
-SRC_URI = "git://code.videolan.org/videolan/${BPN}.git;protocol=https \
+SRC_URI = "git://code.videolan.org/videolan/${BPN}.git;protocol=https;branch=master \
         file://libgcrypt-gpg-error-use-pkgconfig.patch"
 
 SRC_URI:append:sh4 = " file://add-missing-includes-for-gcc-4-9-4.patch"

@@ -35,6 +35,7 @@ RRECOMMENDS:${PN} = " \
 	${@bb.utils.contains("MACHINE_FEATURES", "videoenhancement", "", "enigma2-plugin-systemplugins-videoenhancement", d)} \
 	${@bb.utils.contains("MACHINE_FEATURES", "chromiumos", "enigma2-plugin-extensions-chromium", "", d)} \ 
 	${@bb.utils.contains("TARGET_ARCH", "arm", "glibc-compat", "", d)} \
+        ${@bb.utils.contains("MACHINE_FEATURES", "fcc", "enigma2-plugin-systemplugins-fastchannelchange", "", d)} \
 	"
 
 GST_BASE_DVD = "\

@@ -1,6 +1,6 @@
 SUMMARY = "Openwrt DHCPv6 Client"
 HOMEPAGE = "https://git.lede-project.org/?p=project/odhcp6c.git;a=summary"
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 require conf/license/license-gplv2.inc
 DEPENDS = "cmake-native"
 
@@ -10,7 +10,7 @@ SRCREV = "${AUTOREV}"
 PV = "git${SRCPV}"
 PKGV = "git${GITPKGV}"
 
-SRC_URI = "git://github.com/openwrt/odhcp6c.git;protocol=https \
+SRC_URI = "git://github.com/openwrt/odhcp6c.git;protocol=https;branch=master \
            file://ifup \
            file://ifdown \
            file://odhcp6c-update \

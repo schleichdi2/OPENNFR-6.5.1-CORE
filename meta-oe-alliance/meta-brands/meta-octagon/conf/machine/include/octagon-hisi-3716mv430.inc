@@ -34,14 +34,15 @@ MACHINE_FEATURES += "switchoff hdmicec skins1080 alsa qtstalker"
 IMAGE_CLASSES  += "octagon-ubi_image"
 IMAGE_FSTYPES += "octagonubi"
 
-MKUBIFS_ARGS = "-m 2048 -e 126976 -c 3800"
-UBINIZE_ARGS = "-m 2048 -p 128KiB -s 2048"
+MKUBIFS_ARGS = "-m 4096 -e 253952 -c 1900"
+UBINIZE_ARGS = "-m 4096 -p 256KiB -s 4096"
 UBI_VOLNAME = "rootfs"
 
 TARGET_ARCH = "arm"
 DEFAULTTUNE = "cortexa7hf"
 
 PREFERRED_VERSION_linux-octagon = "${LINUX_VERSION}"
+PREFERRED_VERSION_python3-cryptography = "3.4.8"
 
 PREFERRED_PROVIDER_virtual/kernel = "linux-octagon"
 PREFERRED_PROVIDER_virtual/blindscan-dvbs = "octagon-blindscan-${SOC_FAMILY}"
@@ -82,8 +83,8 @@ IMAGE_CMD:octagonubi:append = "\
     mkupdate -s 00000003-00000001-01010101 -f ${DEPLOY_DIR_IMAGE}/${MACHINE}-partitions/nand_partitions.xml -d ${DEPLOY_DIR_IMAGE}/usb_update.bin; \ 
     cd ${DEPLOY_DIR_IMAGE}; \
     cp ${IMGDEPLOYDIR}/${IMAGE_NAME}.rootfs.manifest ${IMAGE_NAME}_usb.zip.manifest; \
-    zip -j ${IMAGE_NAME}_recovery_nand.zip ${DEPLOY_DIR_IMAGE}/usb_update.bin ${DEPLOY_DIR_IMAGE}/${IMAGEDIR}/imageversion ${DEPLOY_DIR_IMAGE}/${MACHINE}-partitions/bootargs.bin ${DEPLOY_DIR_IMAGE}/${MACHINE}-partitions/fastboot.bin ${DEPLOY_DIR_IMAGE}/${MACHINE}-partitions/apploader.bin; \
-    zip ${IMAGE_NAME}_nand.zip ${IMAGEDIR}/*; \
+    zip -j ${IMAGE_NAME}_recovery.zip ${DEPLOY_DIR_IMAGE}/usb_update.bin ${DEPLOY_DIR_IMAGE}/${IMAGEDIR}/imageversion ${DEPLOY_DIR_IMAGE}/${MACHINE}-partitions/bootargs.bin ${DEPLOY_DIR_IMAGE}/${MACHINE}-partitions/fastboot.bin ${DEPLOY_DIR_IMAGE}/${MACHINE}-partitions/apploader.bin; \
+    zip ${IMAGE_NAME}_multi.zip ${IMAGEDIR}/*; \
     rm -f ${DEPLOY_DIR_IMAGE}/*.ubi; \
     rm -f ${DEPLOY_DIR_IMAGE}/*.ubifs; \
     rm -f ${DEPLOY_DIR_IMAGE}/*.manifest; \

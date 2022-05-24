@@ -3,7 +3,7 @@ HOMEPAGE = "http://www.webkitgtk.org/"
 BUGTRACKER = "http://bugs.webkit.org/"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-LICENSE = "BSD & LGPLv2+"
+LICENSE = "BSD-3-Clause & LGPL-2.0-or-later"
 LIC_FILES_CHKSUM = "\
 	file://Source/WebCore/rendering/RenderApplet.h;endline=22;md5=fb9694013ad71b78f8913af7a5959680 \
 	file://Source/WebKit/gtk/webkit/webkit.h;endline=21;md5=b4fbe9f4a944f1d071dba1d2c76b3351 \
@@ -19,7 +19,7 @@ PKGV = "1.1+git${GITPKGV}"
 VER ="1.1"
 PR = "r0"
 
-SRC_URI = "git://github.com/oe-alliance/webkit.org.git;protocol=https \
+SRC_URI = "git://github.com/oe-alliance/webkit.org.git;protocol=https;branch=master \
         file://0001-fix-build-with-bison-3.7.patch \
         file://0002-fix-build-with-gcc11.patch"
 

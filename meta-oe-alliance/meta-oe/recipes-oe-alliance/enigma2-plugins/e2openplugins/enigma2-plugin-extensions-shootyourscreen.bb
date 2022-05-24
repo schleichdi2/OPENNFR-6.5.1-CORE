@@ -5,10 +5,10 @@ RDEPENDS:${PN} = "aio-grab"
 
 inherit gitpkgv
 SRCREV = ""
-PV = "0.2+git${SRCPV}"
-PKGV = "0.2+git${GITPKGV}"
+PV = "0.3+git${SRCPV}"
+PKGV = "0.3+git${GITPKGV}"
 PR = "r0"
 
-require openplugins-distutils.inc
+require openplugins-setuptools3.inc
 
 require assume-gplv2.inc

@@ -8,7 +8,7 @@ standard, which allows for flexible loading of multiple boot images."
 HOMEPAGE = "http://www.gnu.org/software/grub/"
 SECTION = "bootloaders"
 
-LICENSE = "GPLv3"
+LICENSE = "GPL-3.0-only"
 LIC_FILES_CHKSUM = "file://COPYING;md5=d32239bcb673463ab874e80d47fae504"
 
 CVE_PRODUCT = "grub2"
@@ -20,12 +20,16 @@ SRC_URI = "${GNU_MIRROR}/grub/grub-${PV}.tar.gz \
            file://0001-grub.d-10_linux.in-add-oe-s-kernel-name.patch \
            file://determinism.patch \
            file://0001-RISC-V-Restore-the-typcast-to-long.patch \
+           file://CVE-2021-3981-grub-mkconfig-Restore-umask-for-the-grub.cfg.patch \
+           file://0001-configure.ac-Use-_zicsr_zifencei-extentions-on-riscv.patch \
 "
 
 SRC_URI[sha256sum] = "23b64b4c741569f9426ed2e3d0e6780796fca081bee4c99f62aa3f53ae803f5f"
 
 # Applies only to RHEL
-CVE_CHECK_WHITELIST += "CVE-2019-14865"
+CVE_CHECK_IGNORE += "CVE-2019-14865"
+# Applies only to SUSE
+CVE_CHECK_IGNORE += "CVE-2021-46705"
 
 DEPENDS = "flex-native bison-native gettext-native"
 

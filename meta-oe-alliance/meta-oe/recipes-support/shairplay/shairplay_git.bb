@@ -1,11 +1,11 @@
 DESCRIPTION = "Free portable AirPlay server implementation"
 
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=7fff59c88f17faa814f26f26b06a7100"
 
 inherit autotools pkgconfig
 
-SRC_URI = "git://github.com/juhovh/shairplay.git"
+SRC_URI = "git://github.com/juhovh/shairplay.git;branch=master;protocol=https"
 
 SRCREV="498bc5bcdd305e04721f94a04b9f26a7da72673f"
 

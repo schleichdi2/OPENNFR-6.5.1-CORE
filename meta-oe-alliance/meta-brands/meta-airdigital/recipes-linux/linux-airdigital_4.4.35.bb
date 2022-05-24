@@ -1,6 +1,6 @@
 DESCRIPTION = "Linux kernel for ${MACHINE}"
 SECTION = "kernel"
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://COPYING;md5=d7810fab7487fb0aad327b76f1be7cd7"
 
 KERNEL_RELEASE = "4.4.35"
@@ -37,16 +37,16 @@ SRC_URI = "http://source.mynonpublic.com/zgemma/linux-${PV}-${SRCDATE}-${ARCH}.t
     file://fix-multiple-defs-yyloc.patch \
 "
 
-SRC_URI:append:h9 += " \
+SRC_URI:append:h9 = " \
 	file://0001-mmc-switch-1.8V.patch \
 "
-SRC_URI:append:h9se += " \
+SRC_URI:append:h9se = " \
 	file://0001-mmc-switch-1.8V.patch \
 "
-SRC_URI:append:i55plus += " \
+SRC_URI:append:i55plus = " \
 	file://0001-mmc-switch-1.8V.patch \
 "
-SRC_URI:append:i55se += " \
+SRC_URI:append:i55se = " \
 	file://0001-mmc-switch-1.8V.patch \
 "
 

@@ -1,10 +1,12 @@
 DESCRIPTION = "Linux kernel for ${MACHINE}"
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 SECTION = "kernel"
 
 KV = "4.1.20"
 DATETIME = "20180321"
 MACHINE_KERNEL_PR:append = "1"
+
+RPROVIDES:kernel-image = "kernel-image-${KERNEL_VERSION} kernel-${KERNEL_IMAGETYPE}"
 
 inherit kernel machine_kernel_pr
 

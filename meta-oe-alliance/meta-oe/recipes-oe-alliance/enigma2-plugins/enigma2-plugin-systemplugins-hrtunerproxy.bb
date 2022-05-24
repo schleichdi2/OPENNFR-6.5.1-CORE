@@ -5,14 +5,14 @@ LICENSE = "Proprietary"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=a23a74b3f4caf9616230789d94217acb"
 require conf/python/python3-compileall.inc
 
-inherit gitpkgv ${@bb.utils.contains("PYTHON_PN", "python", "distutils-openplugins", "distutils3-openplugins", d)} gettext
+inherit gitpkgv ${@bb.utils.contains("PYTHON_PN", "python", "distutils-openplugins", "setuptools3-openplugins", d)} gettext
 
 SRCREV = "${AUTOREV}"
 PV = "git${SRCPV}"
 PKGV = "${GITPKGVTAG}"
 PR = "r1"
 
-SRC_URI = "git://github.com/OpenViX/HRTunerProxy.git;protocol=https"
+SRC_URI = "git://github.com/OpenViX/HRTunerProxy.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 

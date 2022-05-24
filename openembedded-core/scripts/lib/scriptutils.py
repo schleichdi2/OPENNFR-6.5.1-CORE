@@ -18,7 +18,8 @@ import sys
 import tempfile
 import threading
 import importlib
-from importlib import machinery
+import importlib.machinery
+import importlib.util
 
 class KeepAliveStreamHandler(logging.StreamHandler):
     def __init__(self, keepalive=True, **kwargs):
@@ -82,7 +83,9 @@ def load_plugins(logger, plugins, pluginpath):
         logger.debug('Loading plugin %s' % name)
         spec = importlib.machinery.PathFinder.find_spec(name, path=[pluginpath] )
         if spec:
-            return spec.loader.load_module()
+            mod = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(mod)
+            return mod
 
     def plugin_name(filename):
         return os.path.splitext(os.path.basename(filename))[0]
@@ -176,6 +179,7 @@ def fetch_url(tinfoil, srcuri, srcrev, destdir, logger, preserve_tmp=False, mirr
                 f.write('BB_STRICT_CHECKSUM = "ignore"\n')
                 f.write('SRC_URI = "%s"\n' % srcuri)
                 f.write('SRCREV = "%s"\n' % srcrev)
+                f.write('PV = "0.0+${SRCPV}"\n')
                 f.write('WORKDIR = "%s"\n' % tmpworkdir)
                 # Set S out of the way so it doesn't get created under the workdir
                 f.write('S = "%s"\n' % os.path.join(tmpdir, 'emptysrc'))

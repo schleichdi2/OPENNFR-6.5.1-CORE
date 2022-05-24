@@ -1,7 +1,9 @@
 SUMMARY = "Linux kernel for ${MACHINE}"
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 SECTION = "kernel"
 KV = "3.13.5"
+
+RPROVIDES:kernel-image = "kernel-image-${KERNEL_VERSION} kernel-${KERNEL_IMAGETYPE}"
 
 inherit kernel machine_kernel_pr
 
@@ -57,13 +59,13 @@ SRC_URI = "http://code.vuplus.com/download/release/kernel/stblinux-${KV}.tar.bz2
     file://move-default-dialect-to-SMB3.patch \
     "
 
-SRC_URI:append:vuduo2 = "file://brcm_s3_wol.patch;patch=1;pnum=1 "
-SRC_URI:append:vusolose = "file://brcm_s3_wol.patch;patch=1;pnum=1 \
+SRC_URI:append:vuduo2 = " file://brcm_s3_wol.patch;patch=1;pnum=1 "
+SRC_URI:append:vusolose = " file://brcm_s3_wol.patch;patch=1;pnum=1 \
                           file://linux_mtd_bbt_maxblock.patch"
 
-SRC_URI:append:vusolo2 = "file://linux-bcm_ethernet.patch;patch=1;pnum=1 "
+SRC_URI:append:vusolo2 = " file://linux-bcm_ethernet.patch;patch=1;pnum=1 "
 
-SRC_URI:append:vuzero = "file://linux_nand_bcm.patch "
+SRC_URI:append:vuzero = " file://linux_nand_bcm.patch "
 
 S = "${WORKDIR}/linux"
 B = "${WORKDIR}/build"

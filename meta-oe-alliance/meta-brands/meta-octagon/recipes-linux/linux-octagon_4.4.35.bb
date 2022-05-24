@@ -1,6 +1,6 @@
 DESCRIPTION = "Linux kernel for ${MACHINE}"
 SECTION = "kernel"
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 
 KERNEL_RELEASE = "4.4.35"
 SRCDATE = "20181224"
@@ -42,7 +42,7 @@ SRC_URI += "http://source.mynonpublic.com/octagon/octagon-linux-${PV}-${SRCDATE}
     file://fix-multiple-defs-yyloc.patch \
 "
 
-SRC_URI:append:sf8008m += " \
+SRC_URI:append:sf8008m = " \
 	file://fix-index-for-usb.patch \
 "
 

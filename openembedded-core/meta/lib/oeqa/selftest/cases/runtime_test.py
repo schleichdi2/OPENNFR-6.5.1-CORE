@@ -4,16 +4,15 @@
 
 from oeqa.selftest.case import OESelftestTestCase
 from oeqa.utils.commands import runCmd, bitbake, get_bb_var, get_bb_vars, runqemu
-from oeqa.utils.sshcontrol import SSHControl
+from oeqa.core.decorator import OETestTag
 import os
-import re
 import tempfile
-import shutil
 import oe.lsb
 from oeqa.core.decorator.data import skipIfNotQemu
 
 class TestExport(OESelftestTestCase):
 
+    @OETestTag("runqemu")
     def test_testexport_basic(self):
         """
         Summary: Check basic testexport functionality with only ping test enabled.
@@ -106,6 +105,7 @@ class TestExport(OESelftestTestCase):
             self.assertEqual(0, result.status, "Couldn't run tar from SDK")
 
 
+@OETestTag("runqemu")
 class TestImage(OESelftestTestCase):
 
     def test_testimage_install(self):
@@ -213,17 +213,21 @@ class TestImage(OESelftestTestCase):
         """
         import subprocess, os
 
-        render_hint = """If /dev/dri/renderD* is absent due to lack of suitable GPU, 'modprobe vgem' will create one sutable for mesa llvmpipe sofware renderer."""
+        distro = oe.lsb.distro_identifier()
+        if distro and distro in ['debian-9', 'debian-10', 'centos-7', 'centos-8', 'ubuntu-16.04', 'ubuntu-18.04', 'almalinux-8.5']:
+            self.skipTest('virgl headless cannot be tested with %s' %(distro))
+
+        render_hint = """If /dev/dri/renderD* is absent due to lack of suitable GPU, 'modprobe vgem' will create one suitable for mesa llvmpipe software renderer."""
         try:
             content = os.listdir("/dev/dri")
             if len([i for i in content if i.startswith('render')]) == 0:
-                self.skipTest("No render nodes found in /dev/dri: %s. %s" %(content, render_hint))
+                self.fail("No render nodes found in /dev/dri: %s. %s" %(content, render_hint))
         except FileNotFoundError:
-            self.skipTest("/dev/dri directory does not exist; no render nodes available on this machine. %s" %(render_hint))
+            self.fail("/dev/dri directory does not exist; no render nodes available on this machine. %s" %(render_hint))
         try:
             dripath = subprocess.check_output("pkg-config --variable=dridriverdir dri", shell=True)
         except subprocess.CalledProcessError as e:
-            self.skipTest("Could not determine the path to dri drivers on the host via pkg-config.\nPlease install Mesa development files (particularly, dri.pc) on the host machine.")
+            self.fail("Could not determine the path to dri drivers on the host via pkg-config.\nPlease install Mesa development files (particularly, dri.pc) on the host machine.")
         qemu_distrofeatures = get_bb_var('DISTRO_FEATURES', 'qemu-system-native')
         features = 'INHERIT += "testimage"\n'
         if 'opengl' not in qemu_distrofeatures:
@@ -236,6 +240,7 @@ class TestImage(OESelftestTestCase):
         bitbake('core-image-minimal')
         bitbake('-c testimage core-image-minimal')
 
+@OETestTag("runqemu")
 class Postinst(OESelftestTestCase):
 
     def init_manager_loop(self, init_manager):
@@ -276,7 +281,7 @@ class Postinst(OESelftestTestCase):
 
 
 
-    @skipIfNotQemu('qemuall', 'Test only runs in qemu')
+    @skipIfNotQemu()
     def test_postinst_rootfs_and_boot_sysvinit(self):
         """
         Summary:        The purpose of this test case is to verify Post-installation
@@ -297,7 +302,7 @@ class Postinst(OESelftestTestCase):
         self.init_manager_loop("sysvinit")
 
 
-    @skipIfNotQemu('qemuall', 'Test only runs in qemu')
+    @skipIfNotQemu()
     def test_postinst_rootfs_and_boot_systemd(self):
         """
         Summary:        The purpose of this test case is to verify Post-installation
@@ -353,6 +358,7 @@ class Postinst(OESelftestTestCase):
                 self.assertFalse(os.path.isfile(os.path.join(hosttestdir, "rootfs-after-failure")),
                                     "rootfs-after-failure file was created")
 
+@OETestTag("runqemu")
 class SystemTap(OESelftestTestCase):
         """
         Summary:        The purpose of this test case is to verify native crosstap
@@ -429,4 +435,3 @@ IMAGE_INSTALL:append = " systemtap-runtime"
                 cmd = "crosstap -r root@192.168.7.2 -s %s/process/ syscalls_by_pid.stp" % systemtap_examples
                 result = runCmd(cmd)
                 self.assertEqual(0, result.status, 'crosstap  syscalls_by_pid returned a non 0 status:%s' % result.output)
-

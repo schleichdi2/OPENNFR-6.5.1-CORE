@@ -21,7 +21,7 @@ PACKAGES = "\
     ${EPSM}-plex-experience \
     "
 
-SRC_URI = "git://github.com/oe-alliance/DreamPlexSkins.git;protocol=https"
+SRC_URI = "git://github.com/oe-alliance/DreamPlexSkins.git;protocol=https;branch=master"
 
 FILES:${EPSM}-youplex-blue = "/usr/lib/enigma2/python/Plugins/Extensions/DreamPlex/skins/YouPlex-Blue"
 FILES:${EPSM}-youplex-red = "/usr/lib/enigma2/python/Plugins/Extensions/DreamPlex/skins/YouPlex-Red"

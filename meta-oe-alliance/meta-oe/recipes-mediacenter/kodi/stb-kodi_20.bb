@@ -1,13 +1,13 @@
 SUMMARY = "Kodi Media Center"
 
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://LICENSE.md;md5=7b423f1c9388eae123332e372451a4f7"
 
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}-20:"
 
 PACKAGE_ARCH = "${MACHINE}"
 
-inherit cmake gettext ${PYTHON_PN}-dir ${PYTHON_PN}native
+inherit cmake gettext pkgconfig ${PYTHON_PN}-dir ${PYTHON_PN}native
 
 DEPENDS += " \
             fmt \
@@ -17,6 +17,8 @@ DEPENDS += " \
             crossguid \
             libdvdnav libdvdcss libdvdread \
             ffmpeg \
+            autoconf-native \
+            automake-native \
             git-native \
             curl-native \
             gperf-native \
@@ -28,36 +30,29 @@ DEPENDS += " \
             zip-native \
             \
             avahi \
-            boost \
             bzip2 \
             curl \
             libdcadec \
-            enca \
-            expat \
             faad2 \
             fontconfig \
             fribidi \
-            glib-2.0 \ 
+            glib-2.0 \
             giflib \
             libass \
             libcdio \
             libcec \
             libinput \
             libbluray \
-            libmad \
             libmicrohttpd \
-            libmms \
-            libmodplug \
             libnfs \
             libpcre \
             libplist \
-            libsamplerate0 \
             libsquish \
             libssh \
             spdlog \
             libtinyxml \
-            libusb1 \
             libxkbcommon \
+            libxml2 \
             libxslt \
             lzo \
             mpeg2dec \
@@ -67,7 +62,6 @@ DEPENDS += " \
             taglib \
             virtual/egl \
             wavpack \
-            yajl \
             zlib \
             texturepacker-native \
             \
@@ -75,27 +69,28 @@ DEPENDS += " \
             gstreamer1.0-plugins-base \
           "
 
-# 20.0 Alpha1
-SRCREV = "58e75a75f8a95bec4e9d43c2865319c8ae89a13c"
+# 20.0 Nexus
+SRCREV = "fae5a54a151d57ee3664662795b8dfb174ac5e26"
 
 # 'patch' doesn't support binary diffs
 #PATCHTOOL = "git"
 
 PR = "r0"
 
-PV = "20.0-gitr${SRCPV}"
+PV = "20.0+gitr${SRCPV}"
 
 SRC_URI = "git://github.com/xbmc/xbmc.git;protocol=https;branch=master \
            file://0001-flatbuffers-20.patch \
            file://0002-readd-Touchscreen-settings.patch \
-           file://0003-crossguid-0.2.patch \
-           file://0004-shader-nopow-20.patch \
-           file://0006-stb-settings-20.patch \
+           file://0003-shader-nopow-20.patch \
+           file://0004-stb-settings-20.patch \
            file://0005-stb-support-20.patch \
-           file://0007-add-winsystemfactory-windowing-init.patch \
-           file://0008-adapt-window-system-registration.patch \
-           ${@bb.utils.contains_any('MACHINE_FEATURES', 'hisil-3798mv200 hisil-3798mv310 hisi hisil', '' , 'file://0009-e2-player.patch', d)} \
-           ${@bb.utils.contains_any('MACHINE_FEATURES', 'hisil-3798mv200 hisil-3798mv310 hisi hisil', '' , 'file://0010-gst-player.patch', d)} \
+           file://0006-add-winsystemfactory-windowing-init.patch \
+           file://0007-adapt-window-system-registration.patch \
+           file://0008-reinstate-system-h.patch \
+           file://0009-reinstate-platform-defines.patch \
+           ${@bb.utils.contains_any('MACHINE_FEATURES', 'hisil-3798mv200 hisil-3798mv310 hisi hisil', '' , 'file://0010-e2-player.patch', d)} \
+           ${@bb.utils.contains_any('MACHINE_FEATURES', 'hisil-3798mv200 hisil-3798mv310 hisi hisil', '' , 'file://0011-gst-player.patch', d)} \
           "
 
 S = "${WORKDIR}/git"
@@ -163,6 +158,9 @@ KODI_DISABLE_INTERNAL_LIBRARIES = " \
   -DENABLE_INTERNAL_FFMPEG=OFF \
 "
 
+# Allow downloads during internals build
+do_compile[network] = "1"
+
 EXTRA_OECMAKE = " \
     ${KODI_ARCH} \
     ${KODI_DISABLE_INTERNAL_LIBRARIES} \
@@ -215,9 +213,9 @@ do_configure:prepend() {
 INSANE_SKIP:${PN} = "rpaths already-stripped"
 
 FILES:${PN} = "${libdir}/kodi ${libdir}/xbmc"
-FILES:${PN} += "${bindir}/kodi ${bindir}/xbmc"
+FILES:${PN} += "${bindir}/kodi ${bindir}/xbmc ${bindir}/kodi-TexturePacker"
 FILES:${PN} += "${datadir}/icons ${datadir}/kodi ${datadir}/xbmc ${datadir}/applications"
-FILES:${PN} += "${bindir}/kodi-standalone ${bindir}/xbmc-standalone ${datadir}/xsessions"
+FILES:${PN} += "${bindir}/kodi-standalone ${bindir}/xbmc-standalone ${datadir}/xsessions ${datadir}/metainfo"
 FILES:${PN} += "${libdir}/firewalld"
 FILES:${PN}-dev = "${includedir}"
 FILES:${PN}-dbg += "${libdir}/kodi/.debug ${libdir}/kodi/*/.debug ${libdir}/kodi/*/*/.debug ${libdir}/kodi/*/*/*/.debug"
@@ -256,8 +254,8 @@ RRECOMMENDS:${PN}:append = " libcec \
                              tzdata-europe \
                              tzdata-pacific \
                              xkeyboard-config \
-                             kodi-addon-inputstream-adaptive-matrix \
-                             kodi-addon-inputstream-rtmp-matrix \
+                             kodi-addon-inputstream-adaptive-nexus \
+                             kodi-addon-inputstream-rtmp-nexus \
                              alsa-plugins \
                            "
 

@@ -15,7 +15,7 @@ PR = "r0"
 
 inherit gitpkgv allarch
 
-SRC_URI = "git://github.com/kiddac/XStreamity.git;protocol=http"
+SRC_URI = "git://github.com/kiddac/XStreamity.git;branch=master;protocol=https"
 
 S = "${WORKDIR}/git"
 

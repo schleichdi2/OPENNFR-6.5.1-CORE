@@ -1,7 +1,7 @@
 SUMMARY = "Enigma kernel information module for ${MACHINEBUILD}"
 SECTION = "base"
 PRIORITY = "required"
-LICENSE = "GPLv3"
+LICENSE = "GPL-3.0-only"
 LIC_FILES_CHKSUM = "file://${WORKDIR}/git/LICENSE;md5=1ebbd3e34237af26da5dc08a4e440464"
 
 PV = "${IMAGE_VERSION}"
@@ -10,7 +10,7 @@ SRCREV = "${AUTOREV}"
 
 SSTATE_SKIP_CREATION = "1"
 
-SRC_URI = "git://github.com/oe-alliance/enigma2-kernel-module.git;protocol=https"
+SRC_URI = "git://github.com/oe-alliance/enigma2-kernel-module.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git/source/enigma"
 
@@ -22,6 +22,7 @@ EXTRA_OEMAKE = "KSRC=${STAGING_KERNEL_BUILDDIR}"
 
 do_configure:prepend(){
 	find ${S}/ -type f -name "*.c" | xargs -r -L1 sed -i "s|@MACHINE@|${MACHINE}|g"
+	find ${S}/ -type f -name "*.c" | xargs -r -L1 sed -i "s|@MACHINEBUILD@|${MACHINEBUILD}|g"
 	find ${S}/ -type f -name "*.c" | xargs -r -L1 sed -i "s|@DISPLAY_MODEL@|${MACHINE_NAME}|g"
 	find ${S}/ -type f -name "*.c" | xargs -r -L1 sed -i "s|@BOX_BRAND@|${BRAND_OEM}|g"
 	find ${S}/ -type f -name "*.c" | xargs -r -L1 sed -i "s|@DISPLAY_BRAND@|${MACHINE_BRAND}|g"

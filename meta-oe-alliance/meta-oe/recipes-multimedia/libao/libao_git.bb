@@ -1,5 +1,5 @@
 SUMMARY = "A cross platform audio library"
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 HOMEPAGE = "http://www.xiph.org/ao/"
 SECTION = "libs/multimedia"
 DEPENDS = "alsa-lib"
@@ -14,7 +14,7 @@ PV = "1.2.2+git${SRCPV}"
 PKGV = "1.2.2+git${GITPKGV}"
 PR = "r0"
 
-SRC_URI = "git://gitlab.xiph.org/xiph/libao.git;protocol=https"
+SRC_URI = "git://gitlab.xiph.org/xiph/libao.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 
